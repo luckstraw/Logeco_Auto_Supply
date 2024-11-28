@@ -1,7 +1,22 @@
 import { createApp } from "vue";
 import App from "./App.vue";
-import "./registerServiceWorker";
 import router from "./router";
 import store from "./store";
+import vuetify from "./plugins/vuetify";
+import { loadFonts } from "./plugins/webfontloader";
+import { auth } from "./firebaseConfig";
 
-createApp(App).use(store).use(router).mount("#app");
+loadFonts();
+
+const app = createApp(App);
+
+store.dispatch("colors/fetchColors");
+auth.onAuthStateChanged(async (user) => {
+  if (user) {
+    await store.dispatch("authentication/fetchUser", user.uid);
+  } else {
+    store.commit("authentication/CLEAR_USER");
+  }
+});
+
+app.use(router).use(store).use(vuetify).mount("#app");
