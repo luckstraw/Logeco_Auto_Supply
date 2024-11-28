@@ -1,5 +1,5 @@
 <template>
-  <h1>HomeView</h1>
+  <h1>This is FooterComponent</h1>
 </template>
 
 <script setup></script>

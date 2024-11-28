@@ -1,9 +1,8 @@
 import { createStore } from "vuex";
+import colors from "./modules/colors";
 
 export default createStore({
-  state: {},
-  getters: {},
-  mutations: {},
-  actions: {},
-  modules: {},
+  modules: {
+    colors,
+  },
 });
