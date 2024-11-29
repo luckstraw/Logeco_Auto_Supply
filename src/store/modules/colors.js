@@ -1,7 +1,8 @@
 const state = {
   colors: {
-    primary: "#B7171D",
-    secondary: "#212121",
+    primary: "",
+    secondary: "#B7171D", // "#B7171D"
+    warn: "red",
   },
 };
 

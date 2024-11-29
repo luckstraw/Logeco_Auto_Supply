@@ -1,5 +1,11 @@
 <template>
-  <v-app-bar app :style="{ borderBottom: `4px solid ${primaryColor}` }">
+  <v-app-bar
+    app
+    :style="{
+      borderBottom: `4px solid ${secondaryColor}`,
+      '--secondary-color': secondaryColor,
+    }"
+  >
     <v-toolbar-title>
       <router-link to="/" style="cursor: pointer">
         <v-img
@@ -14,12 +20,16 @@
 
     <v-spacer></v-spacer>
 
+    <router-link to="/" class="text-button">Home</router-link>
+    <router-link to="/product" class="text-button">Products</router-link>
+    <router-link to="/service" class="text-button">Services</router-link>
+
     <v-btn
       class="rounded-pill"
-      :color="primaryColor"
+      :color="secondaryColor"
       text
       variant="flat"
-      style="margin-right: 20px"
+      style="margin: 0 20px"
       >Login
     </v-btn>
   </v-app-bar>
@@ -30,9 +40,29 @@ import { computed } from "vue";
 import { useStore } from "vuex";
 
 const store = useStore();
-const primaryColor = computed(() =>
-  store.getters["colors/getColor"]("primary")
+const secondaryColor = computed(() =>
+  store.getters["colors/getColor"]("secondary")
 );
 </script>
 
-<style scoped></style>
+<style scoped>
+.text-button {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  font: inherit;
+  margin: 0 15px;
+  padding: 0;
+  background: none;
+  border: none;
+  outline: none;
+  transition: color 0.3s ease;
+  font-weight: bold;
+}
+
+.text-button:hover,
+.text-button:focus,
+.text-button:active {
+  color: var(--secondary-color);
+}
+</style>
