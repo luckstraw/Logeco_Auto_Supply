@@ -1,24 +1,29 @@
+import { db } from "@/firebaseConfig";
+import { doc, onSnapshot } from "firebase/firestore";
+
+// "#B7171D" original color, cyn just for testing palitan yung secondary sa firestore
 const state = {
-  colors: {
-    primary: "",
-    secondary: "#B7171D", // "#B7171D"
-    warn: "red",
-  },
+  colors: {},
 };
 
 const getters = {
-  getColor: (state) => (colorName) => state.colors[colorName],
+  getColor: (state) => state.colors,
 };
 
 const mutations = {
-  setColor(state, { colorName, colorValue }) {
-    state.colors[colorName] = colorValue;
+  SET_COLORS(state, colors) {
+    state.colors = colors;
   },
 };
 
 const actions = {
-  updateColor({ commit }, payload) {
-    commit("setColor", payload);
+  fetchColors({ commit }) {
+    const colorsDoc = doc(db, "Settings", "colors");
+    onSnapshot(colorsDoc, (doc) => {
+      if (doc.exists()) {
+        commit("SET_COLORS", doc.data());
+      }
+    });
   },
 };
 

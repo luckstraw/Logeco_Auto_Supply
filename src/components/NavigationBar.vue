@@ -1,48 +1,72 @@
 <template>
-  <v-app-bar
-    app
-    :style="{
-      borderBottom: `4px solid ${secondaryColor}`,
-      '--secondary-color': secondaryColor,
-    }"
-  >
-    <v-toolbar-title>
-      <router-link to="/" style="cursor: pointer">
-        <v-img
-          :width="275"
-          aspect-ratio="16/9"
-          cover
-          src="@/assets/LogecoLogo.png"
-          style="margin-left: 20px"
-        ></v-img>
+  <v-app-bar app :style="appBarStyle" class="px-5">
+    <router-link to="/" class="v-toolbar-title">
+      <v-img
+        :width="275"
+        aspect-ratio="16/9"
+        cover
+        src="@/assets/LogecoLogo.png"
+      />
+    </router-link>
+
+    <v-spacer />
+
+    <nav>
+      <router-link
+        v-for="link in navLinks"
+        :key="link.to"
+        :to="link.to"
+        class="text-button"
+        :class="{ 'active-link': $route.path === link.to }"
+      >
+        {{ link.text }}
       </router-link>
-    </v-toolbar-title>
-
-    <v-spacer></v-spacer>
-
-    <router-link to="/" class="text-button">Home</router-link>
-    <router-link to="/product" class="text-button">Products</router-link>
-    <router-link to="/service" class="text-button">Services</router-link>
+    </nav>
 
     <v-btn
+      v-if="!user"
       class="rounded-pill"
-      :color="secondaryColor"
-      text
+      :color="color.secondary"
       variant="flat"
-      style="margin: 0 20px"
-      >Login
+      @click="showLoginSignUpForm"
+    >
+      Login
     </v-btn>
+
+    <router-link
+      v-else
+      to="/users"
+      class="text-button"
+      :class="{ 'active-link': $route.path === '/users' }"
+    >
+      Dashboard
+    </router-link>
+
+    <LoginSignUpForm />
   </v-app-bar>
 </template>
 
 <script setup>
 import { computed } from "vue";
 import { useStore } from "vuex";
+import LoginSignUpForm from "./LoginSignUpForm.vue";
 
 const store = useStore();
-const secondaryColor = computed(() =>
-  store.getters["colors/getColor"]("secondary")
-);
+const color = computed(() => store.getters["colors/getColor"]); // use for color.secondary
+const user = computed(() => store.getters["authentication/getUser"]);
+
+const showLoginSignUpForm = () =>
+  store.dispatch("loginAndSignUp/showLoginSignUpForm");
+
+const navLinks = [
+  { to: "/", text: "Home" },
+  { to: "/products", text: "Products" },
+  { to: "/services", text: "Services" },
+];
+
+const appBarStyle = computed(() => ({
+  borderBottom: `4px solid ${color.value.secondary}`,
+}));
 </script>
 
 <style scoped>
@@ -50,19 +74,14 @@ const secondaryColor = computed(() =>
   color: inherit;
   text-decoration: none;
   cursor: pointer;
-  font: inherit;
   margin: 0 15px;
-  padding: 0;
-  background: none;
-  border: none;
-  outline: none;
-  transition: color 0.3s ease;
   font-weight: bold;
+  transition: color 0.3s ease;
 }
 
 .text-button:hover,
 .text-button:focus,
-.text-button:active {
-  color: var(--secondary-color);
+.active-link {
+  color: v-bind("color.secondary");
 }
 </style>
