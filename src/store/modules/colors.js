@@ -1,13 +1,17 @@
 const state = {
   colors: {
-    primary: "",
-    secondary: "#B7171D", // "#B7171D"
-    warn: "red",
+    primary: "var(--primary-color)",
+    secondary: "cyan", // "#B7171D" original color cyn just for testing
+    accent: "",
+    error: "",
+    warning: "red",
+    info: "",
+    success: "",
   },
 };
 
 const getters = {
-  getColor: (state) => (colorName) => state.colors[colorName],
+  getColor: (state) => state.colors,
 };
 
 const mutations = {
