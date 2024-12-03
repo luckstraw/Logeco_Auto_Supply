@@ -1,7 +1,7 @@
 const state = {
   colors: {
     primary: "var(--primary-color)",
-    secondary: "cyan", // "#B7171D" original color cyn just for testing
+    secondary: "cyan", // "#B7171D" original color, cyn just for testing
     accent: "",
     error: "",
     warning: "red",
