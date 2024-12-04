@@ -1,6 +1,6 @@
 <template>
-  <v-app-bar app :style="appBarStyle">
-    <router-link to="/" class="v-toolbar-title ml-5">
+  <v-app-bar app :style="appBarStyle" class="px-5">
+    <router-link to="/" class="v-toolbar-title">
       <v-img
         :width="275"
         aspect-ratio="16/9"
@@ -23,18 +23,26 @@
       </router-link>
     </nav>
 
-    <v-btn class="rounded-pill mx-5" :color="color.secondary" variant="flat">
+    <v-btn
+      class="rounded-pill"
+      :color="color.secondary"
+      variant="flat"
+      @click="showLoginForm"
+    >
       Login
     </v-btn>
+    <LoginForm />
   </v-app-bar>
 </template>
 
 <script setup>
 import { computed } from "vue";
 import { useStore } from "vuex";
+import LoginForm from "@/components/LoginForm";
 
 const store = useStore();
 const color = computed(() => store.getters["colors/getColor"]); // use for color.secondary
+const showLoginForm = () => store.dispatch("login/showLoginForm");
 
 const navLinks = [
   { to: "/", text: "Home" },
