@@ -27,22 +27,25 @@
       class="rounded-pill"
       :color="color.secondary"
       variant="flat"
-      @click="showLoginForm"
+      @click="showLoginSignUpForm"
     >
       Login
     </v-btn>
-    <LoginForm />
+
+    <LoginSignUpForm />
   </v-app-bar>
 </template>
 
 <script setup>
 import { computed } from "vue";
 import { useStore } from "vuex";
-import LoginForm from "@/components/LoginForm";
+import LoginSignUpForm from "./LoginSignUpForm.vue";
 
 const store = useStore();
 const color = computed(() => store.getters["colors/getColor"]); // use for color.secondary
-const showLoginForm = () => store.dispatch("login/showLoginForm");
+
+const showLoginSignUpForm = () =>
+  store.dispatch("loginAndSignUp/showLoginSignUpForm");
 
 const navLinks = [
   { to: "/", text: "Home" },
