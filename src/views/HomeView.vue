@@ -2,7 +2,7 @@
   <v-parallax
     height="90vh"
     gradient="to top right, rgba(33,33,33,.7), rgba(33,33,33,.7)"
-    src="/img/background/parallax.jpg"
+    src="/img/background/Parallax.jpg"
   >
     <div class="d-flex flex-column justify-center align-center fill-height">
       <div class="d-flex align-center">
