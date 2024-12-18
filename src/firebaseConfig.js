@@ -13,7 +13,7 @@ const firebaseConfig = {
   appId: process.env.VUE_APP_FIREBASE_APP_ID,
 };
 
-console.log('API Key:', process.env.VUE_APP_FIREBASE_API_KEY);  // Remove this in production
+console.log("API Key:", process.env.VUE_APP_FIREBASE_API_KEY);  // Remove this in production
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
