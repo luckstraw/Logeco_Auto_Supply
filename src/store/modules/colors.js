@@ -1,13 +1,9 @@
+import { db } from "@/firebaseConfig";
+import { doc, onSnapshot } from "firebase/firestore";
+
+// "#B7171D" original color, cyn just for testing palitan yung secondary sa firestore
 const state = {
-  colors: {
-    primary: "var(--primary-color)",
-    secondary: "cyan", // "#B7171D" original color cyn just for testing
-    accent: "",
-    error: "",
-    warning: "red",
-    info: "",
-    success: "",
-  },
+  colors: {},
 };
 
 const getters = {
@@ -15,14 +11,21 @@ const getters = {
 };
 
 const mutations = {
-  setColor(state, { colorName, colorValue }) {
-    state.colors[colorName] = colorValue;
+  SET_COLORS(state, colors) {
+    state.colors = colors;
   },
 };
 
 const actions = {
-  updateColor({ commit }, payload) {
-    commit("setColor", payload);
+  fetchColors({ commit }) {
+    const colorsDoc = doc(db, "Settings", "colors");
+    onSnapshot(colorsDoc, (doc) => {
+      if (doc.exists()) {
+        commit("SET_COLORS", doc.data());
+      } else {
+        console.log("No such document!");
+      }
+    });
   },
 };
 

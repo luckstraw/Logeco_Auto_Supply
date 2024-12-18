@@ -1,6 +1,6 @@
 <template>
-  <v-app-bar app :style="appBarStyle">
-    <router-link to="/" class="v-toolbar-title ml-5">
+  <v-app-bar app :style="appBarStyle" class="px-5">
+    <router-link to="/" class="v-toolbar-title">
       <v-img
         :width="275"
         aspect-ratio="16/9"
@@ -23,18 +23,40 @@
       </router-link>
     </nav>
 
-    <v-btn class="rounded-pill mx-5" :color="color.secondary" variant="flat">
+    <v-btn
+      v-if="!user"
+      class="rounded-pill"
+      :color="color.secondary"
+      variant="flat"
+      @click="showLoginSignUpForm"
+    >
       Login
     </v-btn>
+
+    <router-link
+      v-else
+      to="/users"
+      class="text-button"
+      :class="{ 'active-link': $route.path === '/users' }"
+    >
+      Dashboard
+    </router-link>
+
+    <LoginSignUpForm />
   </v-app-bar>
 </template>
 
 <script setup>
 import { computed } from "vue";
 import { useStore } from "vuex";
+import LoginSignUpForm from "./LoginSignUpForm.vue";
 
 const store = useStore();
 const color = computed(() => store.getters["colors/getColor"]); // use for color.secondary
+const user = computed(() => store.getters["authentication/getUser"]);
+
+const showLoginSignUpForm = () =>
+  store.dispatch("loginAndSignUp/showLoginSignUpForm");
 
 const navLinks = [
   { to: "/", text: "Home" },
