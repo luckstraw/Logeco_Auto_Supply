@@ -22,8 +22,6 @@ const actions = {
     onSnapshot(colorsDoc, (doc) => {
       if (doc.exists()) {
         commit("SET_COLORS", doc.data());
-      } else {
-        console.log("No such document!");
       }
     });
   },
