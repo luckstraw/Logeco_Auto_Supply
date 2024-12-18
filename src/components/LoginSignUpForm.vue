@@ -86,6 +86,7 @@
                 <a
                   class="text-decoration-underline"
                   :style="{ cursor: 'pointer', color: color.secondary }"
+                  @click="handleForgotPassword"
                 >
                   Forgot Password?
                 </a>
@@ -97,6 +98,7 @@
                   block
                   :style="{ height: '40px' }"
                   :color="color.secondary"
+                  @click="handleLogin"
                 >
                   Login
                 </v-btn>
@@ -109,7 +111,7 @@
 
               <!-- Google Login Button -->
               <v-col cols="12" class="py-0 text-center">
-                <v-btn :color="color.secondary">
+                <v-btn :color="color.secondary" @click="handleLoginWithGoogle">
                   <v-icon>fab fa-google</v-icon>
                 </v-btn>
               </v-col>
@@ -187,6 +189,7 @@
                     :disabled="!isFormValid"
                     :style="{ height: '40px' }"
                     :color="color.secondary"
+                    @click="handleSignUp"
                   >
                     Sign Up
                   </v-btn>
@@ -236,12 +239,14 @@
         </v-col>
       </v-row>
     </v-card>
+    <InfoDialog />
   </v-dialog>
 </template>
 
 <script setup>
 import { computed, ref } from "vue";
 import { useStore } from "vuex";
+import InfoDialog from "./InfoDialog.vue";
 
 const store = useStore();
 const color = computed(() => store.getters["colors/getColor"]);
@@ -282,4 +287,58 @@ const rules = {
 const rightColumn = computed(
   () => store.getters["loginAndSignUp/getRightColumn"]
 );
+
+// Funtions for authentication
+
+const handleAuthAction = async (action, payload = {}) => {
+  try {
+    await store.dispatch(`authentication/${action}`, payload);
+
+    if (action === "forgotPassword") {
+      store.dispatch("infoDialog/showDialog", {
+        title: "Email sent successfully",
+        message: `if an account with ${payload.email} exist, you will receive a password reset email shortly. Please check your inbox.`,
+        type: "success",
+      });
+    } else {
+      hideLoginSignUpForm();
+    }
+  } catch (error) {
+    const getErrorMessage = store.getters["infoDialog/getErrorMessage"];
+    store.dispatch("infoDialog/showDialog", {
+      title: "Error",
+      message: getErrorMessage(error.code) || error.message,
+      type: "error",
+    });
+  }
+};
+
+const handleLogin = () =>
+  handleAuthAction("login", {
+    email: loginEmail.value,
+    password: loginPassword.value,
+  });
+
+const handleSignUp = () =>
+  handleAuthAction("signUp", {
+    email: email.value,
+    password: password.value,
+  });
+
+const handleLoginWithGoogle = () => handleAuthAction("loginWithGoogle");
+
+const handleForgotPassword = () => {
+  if (!loginEmail.value.trim()) {
+    store.dispatch("infoDialog/showDialog", {
+      title: "Missing email",
+      message:
+        "Please enter your email address in the login form. We will use that to send the reset password.",
+      type: "warning",
+    });
+    return;
+  }
+  handleAuthAction("forgotPassword", {
+    email: loginEmail.value,
+  });
+};
 </script>

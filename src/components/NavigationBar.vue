@@ -24,6 +24,7 @@
     </nav>
 
     <v-btn
+      v-if="!user"
       class="rounded-pill"
       :color="color.secondary"
       variant="flat"
@@ -31,6 +32,15 @@
     >
       Login
     </v-btn>
+
+    <router-link
+      v-else
+      to="/users"
+      class="text-button"
+      :class="{ 'active-link': $route.path === '/users' }"
+    >
+      Dashboard
+    </router-link>
 
     <LoginSignUpForm />
   </v-app-bar>
@@ -43,6 +53,7 @@ import LoginSignUpForm from "./LoginSignUpForm.vue";
 
 const store = useStore();
 const color = computed(() => store.getters["colors/getColor"]); // use for color.secondary
+const user = computed(() => store.getters["authentication/getUser"]);
 
 const showLoginSignUpForm = () =>
   store.dispatch("loginAndSignUp/showLoginSignUpForm");
