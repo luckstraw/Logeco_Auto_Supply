@@ -33,8 +33,6 @@ const actions = {
     const userDoc = await getDoc(userDocRef);
     if (userDoc.exists()) {
       commit("SET_USER", userDoc.data());
-    } else {
-      console.log("No such document!");
     }
   },
 

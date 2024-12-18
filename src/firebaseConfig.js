@@ -3,10 +3,6 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
-/* eslint-disable */
-console.log("API Key:", process.env.VUE_APP_FIREBASE_API_KEY);  // Remove this in production
-console.log("authDomainahah:", process.env.VUE_APP_FIREBASE_AUTH_DOMAIN);
-
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
@@ -16,9 +12,6 @@ const firebaseConfig = {
   messagingSenderId: process.env.VUE_APP_FIREBASE_MESSAGING_SENDER_ID,
   appId: process.env.VUE_APP_FIREBASE_APP_ID,
 };
-
-/* eslint-disable */
-console.log("API Key:", process.env.VUE_APP_FIREBASE_API_KEY);  // Remove this in production
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
