@@ -239,14 +239,12 @@
         </v-col>
       </v-row>
     </v-card>
-    <InfoDialog />
   </v-dialog>
 </template>
 
 <script setup>
 import { computed, ref } from "vue";
 import { useStore } from "vuex";
-import InfoDialog from "./InfoDialog.vue";
 
 const store = useStore();
 const color = computed(() => store.getters["colors/getColor"]);
@@ -289,56 +287,23 @@ const rightColumn = computed(
 );
 
 // Funtions for authentication
-
-const handleAuthAction = async (action, payload = {}) => {
-  try {
-    await store.dispatch(`authentication/${action}`, payload);
-
-    if (action === "forgotPassword") {
-      store.dispatch("infoDialog/showDialog", {
-        title: "Email sent successfully",
-        message: `if an account with ${payload.email} exist, you will receive a password reset email shortly. Please check your inbox.`,
-        type: "success",
-      });
-    } else {
-      hideLoginSignUpForm();
-    }
-  } catch (error) {
-    const getErrorMessage = store.getters["infoDialog/getErrorMessage"];
-    store.dispatch("infoDialog/showDialog", {
-      title: "Error",
-      message: getErrorMessage(error.code) || error.message,
-      type: "error",
-    });
-  }
-};
-
 const handleLogin = () =>
-  handleAuthAction("login", {
+  store.dispatch("authentication/login", {
     email: loginEmail.value,
     password: loginPassword.value,
   });
 
 const handleSignUp = () =>
-  handleAuthAction("signUp", {
+  store.dispatch("authentication/signUp", {
     email: email.value,
     password: password.value,
   });
 
-const handleLoginWithGoogle = () => handleAuthAction("loginWithGoogle");
+const handleLoginWithGoogle = () =>
+  store.dispatch("authentication/loginWithGoogle");
 
-const handleForgotPassword = () => {
-  if (!loginEmail.value.trim()) {
-    store.dispatch("infoDialog/showDialog", {
-      title: "Missing email",
-      message:
-        "Please enter your email address in the login form. We will use that to send the reset password.",
-      type: "warning",
-    });
-    return;
-  }
-  handleAuthAction("forgotPassword", {
+const handleForgotPassword = () =>
+  store.dispatch("authentication/forgotPassword", {
     email: loginEmail.value,
   });
-};
 </script>
