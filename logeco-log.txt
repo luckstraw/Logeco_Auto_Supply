@@ -1,0 +1,87 @@
+11/28/2024
+
+Vue CLI v5.0.8
+? Please pick a preset: Manually select features
+? Check the features needed for your project: Babel, PWA, Router, Vuex, CSS Pre-processors, Linter, Unit, E2E
+? Choose a version of Vue.js that you want to start the project with: 3.x        
+? Use history mode for router? (Requires proper server setup for index fallback in production) Yes
+? Pick a CSS pre-processor (PostCSS, Autoprefixer and CSS Modules are supported by default): Sass/SCSS (with dart-sass)
+? Pick a linter / formatter config: Prettier
+? Pick additional lint features: Lint on save, Lint and fix on commit
+? Pick a unit testing solution: Jest
+? Pick an E2E testing solution: Cypress
+? Where do you prefer placing config for Babel, ESLint, etc.? In dedicated config files
+? Save this as a preset for future projects? (y/N) n
+
+> Vuetify 3 - Vue CLI (preview) - vue add vuetify
+> added Firebase - npm install firebase
+> upload to Github: https://github.com/luckstraw/Logeco_Auto_Supply
+> added .env file for API keys 
+
+> deployed using firebase - firebase init /remember select "dist" when prompted "public"
+> auto deployed with commit in main branch and pull request on github
+
+> setup the firestore and authentication in firebase 
+Ready to go
+
+> Progress on navbar
+
+11/29/2024
+
+> Finished navbar and footer but will improve later
+> Vuex and Vuetify understanding
+
+11/30/2024
+
+> Progress on Home page
+
+12/3/2024
+> Finished on Home page
+
+12/7/2024
+> Progress on Login form
+
+12/8/2024
+> Finished Login and SignUp Form but not Funtioning
+
+12/19/2024
+> Finished the following
+    Fully Functional Login and SignUp Form Including route guards
+    Firestore realtime update with colors
+    .env secret on github
+    learn a lot of thing on git like squah rebase etc.
+    waste a lot of time debugging like 40 hours lol
+
+12/20/2024
+> Improve infoDialog it's like customize alert() now
+
+12/23/2024
+> Fixed ChatBox in User + Modified authentication code + Navbar fix
+
+12/25/2024
+This is my chat collection
+
+Chats (collection)
+  |
+  |---> chatId (document) // The `chatId` is the user's `uid` for easy access.
+  |       |
+  |       |---> name: user.displayName // Name of the user, so the admin can see it.
+  |       |---> avatar: avatar // URL of the user's profile picture.
+  |       |---> lastMessage: last message content with timestamp // Used for easy preview of the last message in the chat list for admin.
+  |       |---> lastMessageTimestamp: timestamp // Timestamp of the last message, for ordering.
+  |       |
+  |       |---> messages (subcollection) // Subcollection that contains all the messages for the chat.
+  |             |
+  |             |---> autoId (document) // Unique auto-generated document ID for each message.
+  |                   |
+  |                   |---> text: message content // The text of the message.
+  |                   |---> timestamp: timestamp // The timestamp of when the message was sent, used for ordering.
+  |                   |---> senderId: senderId (either userId or adminId) // To identify who sent the message.
+  |
+  |---> chatId (document) // Another chat document for another user, repeated for each unique chat.
+
+
+fixing chat
+
+12/28/2024
+> Fully Functional Chat App + API avatar for new User 

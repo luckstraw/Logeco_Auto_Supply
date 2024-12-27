@@ -1,14 +1,12 @@
-// Styles
-import "@fortawesome/fontawesome-free/css/all.css"; // Ensure Font Awesome is imported
+import "@fortawesome/fontawesome-free/css/all.css";
 import "vuetify/styles";
 
-// Vuetify
 import { createVuetify } from "vuetify";
 import { aliases, fa } from "vuetify/iconsets/fa";
 
 export default createVuetify({
   icons: {
-    defaultSet: "fa", // Set Font Awesome as the default icon set
+    defaultSet: "fa",
     aliases,
     sets: {
       fa,

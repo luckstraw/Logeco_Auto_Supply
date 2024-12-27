@@ -6,20 +6,15 @@
   >
     <div class="d-flex flex-column justify-center align-center fill-height">
       <div class="d-flex align-center">
-        <!-- Main Heading -->
         <div class="text-h2 font-weight-black text-center ml-8">
           LOGECO AUTO SUPPLY
         </div>
-
-        <!-- Vertical Divider -->
         <v-divider
           :thickness="5"
           vertical
           :color="color.secondary"
           class="mx-4 border-opacity-100"
         ></v-divider>
-
-        <!-- Subheading -->
         <div
           class="text-h4 font-weight-bold mr-8"
           :style="{ color: color.secondary }"
