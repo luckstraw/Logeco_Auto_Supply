@@ -3,8 +3,8 @@ const state = {
   infoDialogTitle: "",
   infoDialogMessage: "",
   infoDialogType: "", // success, info, warning, error
-  infoDialogIcon: "", // Optional Icon
-  infoDialogButtons: [], // Array of buttton configurations
+  infoDialogIcon: "",
+  infoDialogButtons: [],
 };
 
 const getters = {
@@ -31,7 +31,7 @@ const getters = {
       case "auth/missing-password":
         return "Please enter your password";
       default:
-        return null; //"An unexpected error occurred. Please try again later."
+        return null;
     }
   },
 };
@@ -76,8 +76,8 @@ const actions = {
       (buttons || defaultButtons).map((button) => ({
         ...button,
         action: () => {
-          button.action?.(); // Call the button's action if defined
-          commit("SET_DIALOG_VISIBILITY", false); // Close the dialog
+          button.action?.();
+          commit("SET_DIALOG_VISIBILITY", false);
         },
       }))
     );

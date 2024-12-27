@@ -35,7 +35,6 @@
         <!-- Form Section-->
         <v-col cols="12" md="6">
           <v-card :class="['pa-2', isLogin ? 'ml-2' : 'mr-2']" elevation="0">
-            <!-- Title -->
             <v-card-title class="d-flex align-center mb-3">
               <span class="flex-grow-1 text-center">{{
                 isLogin ? "Login" : "Sign Up"
@@ -51,7 +50,6 @@
 
             <!-- Login Form -->
             <v-row v-if="isLogin">
-              <!-- Email Input -->
               <v-col cols="12">
                 <v-text-field
                   v-model="loginEmail"
@@ -62,8 +60,6 @@
                   :color="color.secondary"
                 />
               </v-col>
-
-              <!-- Password Input -->
               <v-col cols="12">
                 <v-text-field
                   v-model="loginPassword"
@@ -80,8 +76,6 @@
                   @click:append-inner="loginShowPassword = !loginShowPassword"
                 />
               </v-col>
-
-              <!-- Forgot Password Link -->
               <v-col cols="12">
                 <a
                   class="text-decoration-underline"
@@ -91,8 +85,6 @@
                   Forgot Password?
                 </a>
               </v-col>
-
-              <!-- Login Button -->
               <v-col cols="12" class="py-0 mt-4">
                 <v-btn
                   block
@@ -103,20 +95,14 @@
                   Login
                 </v-btn>
               </v-col>
-
-              <!-- Divider -->
               <v-col cols="12" class="py-0">
                 <v-divider>or</v-divider>
               </v-col>
-
-              <!-- Google Login Button -->
               <v-col cols="12" class="py-0 text-center">
                 <v-btn :color="color.secondary" @click="handleLoginWithGoogle">
                   <v-icon>fab fa-google</v-icon>
                 </v-btn>
               </v-col>
-
-              <!-- Signup Section -->
               <v-col cols="12" class="text-center mt-3">
                 Don’t have an account?
                 <a
@@ -132,7 +118,6 @@
             <!-- Signup Form -->
             <v-form v-else ref="form" v-model="isFormValid">
               <v-row>
-                <!-- Email Input -->
                 <v-col cols="12">
                   <v-text-field
                     variant="outlined"
@@ -143,8 +128,6 @@
                     :color="color.secondary"
                   />
                 </v-col>
-
-                <!-- Password Input -->
                 <v-col cols="12">
                   <v-text-field
                     variant="outlined"
@@ -162,8 +145,6 @@
                     @click:append-inner="showPassword = !showPassword"
                   />
                 </v-col>
-
-                <!-- Confirm Password Input -->
                 <v-col cols="12">
                   <v-text-field
                     variant="outlined"
@@ -181,8 +162,6 @@
                     @click:append-inner="showPassword = !showPassword"
                   />
                 </v-col>
-
-                <!-- Sign Up Button -->
                 <v-col cols="12" class="py-0 mt-4">
                   <v-btn
                     block
@@ -194,8 +173,6 @@
                     Sign Up
                   </v-btn>
                 </v-col>
-
-                <!-- Signup Section -->
                 <v-col cols="12" class="text-center mt-3">
                   Already have an account?
                   <a

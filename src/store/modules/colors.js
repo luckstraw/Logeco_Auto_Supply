@@ -1,7 +1,6 @@
 import { db } from "@/firebaseConfig";
 import { doc, onSnapshot } from "firebase/firestore";
 
-// "#B7171D" original color, cyn just for testing palitan yung secondary sa firestore
 const state = {
   colors: {},
 };

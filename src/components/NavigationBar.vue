@@ -34,10 +34,22 @@
     </v-btn>
 
     <router-link
-      v-else
+      v-if="user && user.role === 'admin'"
       to="/users"
       class="text-button"
       :class="{ 'active-link': $route.path === '/users' }"
+    >
+      User's View
+    </router-link>
+
+    <router-link
+      v-if="user"
+      :to="user.role === 'admin' ? '/admin' : '/users'"
+      class="text-button"
+      :class="{
+        'active-link':
+          $route.path === (user.role === 'admin' ? '/admin' : '/users'),
+      }"
     >
       Dashboard
     </router-link>
@@ -52,7 +64,7 @@ import { useStore } from "vuex";
 import LoginSignUpForm from "./LoginSignUpForm.vue";
 
 const store = useStore();
-const color = computed(() => store.getters["colors/getColor"]); // use for color.secondary
+const color = computed(() => store.getters["colors/getColor"]);
 const user = computed(() => store.getters["authentication/getUser"]);
 
 const showLoginSignUpForm = () =>

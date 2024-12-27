@@ -36,6 +36,15 @@ const actions = {
     dispatch("loginAndSignUp/hideLoginSignUpForm", null, { root: true });
   },
 
+  async postLogin({ commit, dispatch, getters }, user) {
+    commit("SET_USER", user);
+    await dispatch("fetchUser", user.uid);
+    await dispatch("adminChat/createChat", getters.getUser, { root: true });
+    const { role } = getters.getUser || {};
+    router.push(role === "admin" ? "/admin" : "/users");
+    dispatch("hideLoginSignUpForm");
+  },
+
   async fetchUser({ commit, dispatch }, userUID) {
     try {
       const userDoc = await getDoc(doc(db, "Users", userUID));
@@ -47,75 +56,90 @@ const actions = {
     }
   },
 
-  async login({ commit, dispatch }, { email, password }) {
-    await actions.handleAuthFlow(
-      async () => {
-        const { user } = await signInWithEmailAndPassword(
-          auth,
-          email,
-          password
-        );
-        return user;
-      },
-      { commit, dispatch }
-    );
+  async login({ dispatch }, { email, password }) {
+    try {
+      const { user } = await signInWithEmailAndPassword(auth, email, password);
+      await dispatch("postLogin", user);
+    } catch (error) {
+      dispatch("handleError", error);
+    }
   },
 
-  async loginWithGoogle({ commit, dispatch }) {
-    await actions.handleAuthFlow(
-      async () => {
-        const { user } = await signInWithPopup(auth, new GoogleAuthProvider());
-        const userRef = doc(db, "Users", user.uid);
+  async loginWithGoogle({ dispatch }) {
+    try {
+      const { user } = await signInWithPopup(auth, new GoogleAuthProvider());
+      const userRef = doc(db, "Users", user.uid);
 
-        if (!(await getDoc(userRef)).exists()) {
-          await setDoc(userRef, {
-            email: user.email,
-            displayName: user.displayName || "",
-            photoURL: user.photoURL || "",
-            uid: user.uid,
-            role: "user",
-            createdAt: serverTimestamp(),
-          });
-        }
-
-        return user;
-      },
-      { commit, dispatch }
-    );
-  },
-
-  async signUp({ commit, dispatch }, { email, password }) {
-    await actions.handleAuthFlow(
-      async () => {
-        const { user } = await createUserWithEmailAndPassword(
-          auth,
-          email,
-          password
-        );
-
-        await setDoc(doc(db, "Users", user.uid), {
+      if (!(await getDoc(userRef)).exists()) {
+        await setDoc(userRef, {
           email: user.email,
-          displayName: user.displayName || "",
-          photoURL: user.photoURL || "",
+          displayName: user.displayName,
+          photoURL: user.photoURL,
           uid: user.uid,
           role: "user",
           createdAt: serverTimestamp(),
         });
-
-        return user;
-      },
-      { commit, dispatch }
-    );
-  },
-
-  async signOut({ commit, dispatch }) {
-    try {
-      await signOut(auth);
-      commit("CLEAR_USER");
-      router.push("/");
+      }
+      await dispatch("postLogin", user);
     } catch (error) {
       dispatch("handleError", error);
     }
+  },
+
+  async signUp({ dispatch }, { email, password }) {
+    try {
+      const { user } = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const randomId = Math.floor(Math.random() * 100) + 1;
+      await setDoc(doc(db, "Users", user.uid), {
+        email: user.email,
+        displayName: user.email.split("@")[0],
+        photoURL: `https://avatar.iran.liara.run/public/${randomId}`,
+        uid: user.uid,
+        role: "user",
+        createdAt: serverTimestamp(),
+      });
+
+      await dispatch("postLogin", user);
+    } catch (error) {
+      dispatch("handleError", error);
+    }
+  },
+
+  async signOut({ commit, dispatch }) {
+    dispatch(
+      "infoDialog/showDialog",
+      {
+        message: "Are you sure you want to log out?",
+        type: "warning",
+        buttons: [
+          {
+            text: "No",
+            action: () => {
+              return;
+            },
+          },
+          {
+            text: "Yes",
+            action: async () => {
+              try {
+                await signOut(auth);
+                commit("CLEAR_USER");
+                localStorage.clear();
+                location.reload();
+                router.push("/");
+              } catch (error) {
+                dispatch("handleError", error);
+              }
+            },
+          },
+        ],
+      },
+      { root: true }
+    );
   },
 
   async forgotPassword({ dispatch }, { email }) {
@@ -144,21 +168,6 @@ const actions = {
         },
         { root: true }
       );
-    } catch (error) {
-      dispatch("handleError", error);
-    }
-  },
-
-  async handleAuthFlow(authCallback, { commit, dispatch }) {
-    try {
-      const user = await authCallback();
-      commit("SET_USER", user);
-      await dispatch("fetchUser", user.uid);
-
-      const role = user.role || "user"; // Default role
-      router.push(role === "admin" ? "/admin" : "/users");
-
-      dispatch("hideLoginSignUpForm");
     } catch (error) {
       dispatch("handleError", error);
     }

@@ -46,8 +46,42 @@ Ready to go
 
 12/19/2024
 > Finished the following
-    Fully Functional Login ans SignUp Form Including route guards
+    Fully Functional Login and SignUp Form Including route guards
     Firestore realtime update with colors
     .env secret on github
     learn a lot of thing on git like squah rebase etc.
     waste a lot of time debugging like 40 hours lol
+
+12/20/2024
+> Improve infoDialog it's like customize alert() now
+
+12/23/2024
+> Fixed ChatBox in User + Modified authentication code + Navbar fix
+
+12/25/2024
+This is my chat collection
+
+Chats (collection)
+  |
+  |---> chatId (document) // The `chatId` is the user's `uid` for easy access.
+  |       |
+  |       |---> name: user.displayName // Name of the user, so the admin can see it.
+  |       |---> avatar: avatar // URL of the user's profile picture.
+  |       |---> lastMessage: last message content with timestamp // Used for easy preview of the last message in the chat list for admin.
+  |       |---> lastMessageTimestamp: timestamp // Timestamp of the last message, for ordering.
+  |       |
+  |       |---> messages (subcollection) // Subcollection that contains all the messages for the chat.
+  |             |
+  |             |---> autoId (document) // Unique auto-generated document ID for each message.
+  |                   |
+  |                   |---> text: message content // The text of the message.
+  |                   |---> timestamp: timestamp // The timestamp of when the message was sent, used for ordering.
+  |                   |---> senderId: senderId (either userId or adminId) // To identify who sent the message.
+  |
+  |---> chatId (document) // Another chat document for another user, repeated for each unique chat.
+
+
+fixing chat
+
+12/28/2024
+> Fully Functional Chat App + API avatar for new User 
