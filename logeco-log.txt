@@ -85,3 +85,5 @@ fixing chat
 
 12/28/2024
 > Fully Functional Chat App + API avatar for new User 
+> Copy this code to know the lines of code:
+      git ls-files src | grep -E '\.js$|\.vue$|\.html$|\.css$|\.scss$|\.ts$|\.jsx$|\.tsx$' | xargs wc -l

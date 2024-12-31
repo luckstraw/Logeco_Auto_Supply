@@ -1,5 +1,5 @@
 import { db } from "@/firebaseConfig";
-import { doc, onSnapshot } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 
 const state = {
   colors: {},
@@ -16,13 +16,20 @@ const mutations = {
 };
 
 const actions = {
-  fetchColors({ commit }) {
-    const colorsDoc = doc(db, "Settings", "colors");
-    onSnapshot(colorsDoc, (doc) => {
-      if (doc.exists()) {
-        commit("SET_COLORS", doc.data());
+  handleError({ dispatch }, error) {
+    dispatch("infoDialog/handleError", error, { root: true });
+  },
+
+  async fetchColors({ commit, dispatch }) {
+    try {
+      const colorsDoc = doc(db, "Settings", "colors");
+      const docSnap = await getDoc(colorsDoc);
+      if (docSnap.exists()) {
+        commit("SET_COLORS", docSnap.data());
       }
-    });
+    } catch (error) {
+      dispatch("handleError", error);
+    }
   },
 };
 
