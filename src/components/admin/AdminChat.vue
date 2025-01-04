@@ -111,7 +111,7 @@
 
 <script setup>
 import { useStore } from "vuex";
-import { computed, ref, onMounted, watch } from "vue";
+import { computed, ref, watch } from "vue";
 
 const store = useStore();
 const color = computed(() => store.getters["colors/getColor"]);
@@ -165,8 +165,6 @@ const handleScroll = async () => {
       chatBox.value.$el.scrollHeight - previousScrollHeight;
   }
 };
-
-onMounted(() => store.dispatch("adminChat/fetchChatList"));
 
 watch(selectedChat, async (newChat) => {
   if (newChat) {

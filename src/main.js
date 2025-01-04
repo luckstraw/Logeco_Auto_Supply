@@ -11,6 +11,10 @@ loadFonts();
 const app = createApp(App);
 
 store.dispatch("colors/fetchColors");
+store.dispatch("adminSchedule/generateDays");
+store.dispatch("adminSchedule/fetchSchedules");
+store.dispatch("adminChat/fetchChatList");
+
 auth.onAuthStateChanged(async (user) => {
   if (user) {
     await store.dispatch("authentication/fetchUser", user.uid);
