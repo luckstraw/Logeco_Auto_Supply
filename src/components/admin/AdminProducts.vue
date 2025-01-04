@@ -113,15 +113,12 @@
 import { computed } from "vue";
 import { useStore } from "vuex";
 
-// Access the Vuex store
 const store = useStore();
 
-// Create reactive references to the store's state and getters
 const dialog = computed(() => store.getters["adminProduct/getDialogState"]);
 const openCards = computed(() => store.getters["adminProduct/getOpenCards"]);
 const items = computed(() => store.getters["adminProduct/getItems"]);
 
-// Define methods to dispatch actions
 const openDialog = () => {
   store.commit("adminProduct/SET_DIALOG_STATE", true);
 };

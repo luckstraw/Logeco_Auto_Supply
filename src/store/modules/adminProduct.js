@@ -3,33 +3,33 @@ const state = {
   openCards: [
     {
       title: "Mitsubishi Items",
-      image: "https://via.placeholder.com/300x200/0000FF", // Replace with an actual image URL
+      image: "https://via.placeholder.com/300x200/0000FF",
       buttonText: "Add items",
     },
     {
       title: "Honda Items",
-      image: "https://via.placeholder.com/300x200/FF0000", // Replace with an actual image URL
+      image: "https://via.placeholder.com/300x200/FF0000",
       buttonText: "Add items",
     },
     {
       title: "Toyota Items",
-      image: "https://via.placeholder.com/300x200/00FF00", // Replace with an actual image URL
+      image: "https://via.placeholder.com/300x200/00FF00",
       buttonText: "Add items",
     },
     {
       title: "Suzuki Items",
-      image: "https://via.placeholder.com/300x200/FFFF00", // Replace with an actual image URL
+      image: "https://via.placeholder.com/300x200/FFFF00",
       buttonText: "Add items",
     },
   ],
   items: [
     {
       title: "Suspension",
-      image: "https://via.placeholder.com/150/0000FF", // Replace with actual image URLs
+      image: "https://via.placeholder.com/150/0000FF",
     },
     {
       title: "Headlights",
-      image: "https://via.placeholder.com/150/FF0000", // Replace with actual image URLs
+      image: "https://via.placeholder.com/150/FF0000",
     },
   ],
 };
@@ -47,7 +47,6 @@ const actions = {
       image: "https://via.placeholder.com/150/AAAAAA", // Default image for new item
     };
     commit("ADD_ITEM", newItem);
-    console.log("New item added:", newItem);
   },
   removeItem({ commit }, title) {
     commit("REMOVE_ITEM", title);
@@ -59,7 +58,6 @@ const actions = {
       buttonText: "Add items",
     };
     commit("ADD_CATEGORY", newCategory);
-    console.log("New category added:", newCategory);
   },
 };
 

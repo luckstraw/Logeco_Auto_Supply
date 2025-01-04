@@ -2,6 +2,8 @@ import { createStore } from "vuex";
 import createPersistedState from "vuex-persistedstate";
 import admin from "./modules/admin";
 import adminChat from "./modules/adminChat";
+import adminProduct from "./modules/adminProduct";
+import adminService from "./modules/adminService";
 import adminSchedule from "./modules/adminSchedule";
 import authentication from "./modules/authentication";
 import colors from "./modules/colors";
@@ -9,28 +11,26 @@ import footer from "./modules/footer";
 import homepage from "./modules/homepage";
 import infoDialog from "./modules/infoDialog";
 import loginAndSignUp from "./modules/loginAndSignUp";
-import userChat from "./modules/userChat";
 import productsView from "./modules/productsView";
 import serviceView from "./modules/serviceView";
-import adminService from "./modules/adminService";
-import adminProduct from "./modules/adminProduct";
+import userChat from "./modules/userChat";
 
 export default createStore({
   modules: {
     admin,
     adminChat,
+    adminProduct,
     adminSchedule,
+    adminService,
     authentication,
     colors,
     footer,
     homepage,
     infoDialog,
     loginAndSignUp,
-    userChat,
     productsView,
     serviceView,
-    adminService,
-    adminProduct,
+    userChat,
   },
   plugins: [createPersistedState()],
 });

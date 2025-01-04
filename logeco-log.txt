@@ -87,3 +87,8 @@ fixing chat
 > Fully Functional Chat App + API avatar for new User 
 > Copy this code to know the lines of code:
       git ls-files src | grep -E '\.js$|\.vue$|\.html$|\.css$|\.scss$|\.ts$|\.jsx$|\.tsx$' | xargs wc -l
+
+
+1/5/2025
+> Admin Schedule
+> Pre tangalin mo yung eslint-disable pati useless na comments pati yung console.log bago mag commit para malinis tignan

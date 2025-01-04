@@ -1,6 +1,6 @@
 <template>
   <v-card
-    class="fill-height d-flex flex-column justify-center align-center pa-1"
+    class="fill-height d-flex flex-column justify-center align-center pa-1 rounded-xl"
     ref="mainCard"
   >
     <v-card-title class="text-center text-h3"
