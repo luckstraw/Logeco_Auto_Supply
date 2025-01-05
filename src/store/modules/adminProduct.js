@@ -2,34 +2,24 @@ const state = {
   dialog: false,
   openCards: [
     {
-      title: "Mitsubishi Items",
-      image: "https://via.placeholder.com/300x200/0000FF",
-      buttonText: "Add items",
+      image: "https://via.placeholder.com/300x200",
+      title: "Card 1",
+      buttonText: "View Details",
     },
     {
-      title: "Honda Items",
-      image: "https://via.placeholder.com/300x200/FF0000",
-      buttonText: "Add items",
-    },
-    {
-      title: "Toyota Items",
-      image: "https://via.placeholder.com/300x200/00FF00",
-      buttonText: "Add items",
-    },
-    {
-      title: "Suzuki Items",
-      image: "https://via.placeholder.com/300x200/FFFF00",
-      buttonText: "Add items",
+      image: "https://via.placeholder.com/300x200",
+      title: "Card 2",
+      buttonText: "View Details",
     },
   ],
   items: [
     {
-      title: "Suspension",
-      image: "https://via.placeholder.com/150/0000FF",
+      image: "https://via.placeholder.com/150x150",
+      title: "Item 1",
     },
     {
-      title: "Headlights",
-      image: "https://via.placeholder.com/150/FF0000",
+      image: "https://via.placeholder.com/150x150",
+      title: "Item 2",
     },
   ],
 };
@@ -42,22 +32,13 @@ const getters = {
 
 const actions = {
   addItem({ commit }) {
-    const newItem = {
-      title: "New Item",
-      image: "https://via.placeholder.com/150/AAAAAA", // Default image for new item
-    };
-    commit("ADD_ITEM", newItem);
+    commit("ADD_ITEM");
   },
   removeItem({ commit }, title) {
     commit("REMOVE_ITEM", title);
   },
   addCategory({ commit }) {
-    const newCategory = {
-      title: "New Category",
-      image: "https://via.placeholder.com/300x200/AAAAAA", // Default image for new category
-      buttonText: "Add items",
-    };
-    commit("ADD_CATEGORY", newCategory);
+    commit("ADD_CATEGORY");
   },
 };
 
@@ -65,14 +46,21 @@ const mutations = {
   SET_DIALOG_STATE(state, payload) {
     state.dialog = payload;
   },
-  ADD_ITEM(state, newItem) {
-    state.items.push(newItem);
+  ADD_ITEM(state) {
+    state.items.push({
+      image: "https://via.placeholder.com/150x150",
+      title: `Item ${state.items.length + 1}`,
+    });
   },
   REMOVE_ITEM(state, title) {
     state.items = state.items.filter((item) => item.title !== title);
   },
-  ADD_CATEGORY(state, newCategory) {
-    state.openCards.push(newCategory);
+  ADD_CATEGORY(state) {
+    state.openCards.push({
+      image: "https://via.placeholder.com/300x200",
+      title: `Card ${state.openCards.length + 1}`,
+      buttonText: "View Details",
+    });
   },
 };
 

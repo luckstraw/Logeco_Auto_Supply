@@ -1,7 +1,6 @@
 <template>
   <v-container fluid>
     <v-row justify="center" align="center">
-      <!-- Cards with Buttons -->
       <v-col v-for="(card, index) in openCards" :key="index" cols="12" md="4">
         <v-card class="pa-2" elevation="2">
           <!-- Image -->
