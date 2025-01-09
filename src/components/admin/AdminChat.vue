@@ -1,5 +1,5 @@
 <template>
-  <v-row class="ma-0 fill-height justify-space-around">
+  <v-row class="ma-0 justify-space-around">
     <v-col cols="7" class="ma-0 pa-0">
       <v-card class="d-flex flex-column fill-height rounded-xl">
         <v-card-title class="text-center font-weight-bold">
@@ -49,8 +49,30 @@
       </v-card>
     </v-col>
     <v-col cols="3" class="d-flex flex-column pa-0">
-      <v-card class="rounded-xl mb-3" style="flex: 3">
-        <h1>Current User Info here</h1>
+      <v-card
+        class="d-flex align-center justify-center rounded-xl mb-3 pa-0"
+        style="flex: 4; position: relative"
+      >
+        <v-row class="ma-0 pa-2">
+          <v-col cols="4" class="ma-0">
+            <v-avatar
+              :image="selectedChat.avatar"
+              size="80"
+              :style="{ border: `2px solid ${color.secondary}` }"
+            ></v-avatar>
+          </v-col>
+          <v-col cols="8" class="d-flex align-center">
+            <h3>{{ selectedUser.displayName }}</h3>
+          </v-col>
+          <v-col cols="12" class="overflow-auto">
+            <h4>
+              {{ "Member Since: " + formatTimestamp(selectedUser.createdAt) }}
+            </h4>
+            <h4>
+              {{ "Email: " + selectedUser.email }}
+            </h4>
+          </v-col>
+        </v-row>
       </v-card>
       <v-card class="rounded-xl d-flex flex-column pa-2" style="flex: 7">
         <v-card-title class="text-center font-weight-bold">
@@ -111,7 +133,7 @@
 
 <script setup>
 import { useStore } from "vuex";
-import { computed, ref, watch } from "vue";
+import { computed, ref, watch, onMounted } from "vue";
 
 const store = useStore();
 const color = computed(() => store.getters["colors/getColor"]);
@@ -121,6 +143,7 @@ const chatBox = ref(null);
 
 const chatList = computed(() => store.getters["adminChat/chatList"]);
 const selectedChat = computed(() => store.getters["adminChat/selectedChat"]);
+const selectedUser = computed(() => store.getters["adminChat/getSelectedUser"]);
 const messages = computed(() =>
   selectedChat.value
     ? store.getters["adminChat/messages"](selectedChat.value.id)
@@ -133,6 +156,16 @@ const getTextColor = (chat) => {
   if (!chat.resolved) {
     return color.value.info;
   }
+};
+
+const formatTimestamp = (timestamp) => {
+  if (!timestamp) return "";
+  const date = new Date(timestamp.seconds * 1000);
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 };
 
 const scrollToBottom = () => {
@@ -148,7 +181,7 @@ const sendMessage = async () => {
     senderId: "admin",
   });
   newMessage.value = "";
-  setTimeout(scrollToBottom, 100);
+  scrollToBottom();
 };
 
 const handleEnter = (event) => {
@@ -169,8 +202,18 @@ const handleScroll = async () => {
 watch(selectedChat, async (newChat) => {
   if (newChat) {
     await store.dispatch("adminChat/fetchMessages", newChat.id);
-    setTimeout(scrollToBottom, 100);
+    await store.dispatch("adminChat/fetchSelectedUserInfo", newChat.id);
+    scrollToBottom();
   }
+});
+
+onMounted(async () => {
+  await store.dispatch(
+    "adminChat/fetchSelectedUserInfo",
+    selectedChat.value.id
+  );
+  await store.dispatch("adminChat/fetchMessages", selectedChat.value.id);
+  scrollToBottom();
 });
 </script>
 
@@ -205,7 +248,8 @@ watch(selectedChat, async (newChat) => {
   transform: scale(1.1) rotate(15deg);
 }
 .chat-box {
-  max-height: 60vh;
+  height: 40vh;
+  max-height: 40vh;
   height: 100%;
   overflow-y: auto;
   padding: 16px;

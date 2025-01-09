@@ -374,17 +374,17 @@ const spacer = computed(() => ({
 <style scoped>
 .scheduled-cell {
   transition: transform 0.2s ease;
-  border-radius: 15px; /* Corrected property name and value format */
+  border-radius: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  writing-mode: vertical-rl; /* Corrected property name */
-  text-orientation: upright; /* Corrected property name */
+  writing-mode: vertical-rl;
+  text-orientation: upright;
   white-space: nowrap;
   overflow: hidden;
 }
 .scheduled-cell:hover {
-  transform: scale(1.05); /* Scale the element to 110% of its original size */
+  transform: scale(1.05);
 }
 </style>

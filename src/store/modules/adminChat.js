@@ -20,12 +20,14 @@ const state = {
   selectedChat: null,
   messages: {},
   lastVisibleMessage: {},
+  selectedUser: {},
 };
 
 const getters = {
   chatList: (state) => state.chatList,
   selectedChat: (state) => state.selectedChat,
   messages: (state) => (chatId) => state.messages[chatId] || [],
+  getSelectedUser: (state) => state.selectedUser,
 };
 
 const mutations = {
@@ -48,6 +50,9 @@ const mutations = {
   },
   SET_LAST_VISIBLE_MESSAGE(state, { chatId, message }) {
     state.lastVisibleMessage[chatId] = message;
+  },
+  SET_SELECTED_USER(state, user) {
+    state.selectedUser = user;
   },
 };
 
@@ -90,6 +95,17 @@ const actions = {
   async updateChatResolved({ dispatch }, chatId) {
     try {
       await updateDoc(doc(db, "Chats", chatId), { resolved: true });
+    } catch (error) {
+      dispatch("handleError", error);
+    }
+  },
+
+  async fetchSelectedUserInfo({ commit, dispatch }, chatId) {
+    try {
+      const userDoc = await getDoc(doc(db, "Users", chatId));
+      if (userDoc.exists()) {
+        commit("SET_SELECTED_USER", userDoc.data());
+      }
     } catch (error) {
       dispatch("handleError", error);
     }

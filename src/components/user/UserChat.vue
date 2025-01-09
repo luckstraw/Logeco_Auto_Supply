@@ -79,7 +79,7 @@ const sendMessage = async () => {
     senderId: "user",
   });
   newMessage.value = "";
-  setTimeout(scrollToBottom, 100);
+  scrollToBottom();
 };
 
 const handleEnter = (event) => {

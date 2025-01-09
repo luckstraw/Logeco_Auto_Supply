@@ -81,6 +81,7 @@ const actions = {
         ...doc.data(),
       }));
       commit("SET_SCHEDULES", schedules);
+      return true;
     } catch (error) {
       dispatch("handleError", error);
     }

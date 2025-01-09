@@ -2,12 +2,25 @@
   <v-container fluid class="d-flex" style="height: 90vh">
     <v-row class="flex-grow-1">
       <v-col cols="2" class="d-flex flex-column" style="gap: 12px">
-        <v-card class="rounded-xl" style="height: 200px">
-          <h1>AdminView</h1>
-          <h2 v-if="userinfo">{{ userinfo.email }}</h2>
-          <div>
-            <button @click="handleLogout">Logout</button>
-          </div>
+        <v-card
+          class="rounded-xl d-flex flex-column justify-center align-center"
+          style="height: 30vh"
+        >
+          <h2>Logeco Admin</h2>
+          <v-avatar
+            size="130"
+            image="https://cdn.vuetifyjs.com/images/john.jpg"
+            :style="{ border: `2px solid ${color.secondary}` }"
+          >
+          </v-avatar>
+
+          <v-btn
+            class="rounded-pill mt-2"
+            :color="color.secondary"
+            density="compact"
+            @click="handleLogout"
+            >Logout</v-btn
+          >
         </v-card>
         <v-card class="pa-4 d-flex flex-column rounded-xl" variant="tonal">
           <v-btn
@@ -34,7 +47,6 @@
 import { computed } from "vue";
 import { useStore } from "vuex";
 
-import AdminOverview from "@/components/admin/AdminOverview.vue";
 import AdminChat from "@/components/admin/AdminChat.vue";
 import AdminProducts from "@/components/admin/AdminProducts.vue";
 import AdminServices from "@/components/admin/AdminServices.vue";
@@ -43,10 +55,8 @@ import AdminSettings from "@/components/admin/AdminSettings.vue";
 
 const store = useStore();
 const color = computed(() => store.getters["colors/getColor"]);
-const userinfo = computed(() => store.getters["authentication/getUser"]);
 
 const components = {
-  AdminOverview,
   AdminChat,
   AdminProducts,
   AdminServices,
@@ -62,7 +72,6 @@ const selectedComponent = computed(
 );
 
 const navItems = [
-  { title: "Overview", icon: "fa-solid fa-expand", key: "AdminOverview" },
   { title: "Messages", icon: "fa-solid fa-message", key: "AdminChat" },
   {
     title: "Products",
