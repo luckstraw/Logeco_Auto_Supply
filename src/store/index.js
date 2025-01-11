@@ -2,7 +2,7 @@ import { createStore } from "vuex";
 import createPersistedState from "vuex-persistedstate";
 import admin from "./modules/admin";
 import adminChat from "./modules/adminChat";
-import adminProduct from "./modules/adminProduct";
+import adminProducts from "./modules/adminProducts";
 import adminService from "./modules/adminService";
 import adminSchedule from "./modules/adminSchedule";
 import authentication from "./modules/authentication";
@@ -19,7 +19,7 @@ export default createStore({
   modules: {
     admin,
     adminChat,
-    adminProduct,
+    adminProducts,
     adminSchedule,
     adminService,
     authentication,

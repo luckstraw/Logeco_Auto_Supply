@@ -96,8 +96,8 @@
     <v-menu
       v-model="showForm"
       :close-on-content-click="false"
-      location="top"
-      transition="scale-transition"
+      location="top center"
+      transition="fab-transition"
       persistent
     >
       <template v-slot:activator="{ props }">
@@ -108,7 +108,6 @@
 
       <v-card
         width="600"
-        style="margin-left: -225px"
         class="pa-2 rounded-xl"
         :style="{ border: `1px solid ${color.secondary}` }"
       >
@@ -172,6 +171,7 @@
                     placeholder="Details"
                     density="compact"
                     variant="outlined"
+                    hide-details
                     rows="3"
                     max-rows="3"
                     no-resize
@@ -188,9 +188,9 @@
                 width="260"
               />
               <v-card-actions>
-                <v-spacer></v-spacer>
-                <v-btn text @click="showForm = false">Cancel</v-btn>
-                <v-btn color="primary" @click="addSchedule">Add</v-btn>
+                <v-spacer />
+                <v-btn @click="showForm = false">Cancel</v-btn>
+                <v-btn :color="color.info" @click="addSchedule">Add</v-btn>
               </v-card-actions>
             </v-col>
           </v-row>

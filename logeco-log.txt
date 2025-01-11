@@ -92,3 +92,22 @@ fixing chat
 1/5/2025
 > Admin Schedule
 > Pre tangalin mo yung eslint-disable pati useless na comments pati yung console.log bago mag commit para malinis tignan
+
+
+1/10/2025
+
+Products database Modules
+
+Products(collection)
+  |
+  |---> categoryId (document) 
+  |       |
+  |       |---> name: // name of category
+  |       |---> image: // photo Url of category
+  |       |---> description: // description of category
+  |       |---> createdAt: date when this category was created
+  |       |---> items (subcollection) // Subcollection of items inside this category
+
+
+1/11/2025
+> Finish the admin products disabled the drag and drop and the edit buttons we can't access storage yet

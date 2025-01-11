@@ -14,7 +14,7 @@ store.dispatch("colors/fetchColors");
 store.dispatch("adminSchedule/generateDays");
 store.dispatch("adminSchedule/fetchSchedules");
 store.dispatch("adminChat/fetchChatList");
-
+store.dispatch("adminProducts/fetchProductsData");
 auth.onAuthStateChanged(async (user) => {
   if (user) {
     await store.dispatch("authentication/fetchUser", user.uid);
