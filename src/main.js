@@ -5,6 +5,7 @@ import store from "./store";
 import vuetify from "./plugins/vuetify";
 import { loadFonts } from "./plugins/webfontloader";
 import { auth } from "./firebaseConfig";
+import "aos/dist/aos.css";
 
 loadFonts();
 

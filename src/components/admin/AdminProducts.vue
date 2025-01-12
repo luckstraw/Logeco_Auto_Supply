@@ -278,7 +278,7 @@
                       >
                         <div>Upload a photo:</div>
                         <v-file-upload
-                          density="comfortable"
+                          density="compact"
                           icon="fa-solid fa-file-arrow-up"
                           title="Drag and Drop Here"
                           height="200"
