@@ -1,22 +1,26 @@
 <template>
   <v-parallax
-    height="450"
+    height="90vh"
     gradient="to top right, rgba(0,0,0,.9), rgba(250,250,250,.1)"
-    src="/MechanicalBoy.jpg"
+    src="/img/background/backgroundService.jpg"
   >
     <v-container class="fill-height" style="z-index: 1">
       <v-row class="d-flex align-center fill-height">
         <v-col cols="12" md="6">
-          <div class="text-h2 text-white font-weight-black">
+          <div data-aos="fade-up" class="text-h2 text-white font-weight-black">
             Seamless Service, Trusted Care!
           </div>
-          <div class="text-subtitle-1 text-white font-weight-light mt-2">
+          <div
+            data-aos="fade-up"
+            class="text-subtitle-1 text-white font-weight-light mt-2"
+          >
             Experience hassle-free auto repairs and maintenance that put you
             back on the road with confidence.
           </div>
           <v-row class="mt-4">
             <v-col cols="auto">
               <v-btn
+                data-aos="fade-up"
                 color="red-darken-4"
                 rounded="xl"
                 append-icon="fa-solid fa-arrow-right"
@@ -29,6 +33,7 @@
         </v-col>
       </v-row>
     </v-container>
+    <div class="angled-divider"></div>
   </v-parallax>
   <v-container class="pa-0" fluid>
     <v-row no-gutters>
@@ -37,18 +42,22 @@
         cols="12"
         sm="4"
         style="
-          background-color: #616161;
+          background-color: #b71c1c;
           color: white;
           text-align: center;
           padding: 40px;
-          min-height: 50vh; /* Adjust height dynamically based on viewport */
+          min-height: 40vh; /* Adjust height dynamically based on viewport */
         "
       >
-        <v-icon size="80" color="darkred" class="mb-12 mt-4"
+        <v-icon
+          data-aos="fade-right"
+          size="80"
+          color="darkred"
+          class="mb-12 mt-4"
           >fa-solid fa-screwdriver-wrench</v-icon
         >
-        <h3 class="mb-3">Car Diagnostics</h3>
-        <p>
+        <h3 data-aos="fade-right" class="mb-3">Car Diagnostics</h3>
+        <p data-aos="fade-right">
           Diagnose your car issues quickly with our advanced tools and
           professional technicians.
         </p>
@@ -59,18 +68,22 @@
         cols="12"
         sm="4"
         style="
-          background-color: #424242;
+          background-color: #b71c1c;
           color: white;
           text-align: center;
           padding: 40px;
           min-height: 30vh; /* Adjust height dynamically based on viewport */
         "
       >
-        <v-icon size="80" color="darkred" class="mb-12 mt-4"
+        <v-icon
+          data-aos="fade-right"
+          size="80"
+          color="darkred"
+          class="mb-12 mt-4"
           >fa-solid fa-droplet</v-icon
         >
-        <h3 class="mb-3">Oil Change Service</h3>
-        <p>
+        <h3 data-aos="fade-right" class="mb-3">Oil Change Service</h3>
+        <p data-aos="fade-right">
           Keep your engine running smoothly with our high-quality oil change
           service.
         </p>
@@ -81,32 +94,40 @@
         cols="12"
         sm="4"
         style="
-          background-color: #212121;
+          background-color: #b71c1c;
           color: white;
           text-align: center;
           padding: 40px;
           min-height: 30vh; /* Adjust height dynamically based on viewport */
         "
       >
-        <v-icon size="80" color="darkred" class="mb-12 mt-4"
+        <v-icon
+          data-aos="fade-right"
+          size="80"
+          color="darkred"
+          class="mb-12 mt-4"
           >fa-solid fa-gears</v-icon
         >
-        <h3 class="mb-3">Engine Tuning</h3>
-        <p>
+        <h3 class="mb-3" data-aos="fade-right">Engine Tuning</h3>
+        <p data-aos="fade-right">
           Optimize your car's performance with our expert engine tuning
           services.
         </p>
       </v-col>
     </v-row>
   </v-container>
+  <div class="angled"></div>
 
   <v-container>
     <v-row>
       <v-col cols="12" class="text-center">
-        <h2 class="text-h4 font-weight-bold text-red-darken-4">
+        <h2
+          data-aos="fade-up"
+          class="text-h4 font-weight-bold text-red-darken-4"
+        >
           More Services
         </h2>
-        <p class="subtitle-1">
+        <p data-aos="fade-up" class="subtitle-1">
           We offer a wide range of services to keep your car in top condition.
         </p>
       </v-col>
@@ -153,14 +174,37 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
+import Aos from "aos";
+import { computed, onMounted } from "vue";
 import { useStore } from "vuex";
 
 const store = useStore();
 const items = computed(() => store.getters["serviceView/getItems"]);
+
+onMounted(async () => {
+  Aos.init();
+});
 </script>
 
 <style scoped>
+.angled-divider {
+  width: 100%;
+  height: 60px;
+  background-color: #b71c1c;
+  clip-path: polygon(0 100%, 100% 0, 100% 100%);
+  z-index: 0;
+  position: relative;
+  top: -59.5px;
+}
+.angled {
+  width: 100%;
+  height: 60px;
+  background-color: #b71c1c;
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+  z-index: 0;
+  position: relative;
+  top: -1px;
+}
 .text-center {
   text-align: center;
 }
