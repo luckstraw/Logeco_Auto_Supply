@@ -11,7 +11,6 @@ import footer from "./modules/footer";
 import homepage from "./modules/homepage";
 import infoDialog from "./modules/infoDialog";
 import loginAndSignUp from "./modules/loginAndSignUp";
-import productsView from "./modules/productsView";
 import serviceView from "./modules/serviceView";
 import userChat from "./modules/userChat";
 
@@ -28,7 +27,6 @@ export default createStore({
     homepage,
     infoDialog,
     loginAndSignUp,
-    productsView,
     serviceView,
     userChat,
   },
