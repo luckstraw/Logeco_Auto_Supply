@@ -3,7 +3,7 @@
     <!-- Category Card-->
     <v-expand-x-transition>
       <v-card
-        v-if="!selectedCategory"
+        v-show="!selectedCategory"
         class="fill-height overflow-auto rounded-xl"
         variant="flat"
         :style="{
@@ -147,7 +147,7 @@
     <!-- Item Card-->
     <v-expand-x-transition>
       <v-card
-        v-if="selectedCategory"
+        v-show="selectedCategory"
         class="fill-height rounded-xl w-100"
         variant="flat"
         :style="{
@@ -160,19 +160,22 @@
           <!-- Info About Selected Category -->
           <v-col md="3" class="pa-0">
             <v-card
-              class="d-flex flex-column fill-height"
-              :style="{ borderRight: `1px solid ${color.secondary}` }"
+              class="d-flex flex-column"
+              :style="{
+                borderRight: `1px solid ${color.secondary}`,
+                height: '88vh',
+              }"
             >
               <v-img
-                :src="selectedCategory.image || selectedCategory.altURL"
+                :src="selectedCategory?.image || selectedCategory?.altURL"
                 cover
                 height="60vh"
               />
               <v-card-title class="text-center">{{
-                selectedCategory.name
+                selectedCategory?.name
               }}</v-card-title>
               <v-card-text class="overflow-auto">{{
-                selectedCategory.description
+                selectedCategory?.description
               }}</v-card-text>
               <v-card-actions>
                 <v-btn @click="selectedCategory = null">Back</v-btn>
