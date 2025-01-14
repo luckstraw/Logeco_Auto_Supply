@@ -180,7 +180,7 @@
               </v-row>
             </v-col>
             <v-col cols="6" class="d-flex flex-column justify-space-between">
-              <div>Pick a Color:</div>
+              <div>Pick a Color :</div>
               <v-color-picker
                 v-model="newSchedule.color"
                 canvas-height="100"

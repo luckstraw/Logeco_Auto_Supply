@@ -110,4 +110,22 @@ Products(collection)
 
 
 1/11/2025
-> Finish the admin products disabled the drag and drop and the edit buttons we can't access storage yet
+> Finished the admin products disabled the drag and drop and the edit buttons we can't access storage yet
+
+1/13/2025
+
+Services database Modules
+
+Services(collection)
+  |
+  |---> categoryId (document) 
+  |       |
+  |       |---> name: // name of service
+  |       |---> priceRange: // priceRange of service
+  |       |---> description: // description of service
+  |       |---> altURL: // alternative photo Url of service
+  |       |---> image: // photo Url of service
+  |       |---> createdAt: date when this service was created
+
+1/15/2025
+> Finished the admin service and did recode the service view but not responsive yet

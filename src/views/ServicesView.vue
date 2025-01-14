@@ -17,198 +17,133 @@
             Experience hassle-free auto repairs and maintenance that put you
             back on the road with confidence.
           </div>
-          <v-row class="mt-4">
-            <v-col cols="auto">
-              <v-btn
-                data-aos="fade-up"
-                color="red-darken-4"
-                rounded="xl"
-                append-icon="fa-solid fa-arrow-right"
-                class="white"
-              >
-                Book Your Service!
-              </v-btn>
-            </v-col>
-          </v-row>
+          <v-btn
+            data-aos="fade-up"
+            color="red-darken-4"
+            rounded="xl"
+            append-icon="fa-solid fa-arrow-right"
+            class="white mt-4"
+          >
+            Book Your Service!
+          </v-btn>
         </v-col>
       </v-row>
     </v-container>
-    <div class="angled-divider"></div>
+    <div
+      class="angled-divider w-100 position-relative"
+      :style="{ backgroundColor: color.secondary }"
+    ></div>
   </v-parallax>
   <v-container class="pa-0" fluid>
     <v-row no-gutters>
-      <!-- Section 1 -->
       <v-col
+        v-for="service in topServices"
+        :key="service.icon"
         cols="12"
-        sm="4"
-        style="
-          background-color: #b71c1c;
-          color: white;
-          text-align: center;
-          padding: 40px;
-          min-height: 40vh; /* Adjust height dynamically based on viewport */
-        "
+        md="4"
+        :style="columnStyle"
       >
         <v-icon
+          :icon="service.icon"
           data-aos="fade-right"
           size="80"
-          color="darkred"
           class="mb-12 mt-4"
-          >fa-solid fa-screwdriver-wrench</v-icon
-        >
-        <h3 data-aos="fade-right" class="mb-3">Car Diagnostics</h3>
-        <p data-aos="fade-right">
-          Diagnose your car issues quickly with our advanced tools and
-          professional technicians.
-        </p>
-      </v-col>
-
-      <!-- Section 2 -->
-      <v-col
-        cols="12"
-        sm="4"
-        style="
-          background-color: #b71c1c;
-          color: white;
-          text-align: center;
-          padding: 40px;
-          min-height: 30vh; /* Adjust height dynamically based on viewport */
-        "
-      >
-        <v-icon
-          data-aos="fade-right"
-          size="80"
-          color="darkred"
-          class="mb-12 mt-4"
-          >fa-solid fa-droplet</v-icon
-        >
-        <h3 data-aos="fade-right" class="mb-3">Oil Change Service</h3>
-        <p data-aos="fade-right">
-          Keep your engine running smoothly with our high-quality oil change
-          service.
-        </p>
-      </v-col>
-
-      <!-- Section 3 -->
-      <v-col
-        cols="12"
-        sm="4"
-        style="
-          background-color: #b71c1c;
-          color: white;
-          text-align: center;
-          padding: 40px;
-          min-height: 30vh; /* Adjust height dynamically based on viewport */
-        "
-      >
-        <v-icon
-          data-aos="fade-right"
-          size="80"
-          color="darkred"
-          class="mb-12 mt-4"
-          >fa-solid fa-gears</v-icon
-        >
-        <h3 class="mb-3" data-aos="fade-right">Engine Tuning</h3>
-        <p data-aos="fade-right">
-          Optimize your car's performance with our expert engine tuning
-          services.
-        </p>
+        />
+        <h3 data-aos="fade-right" class="mb-3">{{ service.title }}</h3>
+        <p data-aos="fade-right">{{ service.description }}</p>
       </v-col>
     </v-row>
   </v-container>
-  <div class="angled"></div>
+  <div
+    class="angled-divider-2 w-100 position-relative"
+    :style="{ backgroundColor: color.secondary }"
+  ></div>
 
-  <v-container>
-    <v-row>
-      <v-col cols="12" class="text-center">
-        <h2
-          data-aos="fade-up"
-          class="text-h4 font-weight-bold text-red-darken-4"
-        >
-          More Services
-        </h2>
-        <p data-aos="fade-up" class="subtitle-1">
-          We offer a wide range of services to keep your car in top condition.
-        </p>
-      </v-col>
-    </v-row>
-  </v-container>
-  <v-container>
-    <!-- Carousel Section -->
-    <v-row>
-      <v-carousel
-        show-arrows="hover"
-        hide-delimiters
-        class="elevation-0 mt-2"
-        height="350px"
-        cycle
-      >
-        <v-carousel-item v-for="(item, index) in items" :key="index">
-          <v-row align="center" justify="center">
-            <v-col cols="12" md="4">
-              <v-img
-                :src="item.src || 'https://via.placeholder.com/300x300'"
-                :alt="item.description"
-                contain
-                height="300px"
-                width="100%"
-                class="elevation-2"
-              ></v-img>
-            </v-col>
-            <v-col cols="12" md="8" class="text-left">
-              <h3
-                class="text-h5 font-weight-bold text-red-darken-4"
-                style="margin-left: 16px"
-              >
-                {{ item.title }}
-              </h3>
-              <p class="subtitle-2" style="margin-left: 16px">
-                {{ item.description }}
-              </p>
-            </v-col>
-          </v-row>
-        </v-carousel-item>
-      </v-carousel>
-    </v-row>
+  <div class="text-center mt-10 mx-5">
+    <h2 data-aos="fade-up" class="text-h4 font-weight-bold text-red-darken-4">
+      More Services
+    </h2>
+    <p data-aos="fade-up" class="subtitle-1">
+      We offer a wide range of services to keep your car in top condition.
+    </p>
+  </div>
+
+  <v-container class="pa-0 my-5" data-aos="fade-up">
+    <v-carousel show-arrows="hover" hide-delimiters height="50vh" cycle>
+      <v-carousel-item v-for="service in services" :key="service.id">
+        <div class="d-flex flex-row fill-height">
+          <div style="flex: 4">
+            <v-img
+              :src="service.image || service.altURL"
+              cover
+              class="fill-height rounded-xl elevation-2"
+            />
+          </div>
+          <div style="flex: 8" class="d-flex flex-column justify-center">
+            <div
+              class="text-h5 font-weight-bold ml-16"
+              :style="{ color: color.secondary }"
+            >
+              {{ service.name }}
+            </div>
+            <div class="subtitle-2 ml-16">
+              {{ service.description }}
+            </div>
+          </div>
+        </div>
+      </v-carousel-item>
+    </v-carousel>
   </v-container>
 </template>
 
 <script setup>
-import Aos from "aos";
-import { computed, onMounted } from "vue";
+import { computed } from "vue";
 import { useStore } from "vuex";
 
 const store = useStore();
-const items = computed(() => store.getters["serviceView/getItems"]);
+const color = computed(() => store.getters["colors/getColor"]);
 
-onMounted(async () => {
-  Aos.init();
-});
+const services = computed(() => store.getters["adminServices/getServices"]);
+
+const topServices = [
+  {
+    icon: "fa-solid fa-screwdriver-wrench",
+    title: "Car Diagnostics",
+    description:
+      "Diagnose your car issues quickly with our advanced tools and professional technicians.",
+  },
+  {
+    icon: "fa-solid fa-droplet",
+    title: "Oil Change Service",
+    description:
+      "Keep your engine running smoothly with our high-quality oil change service.",
+  },
+  {
+    icon: "fa-solid fa-screwdriver-wrench",
+    title: "Engine Tuning",
+    description:
+      "Optimize your car's performance with our expert engine tuning services.",
+  },
+];
+
+const columnStyle = computed(() => ({
+  backgroundColor: color.value.secondary,
+  color: "white",
+  textAlign: "center",
+  padding: "40px",
+  minHeight: "30vh",
+}));
 </script>
 
 <style scoped>
 .angled-divider {
-  width: 100%;
   height: 60px;
-  background-color: #b71c1c;
   clip-path: polygon(0 100%, 100% 0, 100% 100%);
-  z-index: 0;
-  position: relative;
-  top: -59.5px;
+  top: -59.9px;
 }
-.angled {
-  width: 100%;
+.angled-divider-2 {
   height: 60px;
-  background-color: #b71c1c;
   clip-path: polygon(0 0, 100% 0, 0 100%);
-  z-index: 0;
-  position: relative;
-  top: -1px;
-}
-.text-center {
-  text-align: center;
-}
-.elevation-2 {
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  top: -0.3px;
 }
 </style>
