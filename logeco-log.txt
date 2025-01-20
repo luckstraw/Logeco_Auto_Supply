@@ -129,3 +129,37 @@ Services(collection)
 
 1/15/2025
 > Finished the admin service and did recode the service view but not responsive yet
+
+database model of my settings
+
+Settings(collection)
+  |
+  |---> colors (document) 
+  |       |
+  |       |---> accent: #212121
+  |       |---> primary: #121212
+  |       |---> secondary: #B71C1C
+  |
+  |---> home (document) 
+  |       |
+  |       |---> MainPhoto: https://i.imgur.com/YqVnKXE.jpeg
+  |
+  |---> service (document) 
+  |       |
+  |       |---> MainPhoto: https://i.imgur.com/b8olelO.jpeg
+  |---> footer (document) 
+  |       |
+  |       |---> phone: +63 998 741 4569
+          |---> email: logecoautosupply@gmail.com
+          |---> facebook: https://www.facebook.com/logecoautosupply/
+
+
+const color = computed(() => store.getters["colors/getColor"]);
+
+const color = computed(() => store.getters["adminSettings/getColor"]);
+
+todo: 
+  service
+  home page
+  color
+   

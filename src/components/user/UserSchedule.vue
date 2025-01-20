@@ -68,7 +68,7 @@ import { computed, ref } from "vue";
 import { useStore } from "vuex";
 
 const store = useStore();
-const color = computed(() => store.getters["colors/getColor"]);
+const color = computed(() => store.getters["adminSettings/getColor"]);
 
 const days = computed(() => store.getters["adminSchedule/getDays"]);
 const times = computed(() => store.getters["adminSchedule/getTime"]);

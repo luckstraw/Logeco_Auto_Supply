@@ -23,7 +23,7 @@ import { useStore } from "vuex";
 
 const store = useStore();
 
-const color = computed(() => store.getters["colors/getColor"]);
+const color = computed(() => store.getters["adminSettings/getColor"]);
 const user = computed(() => store.getters["authentication/getUser"]);
 
 const handleLogout = async () => store.dispatch("authentication/signOut");

@@ -136,7 +136,7 @@ import { useStore } from "vuex";
 import { computed, ref, watch, onMounted } from "vue";
 
 const store = useStore();
-const color = computed(() => store.getters["colors/getColor"]);
+const color = computed(() => store.getters["adminSettings/getColor"]);
 
 const newMessage = ref("");
 const chatBox = ref(null);

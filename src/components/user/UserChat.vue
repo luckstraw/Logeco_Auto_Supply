@@ -60,7 +60,7 @@ import { computed, onMounted, ref, watch } from "vue";
 
 const store = useStore();
 const user = computed(() => store.getters["authentication/getUser"]);
-const color = computed(() => store.getters["colors/getColor"]);
+const color = computed(() => store.getters["adminSettings/getColor"]);
 const messages = computed(() => store.getters["userChat/messages"]);
 const chatBox = ref(null);
 const newMessage = ref("");

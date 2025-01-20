@@ -354,7 +354,7 @@ import { computed, ref } from "vue";
 import { useStore } from "vuex";
 
 const store = useStore();
-const color = computed(() => store.getters["colors/getColor"]);
+const color = computed(() => store.getters["adminSettings/getColor"]);
 
 const categories = computed(() => store.getters["adminProducts/getCategories"]);
 const selectedCategory = ref(null);

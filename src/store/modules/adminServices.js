@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { db } from "@/firebaseConfig";
 import {
   doc,

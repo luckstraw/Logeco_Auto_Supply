@@ -101,7 +101,7 @@ import { computed } from "vue";
 import { useStore } from "vuex";
 
 const store = useStore();
-const color = computed(() => store.getters["colors/getColor"]);
+const color = computed(() => store.getters["adminSettings/getColor"]);
 
 const services = computed(() => store.getters["adminServices/getServices"]);
 
@@ -119,7 +119,7 @@ const topServices = [
       "Keep your engine running smoothly with our high-quality oil change service.",
   },
   {
-    icon: "fa-solid fa-screwdriver-wrench",
+    icon: "fa-solid fa-gears",
     title: "Engine Tuning",
     description:
       "Optimize your car's performance with our expert engine tuning services.",

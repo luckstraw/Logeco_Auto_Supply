@@ -64,7 +64,7 @@ import { useStore } from "vuex";
 import LoginSignUpForm from "./LoginSignUpForm.vue";
 
 const store = useStore();
-const color = computed(() => store.getters["colors/getColor"]);
+const color = computed(() => store.getters["adminSettings/getColor"]);
 const user = computed(() => store.getters["authentication/getUser"]);
 
 const showLoginSignUpForm = () =>

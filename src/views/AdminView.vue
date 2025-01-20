@@ -54,7 +54,7 @@ import AdminSchedule from "@/components/admin/AdminSchedule.vue";
 import AdminSettings from "@/components/admin/AdminSettings.vue";
 
 const store = useStore();
-const color = computed(() => store.getters["colors/getColor"]);
+const color = computed(() => store.getters["adminSettings/getColor"]);
 
 const components = {
   AdminChat,

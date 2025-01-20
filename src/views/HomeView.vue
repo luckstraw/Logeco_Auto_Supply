@@ -106,7 +106,7 @@ import { computed } from "vue";
 import { useStore } from "vuex";
 
 const store = useStore();
-const color = computed(() => store.getters["colors/getColor"]);
+const color = computed(() => store.getters["adminSettings/getColor"]);
 const slides = computed(() => store.getters["homepage/getSlides"]);
 const location = computed(() => store.getters["homepage/getLocation"]);
 </script>

@@ -98,7 +98,6 @@
       :close-on-content-click="false"
       location="top center"
       transition="fab-transition"
-      persistent
     >
       <template v-slot:activator="{ props }">
         <v-btn class="ma-4 rounded-xl" :color="color.secondary" v-bind="props">
@@ -205,7 +204,7 @@ import { computed, ref } from "vue";
 import { useStore } from "vuex";
 
 const store = useStore();
-const color = computed(() => store.getters["colors/getColor"]);
+const color = computed(() => store.getters["adminSettings/getColor"]);
 
 const days = computed(() => store.getters["adminSchedule/getDays"]);
 const times = computed(() => store.getters["adminSchedule/getTime"]);
