@@ -1,67 +1,40 @@
 <template>
-  <v-parallax
-    height="90vh"
-    gradient="to top right, rgba(33,33,33,.7), rgba(33,33,33,.7)"
-    src="/img/background/Parallax.jpg"
-  >
-    <div class="d-flex flex-column justify-center align-center fill-height">
-      <div class="d-flex align-center">
-        <div class="text-h2 font-weight-black text-center ml-8">
-          LOGECO AUTO SUPPLY
-        </div>
-        <v-divider
-          :thickness="5"
-          vertical
-          :color="color.secondary"
-          class="mx-4 border-opacity-100"
-        ></v-divider>
-        <div
-          class="text-h4 font-weight-bold mr-8"
-          :style="{ color: color.secondary }"
-        >
-          Your Trusted Source for Mitsubishi Genuine Parts And Reliable
-          Replacements
+  <!-- eslint-disable -->
+  <v-parallax height="90vh" src="/img/background/Parallax.jpg">
+    <div class="d-flex justify-center fill-height">
+      <div data-aos="fade-down-left" class="custom-top-shape"></div>
+      <div data-aos="fade-down-left" class="custom-bot-shape"></div>
+      <div data-aos="fade-right" class="left-side d-flex align-center">
+        <div class="mx-5">
+          <div class="text-subtitle-1 text-red-darken-4 font-weight-black">
+            LOGECO AUTO SUPPLY
+          </div>
+          <v-divider
+            class="border-opacity-100"
+            :thickness="4"
+            color="red-darken-4"
+            style="margin-right: 50%"
+          ></v-divider>
+          <div
+            class="text-h4 text-white font-weight-black my-2"
+            style="margin-right: 50%"
+          >
+            Your Trusted Source for Mitsubishi Genuine Parts And Reliable
+            Replacements
+          </div>
         </div>
       </div>
     </div>
   </v-parallax>
-
-  <v-carousel cycle hide-delimiters show-arrows="hover" height="60vh">
-    <v-carousel-item
-      v-for="(slide, index) in slides"
-      :key="index"
-      :src="slide.image"
-      cover
-      gradient="to top right, rgba(0,0,0,.9), rgba(250,250,250,.1)"
-    >
-      <v-row class="fill-height d-flex justify-start align-center">
-        <v-col cols="12" md="4" offset-md="1">
-          <v-card variant="tonal" class="pa-4 ma-5" style="border-radius: 40px">
-            <v-card-title
-              class="text-h4 font-weight-black"
-              :style="{ color: color.secondary }"
-            >
-              {{ slide.title }}
-            </v-card-title>
-
-            <v-card-text class="text-h6 font-weight-light">
-              {{ slide.description }}
-            </v-card-text>
-
-            <v-card-actions>
-              <v-btn
-                class="rounded-pill px-4"
-                :color="color.secondary"
-                variant="flat"
-                :to="slide.path"
-                >{{ slide.buttonName }}</v-btn
-              >
-            </v-card-actions>
-          </v-card>
-        </v-col>
-      </v-row>
-    </v-carousel-item>
-  </v-carousel>
+  
+      <div height="80vh">
+        <div class="d-flex justify-center fill-height">
+          <v-img class="imgIn2" src="/img/background/product2.jpeg" cover></v-img>
+          <div class="shape-1 d-flex align-center">
+              <v-img class="imgIn" src="/img/background/product1.jpg" cover></v-img>
+          </div>
+        </div>
+      </div>
 
   <v-container class="my-10">
     <v-row class="d-flex justify-space-between align-center">
@@ -102,6 +75,7 @@
 </template>
 
 <script setup>
+/* eslint-disable */
 import { computed } from "vue";
 import { useStore } from "vuex";
 
@@ -111,4 +85,61 @@ const slides = computed(() => store.getters["homepage/getSlides"]);
 const location = computed(() => store.getters["homepage/getLocation"]);
 </script>
 
-<style scoped></style>
+<style scoped>
+.left-side {
+  position: relative;
+  width: 100%;
+  background-color: rgba(33, 33, 33, 0.9);
+  clip-path: polygon(0 0, 75% 0, 50% 100%, 0 100%);
+  padding: 20px;
+  display: flex;
+}
+
+.custom-top-shape {
+  position: absolute;
+  left: 65%;
+  width: 15%;
+  height: 30%;
+  background-color: #b71c1c;
+  clip-path: polygon(50% 0%, 100% 0, 50% 100%, 0 100%);
+  z-index: 2;
+}
+
+.custom-bot-shape {
+  position: absolute;
+  left: 55%;
+  width: 20%;
+  height: 50%;
+  background-color: #fff;
+  clip-path: polygon(60% 0%, 100% 0, 40% 100%, 0 100%);
+  z-index: 1;
+}
+
+.shape-1 {
+    position: relative;
+    height: 60vh;
+    width: 100%;
+    background-color: #b71c1c;
+    clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 33% 100%);
+    padding: 20px;
+    display: flex;
+  }
+
+  .imgIn {
+    position: absolute;
+    height: 60vh;
+    width: 100%;
+    clip-path: polygon(55% 20%, 90% 20%, 90% 80%, 44% 80%);
+    display: flex;
+    z-index: 1;
+  }
+
+  .imgIn2 {
+    position: absolute;
+    height: 60vh;
+    width: 100%;
+    clip-path: polygon(10% 20%, 55% 20%, 44% 80%, 10% 80%);
+    display: flex;
+    z-index: 1;
+  }
+</style>

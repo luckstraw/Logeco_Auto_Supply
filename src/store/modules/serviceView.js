@@ -1,48 +1,75 @@
+/* eslint-disable */
 const state = {
-  items: [
+  firstRowCards: [
     {
-      src: "",
-      title: "PMS",
-      description:
-        "Periodic Maintenance Service is a schedule of planned maintenance activities aimed to prevent any breakdowns and failures of your car.",
+      title: 'SUITYAN WA??',
+      content: 'KYOUMO KAWAIIIII',
+      backgroundImage: 'url(https://picsum.photos/5/6?image)',
+      show: false,
     },
     {
-      src: "",
-      title: "Suspension",
-      description: "fixing and maintaining a car suspension.",
+      title: 'random bs',
+      content: 'Crazy stuff.',
+      backgroundImage: 'url(https://picsum.photos/9/6?image)',
+      show: false,
+    },
+  ],
+  secondRowCards: [
+    {
+      title: 'buff me up',
+      content: 'magiging muscle man si cj.',
+      backgroundImage: 'url(https://picsum.photos/8/6?image)',
+      show: false,
     },
     {
-      src: "",
-      title: "Engine Analyzer",
-      description:
-        "The portable engine analyzer is a professional tool for testing overall performance of vehicle engines.",
+      title: 'hesoyam',
+      content: 'puno hp mo dito tska armor.',
+      backgroundImage: 'url(https://picsum.photos/12/6?image)',
+      show: false,
     },
     {
-      src: "",
-      title: "Filler",
-      description: "Golden hour vibes with effortless summer style.",
+      title: 'aezakmi',
+      content: 'di ko na alam di ka na ata mag kaka kaso dito.',
+      backgroundImage: 'url(https://picsum.photos/10/4?image)',
+      show: false,
+    },
+  ],
+  thirdRowCards: [
+    {
+      title: 'ice cream yummy',
+      content: 'ice cream good.',
+      backgroundImage: 'url(https://picsum.photos/500/300?image)',
+      show: false,
     },
     {
-      src: "",
-      title: "Sample Service",
-      description: "Adventures and sunsets shared with great company.",
+      title: 'super yaky',
+      content: 'super iww wow.',
+      backgroundImage: 'url(https://picsum.photos/10/6?image)',
+      show: false,
     },
   ],
 };
 
-const getters = {
-  getItems: (state) => state.items,
+const mutations = {
+  TOGGLE_SHOW(state, { row, index }) {
+    state[row][index].show = !state[row][index].show;
+  },
 };
 
-const mutations = {};
-const actions = {};
-const modules = {};
+const actions = {
+  toggleShow({ commit }, payload) {
+    commit('TOGGLE_SHOW', payload);
+  },
+};
+
+const getters = {
+  getRowCards: (state) => (row) => state[row],
+};
 
 export default {
   namespaced: true,
   state,
-  getters,
-  actions,
   mutations,
-  modules,
+  actions,
+  getters,
 };
