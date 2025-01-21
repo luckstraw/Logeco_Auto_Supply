@@ -6,7 +6,7 @@
       <div data-aos="fade-down-left" class="custom-bot-shape"></div>
       <div data-aos="fade-right" class="left-side d-flex align-center">
         <div class="mx-5">
-          <div class="text-subtitle-1 text-red-darken-4 font-weight-black">
+          <div class="text-h5 text-red-darken-4 font-weight-black">
             LOGECO AUTO SUPPLY
           </div>
           <v-divider
@@ -26,15 +26,53 @@
       </div>
     </div>
   </v-parallax>
-  
-      <div height="80vh">
-        <div class="d-flex justify-center fill-height">
-          <v-img class="imgIn2" src="/img/background/product2.jpeg" cover></v-img>
-          <div class="shape-1 d-flex align-center">
-              <v-img class="imgIn" src="/img/background/product1.jpg" cover></v-img>
-          </div>
-        </div>
+
+
+  <div height="80vh">
+    <div class="d-flex justify-center fill-height">
+      <v-hover v-slot="{ isHovering, props }">
+        <v-img
+          v-bind="props"
+          class="imgIn2"
+          src="/img/background/product2.jpeg"
+          gradient="to top right, rgba(0,0,0,.9), rgba(250,250,250,.1)"
+          cover
+        >
+          <v-expand-transition>
+            <div
+              v-if="isHovering"
+              class="d-flex transition-fast-in-fast-out bg-red-darken-4 v-card--reveal text-h5"
+              style="height: 100%"
+            >
+              details
+            </div>
+          </v-expand-transition>
+        </v-img>
+      </v-hover>
+      <div class="shape-1 d-flex align-center">
+        <v-hover v-slot="{ isHovering, props }">
+          >
+          <v-img
+            v-bind="props"
+            class="imgIn"
+            src="/img/background/product1.jpg"
+            gradient="to top right, rgba(0,0,0,.9), rgba(250,250,250,.1)"
+            cover
+          >
+            <v-expand-transition>
+              <div
+                v-if="isHovering"
+                class="d-flex transition-fast-in-fast-out bg-grey-darken-4 v-card--reveal text-h5"
+                style="height: 100%"
+              >
+                <div style="margin-left: 30%">buddah buddah</div>
+              </div>
+            </v-expand-transition>
+          </v-img>
+        </v-hover>
       </div>
+    </div>
+  </div>
 
   <v-container class="my-10">
     <v-row class="d-flex justify-space-between align-center">
@@ -86,10 +124,15 @@ const location = computed(() => store.getters["homepage/getLocation"]);
 </script>
 
 <style scoped>
+.debug {
+  border: 1px solid cyan;
+  z-index: 999;
+}
+
 .left-side {
   position: relative;
   width: 100%;
-  background-color: rgba(33, 33, 33, 0.9);
+  background-color: rgba(33, 33, 33, 0.6);
   clip-path: polygon(0 0, 75% 0, 50% 100%, 0 100%);
   padding: 20px;
   display: flex;
@@ -107,7 +150,7 @@ const location = computed(() => store.getters["homepage/getLocation"]);
 
 .custom-bot-shape {
   position: absolute;
-  left: 55%;
+  left: 57%;
   width: 20%;
   height: 50%;
   background-color: #fff;
@@ -141,5 +184,13 @@ const location = computed(() => store.getters["homepage/getLocation"]);
     clip-path: polygon(10% 20%, 55% 20%, 44% 80%, 10% 80%);
     display: flex;
     z-index: 1;
+  }
+    .v-card--reveal {
+    align-items: center;
+    bottom: 0;
+    justify-content: center;
+    opacity: 0.9;
+    position: absolute;
+    width: 100%;
   }
 </style>
