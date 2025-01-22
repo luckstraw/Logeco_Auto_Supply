@@ -7,7 +7,6 @@ import adminServices from "./modules/adminServices";
 import adminSchedule from "./modules/adminSchedule";
 import adminSettings from "./modules/adminSettings";
 import authentication from "./modules/authentication";
-import homepage from "./modules/homepage";
 import infoDialog from "./modules/infoDialog";
 import loginAndSignUp from "./modules/loginAndSignUp";
 import userChat from "./modules/userChat";
@@ -21,7 +20,6 @@ export default createStore({
     adminSettings,
     adminServices,
     authentication,
-    homepage,
     infoDialog,
     loginAndSignUp,
     userChat,

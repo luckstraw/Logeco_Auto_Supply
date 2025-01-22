@@ -1,8 +1,8 @@
 <template>
-  <v-container height="85vh">
-    <v-row justify="center" class="ma-0 fill-height">
-      <v-col md="10">
-        <div class="overflow-auto" style="height: 80vh; scrollbar-width: none">
+  <v-container height="87vh" class="pa-0">
+    <v-row class="ma-0 fill-height">
+      <v-col md="10" class="pa-0 mr-4">
+        <div class="overflow-auto" style="height: 87vh; scrollbar-width: none">
           <!-- Color Module-->
           <v-card
             id="Colors"
@@ -241,11 +241,18 @@
         </div>
       </v-col>
       <v-divider vertical />
-      <v-col md="1">
+      <v-col md="1" class="pl-0">
         <div
           v-for="doc in sections"
           :key="doc"
-          class="cursor-pointer my-3"
+          class="cursor-pointer ma-0 pl-3 py-2"
+          :style="{
+            width: '200px',
+            background:
+              activeSection === doc
+                ? `linear-gradient(to right, ${colors.secondary}, transparent 100%)`
+                : 'transparent',
+          }"
           @click="scrollTo(doc)"
         >
           {{ doc }}
@@ -256,15 +263,39 @@
 </template>
 
 <script setup>
-import { computed, reactive, ref } from "vue";
+import { computed, reactive, ref, onMounted, onUnmounted } from "vue";
 import { useStore } from "vuex";
 
 const store = useStore();
 
 const sections = ["Colors", "Home", "Service", "Footer"];
+const activeSection = ref("Colors");
+
 const scrollTo = (id) => {
   document.getElementById(id).scrollIntoView({ behavior: "smooth" });
 };
+
+const createObserver = () => {
+  const observer = new IntersectionObserver(
+    (entries) =>
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) activeSection.value = entry.target.id;
+      }),
+    { root: null, rootMargin: "0px", threshold: 0.7 }
+  );
+
+  sections.forEach((section) => {
+    const element = document.getElementById(section);
+    if (element) observer.observe(element);
+  });
+
+  return observer;
+};
+
+onMounted(() => {
+  const observer = createObserver();
+  onUnmounted(() => observer.disconnect());
+});
 
 /* For Color Module */
 const colors = computed(() => store.getters["adminSettings/getColor"]);

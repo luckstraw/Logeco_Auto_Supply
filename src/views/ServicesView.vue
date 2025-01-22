@@ -2,23 +2,19 @@
   <v-parallax
     height="90vh"
     gradient="to top right, rgba(0,0,0,.9), rgba(250,250,250,.1)"
-    src="/img/background/backgroundService.jpg"
+    :src="serviceSettings.mainPhoto"
   >
-    <v-container class="fill-height" style="z-index: 1">
+    <v-container class="fill-height">
       <v-row class="d-flex align-center fill-height">
-        <v-col cols="12" md="6">
-          <div data-aos="fade-up" class="text-h2 text-white font-weight-black">
+        <v-col cols="12" md="6" data-aos="fade-up" data-aos-duration="1000">
+          <div class="text-h2 text-white font-weight-black">
             Seamless Service, Trusted Care!
           </div>
-          <div
-            data-aos="fade-up"
-            class="text-subtitle-1 text-white font-weight-light mt-2"
-          >
+          <div class="text-subtitle-1 text-white font-weight-light mt-2">
             Experience hassle-free auto repairs and maintenance that put you
             back on the road with confidence.
           </div>
           <v-btn
-            data-aos="fade-up"
             color="red-darken-4"
             rounded="xl"
             append-icon="fa-solid fa-arrow-right"
@@ -49,61 +45,99 @@
           size="80"
           class="mb-12 mt-4"
         />
-        <h3 data-aos="fade-right" class="mb-3">{{ service.title }}</h3>
-        <p data-aos="fade-right">{{ service.description }}</p>
+        <h3 data-aos="fade-left" class="mb-3">{{ service.title }}</h3>
+        <p data-aos="fade-left">{{ service.description }}</p>
       </v-col>
     </v-row>
   </v-container>
-  <div
-    class="angled-divider-2 w-100 position-relative"
-    :style="{ backgroundColor: color.secondary }"
-  ></div>
 
-  <div class="text-center mt-10 mx-5">
-    <h2 data-aos="fade-up" class="text-h4 font-weight-bold text-red-darken-4">
-      More Services
-    </h2>
-    <p data-aos="fade-up" class="subtitle-1">
-      We offer a wide range of services to keep your car in top condition.
-    </p>
+  <div class="background">
+    <div
+      class="angled-divider-2 w-100 position-relative"
+      :style="{ backgroundColor: color.secondary }"
+    ></div>
+    <div class="text-center mt-10 mx-5 mb-8">
+      <h2 data-aos="fade-up" class="text-h4 font-weight-bold text-red-darken-4">
+        More Services
+      </h2>
+      <p data-aos="fade-up" class="subtitle-1">
+        We offer a wide range of services to keep your car in top condition.
+      </p>
+    </div>
+
+    <v-container>
+      <v-row no-gutters justify="center">
+        <v-col
+          v-for="(service, index) in services"
+          :key="service.id"
+          xs="12"
+          sm="6"
+          :md="index % 5 < 2 ? 6 : 4"
+          :lg="index % 5 < 2 ? 6 : 4"
+          :xl="index % 5 < 2 ? 6 : 4"
+        >
+          <v-card
+            data-aos="fade-up"
+            data-aos-anchor-placement="top-bottom"
+            class="pa-2 ma-2 rounded-xl"
+            :style="{
+              border: `2px solid ${color.secondary}`,
+              backgroundImage: `url(${service.image || service.altURL})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }"
+          >
+            <v-card-title class="text-center text-overlay rounded-xl">{{
+              service.name
+            }}</v-card-title>
+            <v-card-actions class="d-flex justify-center">
+              <v-icon
+                v-if="service.description || service.priceRange"
+                :class="
+                  showDetails[service.id]
+                    ? 'fa-solid fa-arrow-up'
+                    : 'fa-solid fa-arrow-down'
+                "
+                :color="color.secondary"
+                @click="showDetails[service.id] = !showDetails[service.id]"
+                style="cursor: pointer"
+              ></v-icon>
+            </v-card-actions>
+
+            <v-expand-transition>
+              <div v-show="showDetails[service.id]">
+                <v-divider
+                  :color="color.secondary"
+                  class="border-opacity-100"
+                />
+                <v-card-text class="text-center text-overlay rounded-xl">
+                  <strong v-if="service.priceRange">
+                    Price Range: {{ service.priceRange }}
+                    <br />
+                  </strong>
+                  {{ service.description }}
+                </v-card-text>
+              </div>
+            </v-expand-transition>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
   </div>
-
-  <v-container class="pa-0 my-5" data-aos="fade-up">
-    <v-carousel show-arrows="hover" hide-delimiters height="50vh" cycle>
-      <v-carousel-item v-for="service in services" :key="service.id">
-        <div class="d-flex flex-row fill-height">
-          <div style="flex: 4">
-            <v-img
-              :src="service.image || service.altURL"
-              cover
-              class="fill-height rounded-xl elevation-2"
-            />
-          </div>
-          <div style="flex: 8" class="d-flex flex-column justify-center">
-            <div
-              class="text-h5 font-weight-bold ml-16"
-              :style="{ color: color.secondary }"
-            >
-              {{ service.name }}
-            </div>
-            <div class="subtitle-2 ml-16">
-              {{ service.description }}
-            </div>
-          </div>
-        </div>
-      </v-carousel-item>
-    </v-carousel>
-  </v-container>
 </template>
 
 <script setup>
-import { computed } from "vue";
+import { computed, reactive } from "vue";
 import { useStore } from "vuex";
 
 const store = useStore();
 const color = computed(() => store.getters["adminSettings/getColor"]);
 
+const serviceSettings = computed(
+  () => store.getters["adminSettings/getService"]
+);
 const services = computed(() => store.getters["adminServices/getServices"]);
+const showDetails = reactive({});
 
 const topServices = [
   {
@@ -139,11 +173,38 @@ const columnStyle = computed(() => ({
 .angled-divider {
   height: 60px;
   clip-path: polygon(0 100%, 100% 0, 100% 100%);
-  top: -59.9px;
+  top: -59px;
 }
 .angled-divider-2 {
   height: 60px;
   clip-path: polygon(0 0, 100% 0, 0 100%);
-  top: -0.3px;
+  top: -1px;
+}
+.background {
+  background: linear-gradient(132deg, #263238, #000000, #424242);
+  background-size: 400% 400%;
+  animation: Gradient 10s ease infinite;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 0;
+  margin: 0px;
+}
+@keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.text-overlay {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-top: 8px;
 }
 </style>

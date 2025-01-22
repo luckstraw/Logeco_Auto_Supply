@@ -41,7 +41,7 @@
 
     <v-card
       v-show="selectedCategory"
-      class="fill-height rounded-xl debug w-100"
+      class="fill-height rounded-xl w-100"
       variant="flat"
       :style="{
         maxHeight: '85vh',
@@ -134,9 +134,6 @@ const categoryItems = computed(() => {
 </script>
 
 <style scoped>
-.debug {
-  border: 1px solid cyan;
-}
 .hoverCard {
   transition: transform 0.3s ease;
 }

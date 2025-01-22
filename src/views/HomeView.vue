@@ -1,24 +1,53 @@
 <template>
-  <v-parallax
-    height="90vh"
-    gradient="to top right, rgba(33,33,33,.7), rgba(33,33,33,.7)"
-    src="/img/background/Parallax.jpg"
-  >
-    <div class="d-flex flex-column justify-center align-center fill-height">
-      <div class="d-flex align-center">
-        <div class="text-h2 font-weight-black text-center ml-8">
+  <v-parallax height="90vh" :src="homeSettings.mainPhoto">
+    <div
+      data-aos="fade-down-left"
+      data-aos-duration="2000"
+      class="position-absolute"
+      :style="{
+        height: '50%',
+        width: '20%',
+        backgroundColor: '#fff',
+        left: '57%',
+        clipPath: 'polygon(60% 0%, 100% 0, 40% 100%, 0 100%)',
+      }"
+    ></div>
+    <div
+      data-aos="fade-down-left"
+      data-aos-duration="3000"
+      class="position-absolute"
+      :style="{
+        height: '30%',
+        width: '15%',
+        backgroundColor: `${color.secondary}`,
+        left: '65%',
+        clipPath: 'polygon(50% 0%, 100% 0, 50% 100%, 0 100%)',
+      }"
+    ></div>
+    <div
+      data-aos="fade-up-right"
+      data-aos-duration="1000"
+      class="position-absolute w-100 fill-height d-flex align-center pa-5"
+      :style="{
+        backgroundColor: 'rgba(33, 33, 33, 0.6)',
+        clipPath: 'polygon(0 0, 75% 0, 50% 100%, 0 100%)',
+        zIndex: -1,
+      }"
+    >
+      <div>
+        <div
+          class="text-h5 font-weight-black"
+          :style="{ color: `${color.secondary}` }"
+        >
           LOGECO AUTO SUPPLY
         </div>
         <v-divider
-          :thickness="5"
-          vertical
+          class="border-opacity-100"
+          :thickness="4"
           :color="color.secondary"
-          class="mx-4 border-opacity-100"
-        ></v-divider>
-        <div
-          class="text-h4 font-weight-bold mr-8"
-          :style="{ color: color.secondary }"
-        >
+          style="margin-right: 50%"
+        />
+        <div class="text-h4 my-2 font-weight-black" style="margin-right: 50%">
           Your Trusted Source for Mitsubishi Genuine Parts And Reliable
           Replacements
         </div>
@@ -26,79 +55,85 @@
     </div>
   </v-parallax>
 
-  <v-carousel cycle hide-delimiters show-arrows="hover" height="60vh">
-    <v-carousel-item
-      v-for="(slide, index) in slides"
-      :key="index"
-      :src="slide.image"
-      cover
-      gradient="to top right, rgba(0,0,0,.9), rgba(250,250,250,.1)"
+  <div style="height: 60vh" class="d-flex justify-center align-center">
+    <div
+      data-aos="fade-down-left"
+      data-aos-easing="linear"
+      data-aos-offset="100"
+      class="w-100 pa-5 position-absolute"
+      :style="{
+        height: '60vh',
+        backgroundColor: `${color.secondary}`,
+        clipPath: 'polygon(50% 0%, 100% 0%, 100% 100%, 33% 100%)',
+      }"
+    ></div>
+
+    <div
+      data-aos="fade-down-left"
+      data-aos-offset="300"
+      data-aos-easing="ease-in-sine"
+      data-aos-duration="750"
+      class="d-flex align-center justify-center position-absolute"
+      :style="{
+        left: '5%',
+        height: '40vh',
+        width: '50%',
+        clipPath: 'polygon(100% 0, 77.3% 100%, 0 100%, 0 0)',
+      }"
     >
-      <v-row class="fill-height d-flex justify-start align-center">
-        <v-col cols="12" md="4" offset-md="1">
-          <v-card variant="tonal" class="pa-4 ma-5" style="border-radius: 40px">
-            <v-card-title
-              class="text-h4 font-weight-black"
-              :style="{ color: color.secondary }"
-            >
-              {{ slide.title }}
-            </v-card-title>
-
-            <v-card-text class="text-h6 font-weight-light">
-              {{ slide.description }}
-            </v-card-text>
-
-            <v-card-actions>
-              <v-btn
-                class="rounded-pill px-4"
-                :color="color.secondary"
-                variant="flat"
-                :to="slide.path"
-                >{{ slide.buttonName }}</v-btn
-              >
-            </v-card-actions>
-          </v-card>
-        </v-col>
-      </v-row>
-    </v-carousel-item>
-  </v-carousel>
-
-  <v-container class="my-10">
-    <v-row class="d-flex justify-space-between align-center">
-      <v-col cols="12" md="6" sm="6">
-        <iframe
-          :src="location.googleMapLink"
-          width="100%"
-          height="450"
-          :style="{
-            borderColor: color.secondary,
-            borderRadius: '20px',
-            borderWidth: '4px',
-          }"
-          allowfullscreen=""
-          loading="lazy"
-        ></iframe>
-      </v-col>
-
-      <v-col cols="12" md="6" sm="6" class="d-flex align-center justify-center">
-        <v-card
-          variant="tonal"
-          class="pa-4 ma-5"
-          style="border-radius: 40px"
-          width="75%"
+      <v-hover v-slot="{ isHovering, props }">
+        <v-img
+          v-bind="props"
+          src="https://i.imgur.com/1kQMFld.jpeg"
+          gradient="to top right, rgba(0,0,0,.9), rgba(250,250,250,.1)"
+          cover
         >
-          <v-card-title
-            class="text-h4 font-weight-black"
-            :style="{ color: color.secondary }"
-            >{{ location.title }}</v-card-title
-          >
-          <v-card-text class="text-h6 font-weight-light">{{
-            location.description
-          }}</v-card-text>
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
+          <v-expand-transition>
+            <div
+              v-if="isHovering"
+              class="transition-fast-in-fast-out top-0 card-reveal"
+              :style="{ backgroundColor: `${color.secondary}` }"
+            >
+              <div>Left Picture</div>
+            </div>
+          </v-expand-transition>
+        </v-img>
+      </v-hover>
+    </div>
+
+    <div
+      data-aos="fade-up-right"
+      data-aos-offset="300"
+      data-aos-easing="ease-in-sine"
+      data-aos-duration="750"
+      class="d-flex align-center justify-center position-absolute rounded-te-xl rounded-be-xl"
+      :style="{
+        left: '45%',
+        height: '40vh',
+        width: '50%',
+        clipPath: 'polygon(0% 100%, 22.7% 0, 100% 0, 100% 100%)',
+      }"
+    >
+      <v-hover v-slot="{ isHovering, props }">
+        <v-img
+          v-bind="props"
+          src="https://i.imgur.com/uT3hatz.jpeg"
+          gradient="to top right, rgba(0,0,0,.9), rgba(250,250,250,.1)"
+          cover
+        >
+          <v-expand-transition>
+            <div
+              v-if="isHovering"
+              class="transition-fast-in-fast-out bottom-0 card-reveal"
+              :style="{ backgroundColor: `${color.primary}` }"
+            >
+              <div>Right Picture</div>
+            </div>
+          </v-expand-transition>
+        </v-img>
+      </v-hover>
+    </div>
+  </div>
 </template>
 
 <script setup>
@@ -107,8 +142,18 @@ import { useStore } from "vuex";
 
 const store = useStore();
 const color = computed(() => store.getters["adminSettings/getColor"]);
-const slides = computed(() => store.getters["homepage/getSlides"]);
-const location = computed(() => store.getters["homepage/getLocation"]);
+
+const homeSettings = computed(() => store.getters["adminSettings/getHome"]);
 </script>
 
-<style scoped></style>
+<style scoped>
+.card-reveal {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  opacity: 0.7;
+}
+</style>

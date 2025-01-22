@@ -37,13 +37,13 @@
           </div>
         </v-col>
         <v-col cols="12" md="12" class="d-flex justify-center pb-0 mt-10">
-          <h4 :style="{ color: color.warning }">
+          <h4 class="text-center" :style="{ color: color.warning }">
             <strong>Disclaimer:</strong>
             For in-store purchases only. No online transactions available.
           </h4>
         </v-col>
         <v-col cols="12" md="12" class="d-flex justify-center">
-          <h4>
+          <h4 class="text-center">
             <strong
               >&copy; {{ new Date().getFullYear() }} Logeco Auto Supply. All
               Rights Reserved.</strong
@@ -65,9 +65,6 @@ const footerInfo = computed(() => store.getters["adminSettings/getFooter"]);
 </script>
 
 <style scoped>
-.debug {
-  border: 1px solid cyan;
-}
 .social-link {
   text-decoration: none;
   color: inherit;

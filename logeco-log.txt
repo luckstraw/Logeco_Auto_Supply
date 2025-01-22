@@ -158,8 +158,37 @@ const color = computed(() => store.getters["colors/getColor"]);
 
 const color = computed(() => store.getters["adminSettings/getColor"]);
 
-todo: 
-  service
-  home page
-  color
-   
+todo:
+  [ ]onHomeView:
+      reponsiveness
+      map and description
+      description of two picture when hover + button
+  [ ]onServiceView:
+      functional button login will popup if it no user otherwise will go to dashboard
+  [ ]onProductView:
+      whole layout
+  [ ]on User's View:
+      whole layout
+  [ ]onNavbar:
+      whole layout
+  [ ]onLoginSignup??:
+      photo and description?
+  [ ]onAdminSettings:
+      refactor???
+      confirmation message for saving
+      home page 2 pictue
+      color connecting
+      text color
+  [ ]Footer??
+  [ ]Suggestion ni Kiel??
+  [ ]About Dev and credits??
+  [ ]Overall Testing??
+  [ ]Codebase Refactoring??
+  [ ]Documentation??
+  [ ]Prepare For Presentation??
+
+  [ ]Tentative Features:
+      Edit on item or service
+      edit on name or profile picture of user
+      edit on logeco's profile picture
+      logeco's photo on userchat messahe and seen and delivered function

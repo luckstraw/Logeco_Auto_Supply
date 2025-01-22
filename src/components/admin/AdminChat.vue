@@ -75,7 +75,10 @@
         </v-row>
       </v-card>
       <v-card class="rounded-xl d-flex flex-column pa-2" style="flex: 7">
-        <v-card-title class="text-center font-weight-bold">
+        <v-card-title
+          class="text-center font-weight-bold"
+          :style="{ borderBottom: `1px solid ${color.secondary}` }"
+        >
           Chat with {{ selectedChat?.name?.split(" ")[0] || "User" }}
         </v-card-title>
         <v-card-text class="chat-box" @scroll="handleScroll" ref="chatBox">
@@ -100,7 +103,7 @@
             </v-card>
           </div>
         </v-card-text>
-        <v-card-actions>
+        <v-card-actions :style="{ borderTop: `1px solid ${color.secondary}` }">
           <v-card
             class="w-100 rounded-xl"
             :style="{ borderColor: color.secondary, borderWidth: '1px' }"

@@ -13,7 +13,6 @@ loadFonts();
 const app = createApp(App);
 
 store.dispatch("adminSettings/fetchSettingsData");
-store.dispatch("colors/fetchColors");
 store.dispatch("adminSchedule/generateDays");
 store.dispatch("adminSchedule/fetchSchedules");
 store.dispatch("adminChat/fetchChatList");

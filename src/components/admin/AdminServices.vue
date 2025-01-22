@@ -180,9 +180,6 @@ const deleteService = (service) => {
 </script>
 
 <style scoped>
-.debug {
-  border: 1px solid cyan;
-}
 .hoverCard {
   transition: transform 0.3s ease;
 }
