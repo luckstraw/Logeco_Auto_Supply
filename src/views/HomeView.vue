@@ -74,9 +74,11 @@
     </div>
   </div>
 
+
+  <div class="shape-2"></div>
   <v-container class="my-10">
     <v-row class="d-flex justify-space-between align-center">
-      <v-col cols="12" md="6" sm="6">
+      <v-col cols="12" md="6" sm="6" style="z-index: 2;">
         <iframe
           :src="location.googleMapLink"
           width="100%"
@@ -132,7 +134,7 @@ const location = computed(() => store.getters["homepage/getLocation"]);
 .left-side {
   position: relative;
   width: 100%;
-  background-color: rgba(33, 33, 33, 0.6);
+  background-color: rgba(33, 33, 33, 0.8);
   clip-path: polygon(0 0, 75% 0, 50% 100%, 0 100%);
   padding: 20px;
   display: flex;
@@ -166,6 +168,7 @@ const location = computed(() => store.getters["homepage/getLocation"]);
     clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 33% 100%);
     padding: 20px;
     display: flex;
+    z-index: 1;
   }
 
   .imgIn {
@@ -174,7 +177,7 @@ const location = computed(() => store.getters["homepage/getLocation"]);
     width: 100%;
     clip-path: polygon(55% 20%, 90% 20%, 90% 80%, 44% 80%);
     display: flex;
-    z-index: 1;
+    z-index: 3;
   }
 
   .imgIn2 {
@@ -183,7 +186,7 @@ const location = computed(() => store.getters["homepage/getLocation"]);
     width: 100%;
     clip-path: polygon(10% 20%, 55% 20%, 44% 80%, 10% 80%);
     display: flex;
-    z-index: 1;
+    z-index: 2;
   }
     .v-card--reveal {
     align-items: center;
@@ -192,5 +195,38 @@ const location = computed(() => store.getters["homepage/getLocation"]);
     opacity: 0.9;
     position: absolute;
     width: 100%;
+  }
+
+  .shape-2 {
+    position: absolute;
+    height: 90vh;
+    width: 33%;
+    background-color: #b71c1c;
+    clip-path: polygon(0 0, 100% 0%, 25% 100%, 0% 100%);
+    padding: 20px;
+    display: flex;
+    z-index: 1;
+  }
+
+  .detail1_product {
+    position: absolute;
+    height: 5%;
+    width: 10%;
+    background-color: #fff;
+    clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
+    display: flex;
+    z-index: 2;
+  }  
+
+  .detail2_product {
+    position: absolute;
+    top: 10%;
+    left: 8%;
+    height: 5%;
+    width: 10%;
+    background-color: #fff;
+    clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
+    display: flex;
+    z-index: 1;
   }
 </style>
