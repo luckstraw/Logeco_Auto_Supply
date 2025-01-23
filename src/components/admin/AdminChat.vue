@@ -1,4 +1,5 @@
 <template>
+  <!-- eslint-disable -->
   <v-row class="ma-0 justify-space-around">
     <v-col cols="7" class="ma-0 pa-0">
       <v-card class="d-flex flex-column fill-height rounded-xl">
@@ -53,15 +54,24 @@
         class="d-flex align-center justify-center rounded-xl mb-3 pa-0"
         style="flex: 4; position: relative"
       >
-        <v-row class="ma-0 pa-2">
+      <div
+              style="
+                position: absolute;
+                top: 0;
+                width: 100%;
+                height: 28%;
+                background-color: #B71C1C; 
+              "
+            ></div>
+        <v-row class="ma-0 pa-0">
           <v-col cols="4" class="ma-0">
             <v-avatar
               :image="selectedChat.avatar"
-              size="80"
-              :style="{ border: `2px solid ${color.secondary}` }"
+              size="10vh"
+              :style="{ border: `5px solid ${color.secondary}` }"
             ></v-avatar>
           </v-col>
-          <v-col cols="8" class="d-flex align-center">
+          <v-col cols="8" class="d-flex align-center justify-left" style="position: relative">
             <h3>{{ selectedUser.displayName }}</h3>
           </v-col>
           <v-col cols="12" class="overflow-auto">

@@ -1,20 +1,40 @@
 <template>
+  <!-- eslint-disable -->
   <v-card
-    class="d-flex flex-row justify-center align-center rounded-xl pa-2"
-    style="flex: 3"
-  >
-    <v-avatar
-      :image="user.photoURL"
-      size="100"
-      :style="{ border: `2px solid ${color.secondary}` }"
-      class="mr-5"
-    ></v-avatar>
+  class="d-flex flex-column align-center rounded-xl pa-4"
+  style="flex: 3; position: relative; overflow: hidden;"
+>
+  <div
+    style="
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 50%;
+      background-color: #B71C1C; 
+    "
+  ></div>
+  <v-avatar
+    z-index="1"
+    :image="user.photoURL"
+    size="16vh"
+    :style="{ border: `5px solid ${color.secondary}` }"
+    class="mb-1 mt-2"
+    style="z-index: 2; position: relative;"
+  ></v-avatar>
+  <h3 class="text-center mb-1">
+    {{ user.displayName }}
+  </h3>
 
-    <div class="d-flex flex-column">
-      <h3>{{ user.displayName }}</h3>
-      <button @click="handleLogout">Logout</button>
-    </div>
-  </v-card>
+  <v-btn
+    icon="fa-solid fa-arrow-right-from-bracket"
+    rounded="xl"
+    :color="color.secondary"
+    @click="handleLogout"
+    size="x-small"
+    style="z-index: 2; position: relative;"
+  >
+  </v-btn>
+</v-card>
 </template>
 
 <script setup>

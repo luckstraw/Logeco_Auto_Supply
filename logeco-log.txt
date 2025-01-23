@@ -169,8 +169,9 @@ todo:
       whole layout
   [ ]on User's View:
       whole layout
-  [ ]onNavbar:
+  [*]onNavbar:
       whole layout
+  [*]User&admin profile card
   [ ]onLoginSignup??:
       photo and description?
   [ ]onAdminSettings:

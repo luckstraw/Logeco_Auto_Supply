@@ -1,27 +1,38 @@
 <template>
+  <!-- eslint-disable -->
   <v-container fluid class="d-flex" style="height: 90vh">
     <v-row class="flex-grow-1">
       <v-col cols="2" class="d-flex flex-column" style="gap: 12px">
         <v-card
-          class="rounded-xl d-flex flex-column justify-center align-center"
-          style="height: 30vh"
-        >
-          <h2>Logeco Admin</h2>
-          <v-avatar
-            size="130"
-            image="https://cdn.vuetifyjs.com/images/john.jpg"
-            :style="{ border: `2px solid ${color.secondary}` }"
-          >
-          </v-avatar>
-
-          <v-btn
-            class="rounded-pill mt-2"
-            :color="color.secondary"
-            density="compact"
-            @click="handleLogout"
-            >Logout</v-btn
-          >
-        </v-card>
+    class="rounded-xl d-flex flex-column justify-center align-center"
+    style="height: 30vh"
+  >
+    <div
+      style="
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 50%;
+        background-color: #b71c1c;
+      "
+    ></div>
+    <v-avatar
+      class="mt-4 mb-1"
+      size="15vh"
+      image="https://cdn.vuetifyjs.com/images/john.jpg"
+      :style="{ border: `5px solid ${color.secondary}` }"
+    >
+    </v-avatar>
+    <h4>Logeco Admin</h4>
+    <v-btn
+      size="x-small"
+      icon="fa-solid fa-arrow-right-from-bracket"
+      class="rounded-pill mt-1"
+      :color="color.secondary"
+      @click="handleLogout"
+      ></v-btn
+    >
+  </v-card>
         <v-card class="pa-4 d-flex flex-column rounded-xl" variant="tonal">
           <v-btn
             v-for="item in navItems"
