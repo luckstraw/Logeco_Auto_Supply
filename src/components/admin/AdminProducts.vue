@@ -10,7 +10,7 @@
           maxHeight: '88vh',
           backgroundColor: 'transparent',
           scrollbarWidth: 'none',
-          border: `1px solid ${color.secondary}`,
+          border: `2px solid ${color.secondary}`,
         }"
       >
         <!-- NavBar -->
@@ -18,7 +18,7 @@
           class="d-flex justify-space-between align-center top-0 position-sticky pa-5"
           :style="{
             zIndex: '1',
-            borderBottom: `1px solid ${color.secondary}`,
+            borderBottom: `2px solid ${color.secondary}`,
           }"
         >
           <span class="text-h3">Categories</span>
@@ -39,7 +39,7 @@
             <v-card
               width="650"
               class="pa-2 rounded-xl"
-              :style="{ border: `1px solid ${color.secondary}` }"
+              :style="{ border: `2px solid ${color.secondary}` }"
             >
               <v-card-title class="text-center"
                 >Add New Categories</v-card-title
@@ -153,7 +153,7 @@
         :style="{
           maxHeight: '88vh',
           backgroundColor: 'transparent',
-          border: `1px solid ${color.secondary}`,
+          border: `2px solid ${color.secondary}`,
         }"
       >
         <v-row class="ma-0 fill-height">
@@ -162,7 +162,7 @@
             <v-card
               class="d-flex flex-column"
               :style="{
-                borderRight: `1px solid ${color.secondary}`,
+                borderRight: `2px solid ${color.secondary}`,
                 height: '88vh',
               }"
             >
@@ -198,7 +198,7 @@
                 class="d-flex justify-space-between align-center top-0 position-sticky pa-5"
                 :style="{
                   zIndex: '1',
-                  borderBottom: `1px solid ${color.secondary}`,
+                  borderBottom: `2px solid ${color.secondary}`,
                 }"
               >
                 <span class="text-h4">Items</span>
@@ -223,7 +223,7 @@
                   <v-card
                     width="650"
                     class="pa-2 rounded-xl"
-                    :style="{ border: `1px solid ${color.secondary}` }"
+                    :style="{ border: `2px solid ${color.secondary}` }"
                   >
                     <v-card-title class="text-center"
                       >Add New Items</v-card-title

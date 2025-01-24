@@ -1,7 +1,7 @@
 <template>
   <!-- eslint-disable -->
   <v-row class="ma-0 justify-space-around">
-    <v-col cols="7" class="ma-0 pa-0">
+    <v-col cols="8" class="ma-0 pa-0">
       <v-card class="d-flex flex-column fill-height rounded-xl">
         <v-card-title class="text-center font-weight-bold">
           Admin Chat List

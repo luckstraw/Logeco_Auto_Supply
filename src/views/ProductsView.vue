@@ -1,4 +1,6 @@
 <template>
+  <!-- eslint-disable -->
+  <div class="background">
   <v-container
     class="d-flex flex-row my-5 pa-0"
     style="height: 85vh; width: 70vw"
@@ -18,12 +20,15 @@
           <v-col
             v-for="category in categories"
             :key="category.id"
-            :md="category.name === 'Mitsubishi' ? 6 : 4"
+            :md="category.name === 'Mitsubishi' ? 8 : 4"
           >
             <v-card
               class="rounded-xl hoverCard"
               height="33vh"
               @click="selectedCategory = category"
+              :style="{
+                border: `2px solid ${color.secondary}`,
+              }"
             >
               <v-img
                 :src="category.image || category.altURL"
@@ -46,7 +51,7 @@
       :style="{
         maxHeight: '85vh',
         backgroundColor: 'transparent',
-        border: `1px solid ${color.secondary}`,
+        border: `2px solid ${color.secondary}`,
       }"
     >
       <v-row class="ma-0">
@@ -114,6 +119,7 @@
       </v-row>
     </v-card>
   </v-container>
+  </div>
 </template>
 
 <script setup>
@@ -139,5 +145,26 @@ const categoryItems = computed(() => {
 }
 .hoverCard:hover {
   transform: scale(1.05);
+}
+.background {
+  background: linear-gradient(132deg, #263238, #000000, #424242);
+  background-size: 400% 400%;
+  animation: Gradient 10s ease infinite;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 0;
+  margin: 0px;
+}
+@keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 </style>
