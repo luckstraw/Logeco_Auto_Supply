@@ -1,36 +1,38 @@
 <template>
+  <!-- eslint-disable -->
   <v-dialog v-model="isLoginSignUp_FormVisible" max-width="750px" persistent>
     <v-card
       :style="{ borderColor: color.secondary, borderWidth: '2px' }"
       class="pa-2"
     >
       <v-row :style="{ minHeight: '430px' }" no-gutters>
+
         <!-- Left Picture Section -->
         <v-col
-          v-if="isLogin"
-          class="d-flex align-center justify-center"
-          :style="{
-            backgroundImage: `url(${leftColumn.image})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }"
-          cols="12"
-          md="6"
-        >
-          <v-card
-            variant="tonal"
-            class="pa-4 ma-5 text-center"
-            style="border-radius: 10px"
-            width="75%"
+            v-if="isLogin && !smAndDown"
+            class="d-flex align-center justify-center"
+            :style="{
+              backgroundImage: `url(${leftColumn.image})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }"
+            cols="12"
+            md="6"
           >
-            <v-card-title>
-              {{ leftColumn.title }}
-            </v-card-title>
-            <v-card-text>
-              {{ leftColumn.description }}
-            </v-card-text>
-          </v-card>
-        </v-col>
+            <v-card
+              variant="tonal"
+              class="pa-4 ma-5 text-center"
+              style="border-radius: 10px"
+              width="75%"
+            >
+              <v-card-title>
+                {{ leftColumn.title }}
+              </v-card-title>
+              <v-card-text>
+                {{ leftColumn.description }}
+              </v-card-text>
+            </v-card>
+          </v-col>
 
         <!-- Form Section-->
         <v-col cols="12" md="6">
@@ -188,9 +190,9 @@
           </v-card>
         </v-col>
 
-        <!--Right Picture Section-->
+      <!-- Right Picture Section -->
         <v-col
-          v-if="!isLogin"
+          v-if="!isLogin && !smAndDown"
           class="d-flex align-center justify-center"
           :style="{
             backgroundImage: `url(${rightColumn.image})`,
@@ -220,8 +222,11 @@
 </template>
 
 <script setup>
+import { useDisplay } from "vuetify";
 import { computed, ref } from "vue";
 import { useStore } from "vuex";
+
+const { smAndDown } = useDisplay();
 
 const store = useStore();
 const color = computed(() => store.getters["adminSettings/getColor"]);

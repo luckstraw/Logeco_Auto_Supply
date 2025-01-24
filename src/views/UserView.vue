@@ -22,10 +22,12 @@
       <div class="message-button">
         <v-menu v-model="menu" :close-on-content-click="false" location="end">
           <template v-slot:activator="{ props }">
-            <v-btn v-bind="props" icon="fa-solid fa-message"></v-btn>
+            <v-btn :color="color.secondary" v-bind="props" icon>
+              <v-icon>fa-solid fa-message</v-icon>
+            </v-btn>
           </template>
 
-          <v-card min-width="400" min-height="400">
+          <v-card min-width="350" min-height="3c00">
             <v-card-item>
               <UserChat />
             </v-card-item>
@@ -44,9 +46,14 @@
 </template>
 
 <script setup>
+import { useStore } from "vuex";
+import { computed } from "vue";
 import UserChat from "@/components/user/UserChat.vue";
 import UserSchedule from "@/components/user/UserSchedule.vue";
 import UserProfile from "@/components/user/UserProfile.vue";
+
+const store = useStore();
+const color = computed(() => store.getters["adminSettings/getColor"]);
 
 import { ref } from "vue";
 const menu = ref(false);

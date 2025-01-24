@@ -1,6 +1,8 @@
 <template>
+  <!-- eslint-disable -->
   <v-card
     class="flex-grow-1 d-flex flex-column justify-center align-center rounded-xl"
+    style="overflow-x: auto; white-space: nowrap; width: 100%;"
   >
     <v-progress-linear
       v-if="loading"
@@ -8,11 +10,9 @@
       indeterminate
       style="position: absolute; top: 0; left: 0; right: 0; z-index: 1"
     ></v-progress-linear>
-
     <v-card-title class="text-center text-h3">
       Garage Slot Schedule
     </v-card-title>
-
     <div class="d-flex flex-row">
       <div class="d-flex flex-column">
         <div :style="spacer" class="d-flex justify-center align-center text-h4">
