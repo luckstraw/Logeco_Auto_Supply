@@ -1,43 +1,57 @@
 <template>
+  <!--First Section-->
   <v-parallax
     height="90vh"
     gradient="to top right, rgba(0,0,0,.9), rgba(250,250,250,.1)"
     :src="serviceSettings.mainPhoto"
   >
     <v-container class="fill-height">
-      <v-row class="d-flex align-center fill-height">
-        <v-col cols="12" md="6" data-aos="fade-up" data-aos-duration="1000">
-          <div class="text-h2 text-white font-weight-black">
+      <v-row>
+        <v-col
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          cols="12"
+          md="6"
+          sm="6"
+        >
+          <div class="text-md-h2 text-h3 font-weight-black">
             Seamless Service, Trusted Care!
           </div>
-          <div class="text-subtitle-1 text-white font-weight-light mt-2">
+          <div class="text-md-h6 text-subtitle-1 font-weight-light">
             Experience hassle-free auto repairs and maintenance that put you
             back on the road with confidence.
           </div>
           <v-btn
-            color="red-darken-4"
-            rounded="xl"
+            class="rounded-xl mt-2"
+            :color="color.secondary"
             append-icon="fa-solid fa-arrow-right"
-            class="white mt-4"
+            :size="$vuetify.display.smAndDown ? 'small' : 'default'"
+            @click="
+              () => (user ? $router.push('/users') : showLoginSignUpForm())
+            "
           >
             Book Your Service!
           </v-btn>
         </v-col>
       </v-row>
     </v-container>
+
     <div
       class="angled-divider w-100 position-relative"
       :style="{ backgroundColor: color.secondary }"
     ></div>
   </v-parallax>
+
+  <!--Second Section-->
   <v-container class="pa-0" fluid>
-    <v-row no-gutters>
+    <v-row no-gutters class="ma-0">
       <v-col
+        class="text-center pa-10"
         v-for="service in topServices"
         :key="service.icon"
         cols="12"
         md="4"
-        :style="columnStyle"
+        :style="{ backgroundColor: `${color.secondary}`, minHeight: '30vh' }"
       >
         <v-icon
           :icon="service.icon"
@@ -51,18 +65,23 @@
     </v-row>
   </v-container>
 
+  <!--Third Section-->
   <div class="background">
     <div
       class="angled-divider-2 w-100 position-relative"
       :style="{ backgroundColor: color.secondary }"
     ></div>
+
     <div class="text-center mt-10 mx-5 mb-8">
-      <h2 data-aos="fade-up" class="text-h4 font-weight-bold text-red-darken-4">
+      <div
+        data-aos="fade-up"
+        class="text-h4 text-md-h3 font-weight-bold text-red-darken-4"
+      >
         More Services
-      </h2>
-      <p data-aos="fade-up" class="subtitle-1">
+      </div>
+      <div data-aos="fade-up" class="text-subtitle-1 text-md-h6">
         We offer a wide range of services to keep your car in top condition.
-      </p>
+      </div>
     </div>
 
     <v-container>
@@ -78,7 +97,7 @@
         >
           <v-card
             data-aos="fade-up"
-            data-aos-anchor-placement="top-bottom"
+            data-aos-anchor-placement="bottom-bottom"
             class="pa-2 ma-2 rounded-xl"
             :style="{
               border: `2px solid ${color.secondary}`,
@@ -87,7 +106,7 @@
               backgroundPosition: 'center',
             }"
           >
-            <v-card-title class="text-center text-overlay rounded-xl">{{
+            <v-card-title class="text-center text-overlay rounded-lg">{{
               service.name
             }}</v-card-title>
             <v-card-actions class="d-flex justify-center">
@@ -101,7 +120,7 @@
                 :color="color.secondary"
                 @click="showDetails[service.id] = !showDetails[service.id]"
                 style="cursor: pointer"
-              ></v-icon>
+              />
             </v-card-actions>
 
             <v-expand-transition>
@@ -110,7 +129,7 @@
                   :color="color.secondary"
                   class="border-opacity-100"
                 />
-                <v-card-text class="text-center text-overlay rounded-xl">
+                <v-card-text class="text-center text-overlay rounded-lg">
                   <strong v-if="service.priceRange">
                     Price Range: {{ service.priceRange }}
                     <br />
@@ -127,11 +146,12 @@
 </template>
 
 <script setup>
-import { computed, reactive } from "vue";
+import { computed, reactive, onMounted } from "vue";
 import { useStore } from "vuex";
 
 const store = useStore();
 const color = computed(() => store.getters["adminSettings/getColor"]);
+const user = computed(() => store.getters["authentication/getUser"]);
 
 const serviceSettings = computed(
   () => store.getters["adminSettings/getService"]
@@ -160,13 +180,12 @@ const topServices = [
   },
 ];
 
-const columnStyle = computed(() => ({
-  backgroundColor: color.value.secondary,
-  color: "white",
-  textAlign: "center",
-  padding: "40px",
-  minHeight: "30vh",
-}));
+const showLoginSignUpForm = () =>
+  store.dispatch("loginAndSignUp/showLoginSignUpForm");
+
+onMounted(() => {
+  window.scrollTo(0, 0);
+});
 </script>
 
 <style scoped>
@@ -179,6 +198,12 @@ const columnStyle = computed(() => ({
   height: 60px;
   clip-path: polygon(0 0, 100% 0, 0 100%);
   top: -1px;
+}
+.text-overlay {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-top: 8px;
 }
 .background {
   background: linear-gradient(132deg, #263238, #000000, #424242);
@@ -200,11 +225,5 @@ const columnStyle = computed(() => ({
   100% {
     background-position: 0% 50%;
   }
-}
-.text-overlay {
-  background-color: rgba(0, 0, 0, 0.1);
-  color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  margin-top: 8px;
 }
 </style>

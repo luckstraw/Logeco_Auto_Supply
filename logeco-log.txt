@@ -159,32 +159,50 @@ const color = computed(() => store.getters["colors/getColor"]);
 const color = computed(() => store.getters["adminSettings/getColor"]);
 
 todo:
-  [ ]onHomeView:
+  [*]onHomeView:
       reponsiveness
       map and description
       description of two picture when hover + button
-  [ ]onServiceView:
+
+  [*]onServiceView:
       functional button login will popup if it no user otherwise will go to dashboard
+
   [ ]onProductView:
       whole layout
+
   [ ]on User's View:
       whole layout
+
   [ ]onNavbar:
       whole layout
+
   [ ]onLoginSignup??:
+      remove Pohto when on phone
       photo and description?
+
   [ ]onAdminSettings:
       refactor???
       confirmation message for saving
       home page 2 pictue
       color connecting
       text color
-  [ ]Footer??
+
+	[ ]Design
+			Admin chat should be bigger
+			User Schedule text
+
+  [*]Footer??
+
   [ ]Suggestion ni Kiel??
+
   [ ]About Dev and credits??
+
   [ ]Overall Testing??
+
   [ ]Codebase Refactoring??
+
   [ ]Documentation??
+
   [ ]Prepare For Presentation??
 
   [ ]Tentative Features:

@@ -117,7 +117,7 @@
 </template>
 
 <script setup>
-import { computed, ref } from "vue";
+import { computed, ref, onMounted } from "vue";
 import { useStore } from "vuex";
 
 const store = useStore();
@@ -130,6 +130,10 @@ const categoryItems = computed(() => {
   return store.getters["adminProducts/getItemsByCategory"](
     selectedCategory.value.id
   );
+});
+
+onMounted(() => {
+  window.scrollTo(0, 0);
 });
 </script>
 

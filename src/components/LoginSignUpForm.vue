@@ -1,5 +1,9 @@
 <template>
-  <v-dialog v-model="isLoginSignUp_FormVisible" max-width="750px" persistent>
+  <v-dialog
+    v-model="isLoginSignUp_FormVisible"
+    max-width="750px"
+    @click:outside="hideLoginSignUpForm"
+  >
     <v-card
       :style="{ borderColor: color.secondary, borderWidth: '2px' }"
       class="pa-2"
