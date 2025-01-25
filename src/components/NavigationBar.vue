@@ -30,17 +30,23 @@
       <router-link v-show="!isSpeedDialActive" to="/">
         <template v-if="xs">
           <div class="d-flex mt-2">
-            <div style="margin-top: 1px" v-html="mobileLogoTemplate1"></div>
-            <div class="ml-n1" v-html="mobileLogoTemplate2"></div>
+            <div
+              style="margin-top: 1px"
+              v-html="logeco('#fff', '68', '17')"
+            ></div>
+            <div
+              class="ml-n1"
+              v-html="autosupply(color.secondary, '110', '15')"
+            ></div>
           </div>
         </template>
         <template v-else>
           <div class="d-flex">
-            <div class="mt-3" v-html="desktopLogoTemplate1"></div>
+            <div class="mt-3" v-html="logeco('#fff', '150', '30')"></div>
             <div
               class="ml-n3"
               style="margin-top: 1px"
-              v-html="desktopLogoTemplate2"
+              v-html="autosupply(color.secondary, '200', '50')"
             ></div>
           </div>
         </template>
@@ -105,7 +111,7 @@
 import { computed, ref } from "vue";
 import { useStore } from "vuex";
 import { useDisplay } from "vuetify";
-import { logeco, autosupply } from "@/assets/logecoLogo.js";
+import { logeco, autosupply } from "@/assets/logecoLogo.js"; // dont remove this :)
 import LoginSignUpForm from "./LoginSignUpForm.vue";
 
 const { xs } = useDisplay();
@@ -114,13 +120,6 @@ const color = computed(() => store.getters["adminSettings/getColor"]);
 const user = computed(() => store.getters["authentication/getUser"]);
 
 const isSpeedDialActive = ref(false);
-
-const mobileLogoTemplate1 = ref(logeco("#fff", "68", "17"));
-const mobileLogoTemplate2 = ref(autosupply(color.value.secondary, "110", "15"));
-const desktopLogoTemplate1 = ref(logeco("#fff", "150", "30"));
-const desktopLogoTemplate2 = ref(
-  autosupply(color.value.secondary, "200", "50")
-);
 
 const mobileNavLinks = [
   { id: 1, to: "/", icon: "fa-solid fa-home" },

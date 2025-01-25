@@ -72,13 +72,29 @@ const actions = {
   },
 
   async updateField({ commit, dispatch }, { module, updates }) {
-    try {
-      commit("UPDATE_FIELD", { module, updates });
-      const docRef = doc(db, "Settings", module);
-      await updateDoc(docRef, updates);
-    } catch (error) {
-      dispatch("handleError", error);
-    }
+    const showDialog = {
+      message: `Updating the ${module} settings will change the view for users. Are you sure you want to proceed?`,
+      type: "warning",
+      buttons: [
+        {
+          text: "Cancel",
+          action: () => false,
+        },
+        {
+          text: "Update",
+          action: async () => {
+            try {
+              commit("UPDATE_FIELD", { module, updates });
+              const docRef = doc(db, "Settings", module);
+              await updateDoc(docRef, updates);
+            } catch (error) {
+              dispatch("handleError", error);
+            }
+          },
+        },
+      ],
+    };
+    dispatch("infoDialog/showDialog", showDialog, { root: true });
   },
 };
 

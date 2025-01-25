@@ -180,7 +180,7 @@ todo:
       remove Pohto when on phone
       photo and description?
 
-  [ ]onAdminSettings:
+  [*]onAdminSettings:
       confirmation message for saving
       
 	[ ]Design
@@ -202,13 +202,14 @@ todo:
   [ ]Codebase Refactoring??
 
   [ ]Tentative Features:
-      refactor???
-      home page 2 pictue
-      color connecting
-      text color
+      onAdminSettings:
+        refactor???
+        home page 2 pictue
+        color connecting
+        text color
 
       Edit on item or service
       edit on name or profile picture of user
       edit on logeco's profile picture
-      logeco's photo on userchat messahe and seen and delivered function
+      logeco's photo on userchat message and seen and delivered function
       
