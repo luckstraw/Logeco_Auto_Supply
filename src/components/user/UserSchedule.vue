@@ -4,48 +4,59 @@
     class="flex-grow-1 d-flex flex-column justify-center align-center rounded-xl"
     style="overflow-x: auto; white-space: nowrap; width: 100%;"
   >
+  <v-card-title
+      :class="xs ? 'text-body-5' : 'text-h3'"
+      style="min-width: max-content"
+    >
+    Garage Slot Schedule
+  </v-card-title>
+
     <v-progress-linear
       v-if="loading"
       :color="color.secondary"
       indeterminate
       style="position: absolute; top: 0; left: 0; right: 0; z-index: 1"
     ></v-progress-linear>
-    <v-card-title class="text-center text-h3">
-      Garage Slot Schedule
-    </v-card-title>
-    <div class="d-flex flex-row">
-      <div class="d-flex flex-column">
-        <div :style="spacer" class="d-flex justify-center align-center text-h4">
-          {{ new Date().getFullYear() }}
+    <div
+      style="overflow-x: auto; white-space: nowrap; width: 100%"
+    >
+      <div class="d-flex flex-row" style="display: inline-flex">
+        <div class="d-flex flex-column ml-3">
+          <div
+            :style="spacer"
+            class="d-flex justify-center align-center text-h4"
+          >
+            {{ new Date().getFullYear() }}
+          </div>
+          <div
+            v-for="time in times"
+            :key="time"
+            class="d-flex justify-center align-center"
+            :style="timeCellSize"
+          >
+            {{ time }}
+          </div>
         </div>
-        <div
-          v-for="time in times"
-          :key="time"
-          class="d-flex justify-center align-center"
-          :style="timeCellSize"
-        >
-          {{ time }}
-        </div>
-      </div>
-      <div v-for="day in days" :key="day" class="d-flex flex-column">
-        <div class="d-flex justify-center align-center" :style="dayCellSize">
-          {{ day }}
-        </div>
-        <div class="d-flex flex-row">
-          <div class="d-flex flex-column" v-for="slot in slots" :key="slot">
-            <div
-              class="d-flex justify-center align-center"
-              :style="slotCellSize"
-            >
-              {{ slot }}
-            </div>
-            <div
-              v-for="time in times"
-              :key="time"
-              :style="getCellStyle(day, slot, time)"
-              :class="getCellStyle(day, slot, time).className"
-            >
-              {{ getScheduleTitle(day, slot, time) }}
+        <div v-for="day in days" :key="day" class="d-flex flex-column">
+          <div class="d-flex justify-center align-center" :style="dayCellSize">
+            {{ day }}
+          </div>
+          <div class="d-flex flex-row">
+            <div class="d-flex flex-column" v-for="slot in slots" :key="slot">
+              <div
+                class="d-flex justify-center align-center"
+                :style="slotCellSize"
+              >
+                {{ slot }}
+              </div>
+              <div
+                v-for="time in times"
+                :key="time"
+                :style="getCellStyle(day, slot, time)"
+                :class="getCellStyle(day, slot, time).className"
+              >
+                {{ getScheduleTitle(day, slot, time) }}
+              </div>
             </div>
           </div>
         </div>
@@ -66,6 +77,9 @@
 <script setup>
 import { computed, ref } from "vue";
 import { useStore } from "vuex";
+import { useDisplay } from "vuetify";
+
+const { xs } = useDisplay();
 
 const store = useStore();
 const color = computed(() => store.getters["adminSettings/getColor"]);

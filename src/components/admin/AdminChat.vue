@@ -51,7 +51,7 @@
     </v-col>
     <v-col cols="3" class="d-flex flex-column pa-0">
       <v-card
-        class="d-flex align-center justify-center rounded-xl mb-3 pa-0"
+        class="align-center justify-center rounded-xl mb-3 pa-0"
         style="flex: 4; position: relative"
       >
       <div
@@ -74,13 +74,14 @@
           <v-col cols="8" class="d-flex align-center justify-left" style="position: relative">
             <h3>{{ selectedUser.displayName }}</h3>
           </v-col>
-          <v-col cols="12" class="overflow-auto">
-            <h4>
+          <!-- testing sa texbody2 -->
+          <v-col cols="12" class="overflow-auto text-body-2">
+            <h5>
               {{ "Member Since: " + formatTimestamp(selectedUser.createdAt) }}
-            </h4>
-            <h4>
+            </h5>
+            <h5>
               {{ "Email: " + selectedUser.email }}
-            </h4>
+            </h5>
           </v-col>
         </v-row>
       </v-card>
