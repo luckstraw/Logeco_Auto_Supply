@@ -4,14 +4,14 @@
     style="flex: 3"
   >
     <v-avatar
-      :image="user.photoURL"
+      :image="user?.photoURL"
       size="100"
       :style="{ border: `2px solid ${color.secondary}` }"
       class="mr-5"
     ></v-avatar>
 
     <div class="d-flex flex-column">
-      <h3>{{ user.displayName }}</h3>
+      <h3>{{ user?.displayName }}</h3>
       <button @click="handleLogout">Logout</button>
     </div>
   </v-card>

@@ -173,7 +173,7 @@ todo:
   [ ]on User's View:
       whole layout
 
-  [ ]onNavbar:
+  [*]onNavbar:
       whole layout
 
   [ ]onLoginSignup??:
@@ -193,7 +193,7 @@ todo:
 
   [*]Footer??
 
-  [ ]Suggestion ni Kiel??
+  [*]Suggestion ni Kiel??
 
   [ ]About Dev and credits??
 

@@ -127,7 +127,7 @@
       class="w-50 position-absolute bottom-0 right-0"
       :style="{
         height: '10%',
-        backgroundColor: `${color.primary}`,
+        backgroundColor: '#fff',
         clipPath: 'polygon(100% 0, 0% 100%, 100% 100%)',
       }"
     ></div>
@@ -195,7 +195,7 @@
                   :size="$vuetify.display.smAndDown ? 'small' : 'default'"
                   to="/products"
                 >
-                  Shop Now
+                  Browse
                 </v-btn>
               </div>
             </div>
