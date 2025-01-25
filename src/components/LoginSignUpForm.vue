@@ -1,9 +1,5 @@
 <template>
-  <v-dialog
-    v-model="isLoginSignUp_FormVisible"
-    max-width="750px"
-    @click:outside="hideLoginSignUpForm"
-  >
+  <v-dialog v-model="isLoginSignUp_FormVisible" max-width="750px" persistent>
     <v-card
       :style="{ borderColor: color.secondary, borderWidth: '2px' }"
       class="pa-2"
@@ -11,7 +7,7 @@
       <v-row :style="{ minHeight: '430px' }" no-gutters>
         <!-- Left Picture Section -->
         <v-col
-          v-if="isLogin"
+          v-if="isLogin && !smAndDown"
           class="d-flex align-center justify-center"
           :style="{
             backgroundImage: `url(${leftColumn.image})`,
@@ -38,7 +34,10 @@
 
         <!-- Form Section-->
         <v-col cols="12" md="6">
-          <v-card :class="['pa-2', isLogin ? 'ml-2' : 'mr-2']" elevation="0">
+          <v-card
+            :class="['pa-2', smAndDown ? 'ma-0' : isLogin ? 'ml-2' : 'mr-2']"
+            variant="flat"
+          >
             <v-card-title class="d-flex align-center mb-3">
               <span class="flex-grow-1 text-center">{{
                 isLogin ? "Login" : "Sign Up"
@@ -60,7 +59,8 @@
                   variant="outlined"
                   label="Email Address"
                   type="email"
-                  :style="{ height: '40px' }"
+                  hide-details
+                  :density="smAndDown ? 'compact' : 'default'"
                   :color="color.secondary"
                 />
               </v-col>
@@ -75,7 +75,8 @@
                       : 'fa-regular fa-eye-slash'
                   "
                   :type="loginShowPassword ? 'text' : 'password'"
-                  :style="{ height: '40px', marginBottom: '20px' }"
+                  hide-details
+                  :density="smAndDown ? 'compact' : 'default'"
                   :color="color.secondary"
                   @click:append-inner="loginShowPassword = !loginShowPassword"
                 />
@@ -89,7 +90,7 @@
                   Forgot Password?
                 </a>
               </v-col>
-              <v-col cols="12" class="py-0 mt-4">
+              <v-col cols="12">
                 <v-btn
                   block
                   :style="{ height: '40px' }"
@@ -128,7 +129,8 @@
                     v-model="email"
                     label="Email"
                     :rules="[rules.required, rules.email]"
-                    :style="{ height: '40px', marginBottom: '20px' }"
+                    :density="smAndDown ? 'compact' : 'default'"
+                    :hide-details="smAndDown ? 'auto' : false"
                     :color="color.secondary"
                   />
                 </v-col>
@@ -144,7 +146,8 @@
                     "
                     :type="showPassword ? 'text' : 'password'"
                     :rules="[rules.required, rules.min(6)]"
-                    :style="{ height: '40px', marginBottom: '20px' }"
+                    :density="smAndDown ? 'compact' : 'default'"
+                    :hide-details="smAndDown ? 'auto' : false"
                     :color="color.secondary"
                     @click:append-inner="showPassword = !showPassword"
                   />
@@ -161,7 +164,8 @@
                     "
                     :type="showPassword ? 'text' : 'password'"
                     :rules="[rules.required, rules.match]"
-                    :style="{ height: '40px', marginBottom: '20px' }"
+                    :density="smAndDown ? 'compact' : 'default'"
+                    :hide-details="smAndDown ? 'auto' : false"
                     :color="color.secondary"
                     @click:append-inner="showPassword = !showPassword"
                   />
@@ -194,7 +198,7 @@
 
         <!--Right Picture Section-->
         <v-col
-          v-if="!isLogin"
+          v-if="!isLogin && !smAndDown"
           class="d-flex align-center justify-center"
           :style="{
             backgroundImage: `url(${rightColumn.image})`,
@@ -224,8 +228,11 @@
 </template>
 
 <script setup>
+import { useDisplay } from "vuetify";
 import { computed, ref } from "vue";
 import { useStore } from "vuex";
+
+const { smAndDown } = useDisplay();
 
 const store = useStore();
 const color = computed(() => store.getters["adminSettings/getColor"]);
@@ -288,3 +295,5 @@ const handleForgotPassword = () =>
     email: loginEmail.value,
   });
 </script>
+
+<style scoped></style>

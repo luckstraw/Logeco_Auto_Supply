@@ -2,12 +2,12 @@ const state = {
   loginSignUp_FormVisible: false,
 
   loginLeftColumn: {
-    image: "/img/background/LoginPic.jpg",
+    image: "https://i.imgur.com/hkgIPhk.jpeg",
     title: "Welcome Back!",
     description: "We are excited to see you again. Please login to continue.",
   },
   signUpRightColumn: {
-    image: "/img/background/SignUpPic.jpg",
+    image: "https://i.imgur.com/lZtpVdR.jpeg",
     title: "Create an Account!",
     description: "Join us and explore amazing features. Sign up now!",
   },

@@ -176,17 +176,13 @@ todo:
   [*]onNavbar:
       whole layout
 
-  [ ]onLoginSignup??:
+  [*]onLoginSignup??:
       remove Pohto when on phone
       photo and description?
 
   [ ]onAdminSettings:
-      refactor???
       confirmation message for saving
-      home page 2 pictue
-      color connecting
-      text color
-
+      
 	[ ]Design
 			Admin chat should be bigger
 			User Schedule text
@@ -199,14 +195,20 @@ todo:
 
   [ ]Overall Testing??
 
-  [ ]Codebase Refactoring??
-
   [ ]Documentation??
 
   [ ]Prepare For Presentation??
 
+  [ ]Codebase Refactoring??
+
   [ ]Tentative Features:
+      refactor???
+      home page 2 pictue
+      color connecting
+      text color
+
       Edit on item or service
       edit on name or profile picture of user
       edit on logeco's profile picture
       logeco's photo on userchat messahe and seen and delivered function
+      
