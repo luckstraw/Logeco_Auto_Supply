@@ -129,7 +129,6 @@ const actions = {
                 await signOut(auth);
                 commit("CLEAR_USER");
                 localStorage.clear();
-                location.reload();
                 router.push("/");
               } catch (error) {
                 dispatch("handleError", error);

@@ -1,5 +1,5 @@
 const state = {
-  selectedComponentKey: "AdminOverview",
+  selectedComponentKey: "AdminChat",
 };
 
 const getters = {

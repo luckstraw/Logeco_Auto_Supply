@@ -43,8 +43,8 @@ const dialogType = computed(() => store.getters["infoDialog/dialogType"]);
 const dialogIcon = computed(() => store.getters["infoDialog/dialogIcon"]);
 const dialogButtons = computed(() => store.getters["infoDialog/dialogButtons"]);
 
-const colors = computed(() => store.getters["colors/getColor"]);
-const cardColor = computed(() => colors.value[dialogType.value]);
+const color = computed(() => store.getters["adminSettings/getColor"]);
+const cardColor = computed(() => color.value[dialogType.value]);
 </script>
 
 <style scoped></style>

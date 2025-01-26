@@ -85,3 +85,140 @@ fixing chat
 
 12/28/2024
 > Fully Functional Chat App + API avatar for new User 
+> Copy this code to know the lines of code:
+      git ls-files src | grep -E '\.js$|\.vue$|\.html$|\.css$|\.scss$|\.ts$|\.jsx$|\.tsx$' | xargs wc -l
+
+
+1/5/2025
+> Admin Schedule
+> Pre tangalin mo yung eslint-disable pati useless na comments pati yung console.log bago mag commit para malinis tignan
+
+
+1/10/2025
+
+Products database Modules
+
+Products(collection)
+  |
+  |---> categoryId (document) 
+  |       |
+  |       |---> name: // name of category
+  |       |---> image: // photo Url of category
+  |       |---> description: // description of category
+  |       |---> createdAt: date when this category was created
+  |       |---> items (subcollection) // Subcollection of items inside this category
+
+
+1/11/2025
+> Finished the admin products disabled the drag and drop and the edit buttons we can't access storage yet
+
+1/13/2025
+
+Services database Modules
+
+Services(collection)
+  |
+  |---> categoryId (document) 
+  |       |
+  |       |---> name: // name of service
+  |       |---> priceRange: // priceRange of service
+  |       |---> description: // description of service
+  |       |---> altURL: // alternative photo Url of service
+  |       |---> image: // photo Url of service
+  |       |---> createdAt: date when this service was created
+
+1/15/2025
+> Finished the admin service and did recode the service view but not responsive yet
+
+database model of my settings
+
+Settings(collection)
+  |
+  |---> colors (document) 
+  |       |
+  |       |---> accent: #212121
+  |       |---> primary: #121212
+  |       |---> secondary: #B71C1C
+  |
+  |---> home (document) 
+  |       |
+  |       |---> MainPhoto: https://i.imgur.com/YqVnKXE.jpeg
+  |
+  |---> service (document) 
+  |       |
+  |       |---> MainPhoto: https://i.imgur.com/b8olelO.jpeg
+  |---> footer (document) 
+  |       |
+  |       |---> phone: +63 998 741 4569
+          |---> email: logecoautosupply@gmail.com
+          |---> facebook: https://www.facebook.com/logecoautosupply/
+
+
+const color = computed(() => store.getters["colors/getColor"]);
+
+const color = computed(() => store.getters["adminSettings/getColor"]);
+
+todo:
+  [*]onHomeView:
+      reponsiveness
+      map and description
+      description of two picture when hover + button
+
+  [*]onServiceView:
+      functional button login will popup if it no user otherwise will go to dashboard
+
+  [*]onProductView:
+      whole layout
+
+  [*]on User's View:
+      whole layout
+
+  [*]onNavbar:
+      whole layout
+
+  [*]onLoginSignup??:
+      remove Pohto when on phone
+      photo and description?
+
+  [*]onAdminSettings:
+      confirmation message for saving
+      
+	[*]Design
+			Admin chat should be bigger
+			User Schedule text
+
+  [*]Footer??
+
+  [*]Suggestion ni Kiel??
+
+  [*]About Dev and credits??
+
+  [*]Fix error
+      enter on log in 
+      search
+      admin cols && avatar
+      user's avatar 
+      products cat
+
+  [*]Overall Testing??
+
+  [*]Documentation??
+
+  [*]Prepare For Presentation??
+
+1/26/2025
+  Next time nalang pag may bayad na
+  [ ]Codebase Refactoring??
+
+  [ ]Tentative Features:
+      onAdminSettings:
+        refactor???
+        home page 2 pictue
+        color connecting
+        text color
+
+      Edit on item or service
+      edit on name or profile picture of user
+      edit on logeco's profile picture
+      logeco's photo on userchat message and seen and delivered function
+      

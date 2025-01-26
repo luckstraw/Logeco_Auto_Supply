@@ -1,8 +1,11 @@
 <template>
-  <v-card class="rounded-xl d-flex flex-column pa-2" style="flex: 7">
-    <v-card-title class="text-center font-weight-bold"
-      >Chat with Admin</v-card-title
+  <v-card class="rounded-xl d-flex flex-column pa-2" style="height: 54vh">
+    <v-card-title
+      class="text-center font-weight-bold"
+      :style="{ borderBottom: `1px solid ${color.secondary}` }"
     >
+      Chat with Us
+    </v-card-title>
     <v-card-text class="chat-box" @scroll="handleScroll" ref="chatBox">
       <div
         v-for="message in messages"
@@ -25,7 +28,7 @@
         </v-card>
       </div>
     </v-card-text>
-    <v-card-actions>
+    <v-card-actions :style="{ borderTop: `1px solid ${color.secondary}` }">
       <v-card
         class="w-100 rounded-xl"
         :style="{ borderColor: color.secondary, borderWidth: '1px' }"
@@ -60,7 +63,7 @@ import { computed, onMounted, ref, watch } from "vue";
 
 const store = useStore();
 const user = computed(() => store.getters["authentication/getUser"]);
-const color = computed(() => store.getters["colors/getColor"]);
+const color = computed(() => store.getters["adminSettings/getColor"]);
 const messages = computed(() => store.getters["userChat/messages"]);
 const chatBox = ref(null);
 const newMessage = ref("");
@@ -79,7 +82,7 @@ const sendMessage = async () => {
     senderId: "user",
   });
   newMessage.value = "";
-  setTimeout(scrollToBottom, 100);
+  scrollToBottom();
 };
 
 const handleEnter = (event) => {
@@ -89,7 +92,7 @@ const handleEnter = (event) => {
 };
 
 const handleScroll = async () => {
-  if (chatBox.value.$el.scrollTop === 0) {
+  if (chatBox.value?.$el.scrollTop === 0) {
     const previousScrollHeight = chatBox.value.$el.scrollHeight;
     isLoadingMore.value = true;
     await store.dispatch("userChat/loadMoreMessages", user.value.uid);
