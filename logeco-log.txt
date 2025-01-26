@@ -200,11 +200,11 @@ todo:
       user's avatar 
       products cat
 
-  [ ]Overall Testing??
+  [*]Overall Testing??
 
-  [ ]Documentation??
+  [*]Documentation??
 
-  [ ]Prepare For Presentation??
+  [*]Prepare For Presentation??
 
 1/26/2025
   Next time nalang pag may bayad na

@@ -189,16 +189,6 @@
         <v-col cols="12" md="8">
           <v-row justify="center">
             <v-col
-              v-if="categoryItems.length === 0"
-              :style="{ height: $vuetify.display.xs ? '30vh' : '85vh' }"
-              class="d-flex align-center justify-center"
-            >
-              <span class="text-h5 text-grey">
-                No items available in this category
-              </span>
-            </v-col>
-
-            <v-col
               cols="12"
               md="12"
               class="pa-2"
@@ -223,6 +213,16 @@
                   class="px-2"
                 />
               </v-card>
+            </v-col>
+
+            <v-col
+              v-if="filteredItems.length === 0"
+              :style="{ height: $vuetify.display.xs ? '30vh' : '85vh' }"
+              class="d-flex align-center justify-center"
+            >
+              <span class="text-h5 text-grey">
+                No items available in this category
+              </span>
             </v-col>
 
             <v-col
