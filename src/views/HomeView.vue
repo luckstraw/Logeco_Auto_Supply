@@ -151,7 +151,7 @@
       }"
     ></div>
 
-    <!--Products-->
+    <!--Services-->
     <div
       data-aos="fade-down-left"
       data-aos-offset="300"
@@ -187,18 +187,18 @@
                   class="text-md-h3 text-h5 font-weight-black"
                   :style="{ color: `${color.primary}` }"
                 >
-                  Genuine Parts
+                  Expert Services
                 </div>
                 <div class="text-md-h5 text-subtitle-2 font-weight-light my-2">
-                  Experience peak performance with perfectly fitting parts.
+                  Get expert help and find the perfect parts effortlessly.
                 </div>
                 <v-btn
                   class="rounded-xl"
                   :color="color.primary"
                   :size="$vuetify.display.smAndDown ? 'small' : 'default'"
-                  to="/products"
+                  to="/services"
                 >
-                  Browse
+                  Get Started
                 </v-btn>
               </div>
             </div>
@@ -207,7 +207,7 @@
       </v-hover>
     </div>
 
-    <!--Service-->
+    <!--Products-->
     <div
       data-aos="fade-up-right"
       data-aos-offset="300"
@@ -242,20 +242,20 @@
                   class="text-md-h3 text-h5 font-weight-black text-right"
                   :style="{ color: `${color.secondary}` }"
                 >
-                  Expert Services
+                  Genuine Parts
                 </div>
                 <div
                   class="text-md-h5 text-subtitle-2 font-weight-light my-2 text-right"
                 >
-                  Get expert help and find the perfect parts effortlessly.
+                  Experience peak performance with perfectly fitting parts.
                 </div>
                 <v-btn
                   class="rounded-xl"
                   :color="color.secondary"
                   :size="$vuetify.display.smAndDown ? 'small' : 'default'"
-                  to="/services"
+                  to="/products"
                 >
-                  Get Started
+                  Browse
                 </v-btn>
               </div>
             </div>
@@ -321,7 +321,7 @@ const store = useStore();
 const color = computed(() => store.getters["adminSettings/getColor"]);
 
 const homeSettings = computed(() => store.getters["adminSettings/getHome"]);
-const tempLink1 = ref("https://i.imgur.com/1kQMFld.jpeg");
+const tempLink1 = ref("https://i.imgur.com/YwHs0tf.png");
 const tempLink2 = ref("https://i.imgur.com/uT3hatz.jpeg");
 const mapLink = ref(
   "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d241.63554051490178!2d121.01101066109747!3d14.30163187433078!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397d642046c4d27%3A0xbbbc14706ebb44d7!2sLogeco%20Auto%20Supply!5e0!3m2!1sen!2sph!4v1731774980364!5m2!1sen!2sph"

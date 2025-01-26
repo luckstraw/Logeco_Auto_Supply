@@ -117,7 +117,9 @@
                 cover
                 height="25vh"
               />
-              <v-card-title class="text-center">
+              <v-card-title
+                class="text-center text-md-subtitle-1 font-weight-bold"
+              >
                 {{ category.name }}
                 <v-icon
                   class="position-absolute cursor-pointer"
@@ -306,9 +308,11 @@
                     <v-img
                       :src="item.image || item.altURL"
                       cover
-                      height="20vh"
+                      height="48%"
                     />
-                    <v-card-title class="text-center">
+                    <v-card-title
+                      class="text-center text-md-subtitle-1 font-weight-bold"
+                    >
                       {{ item.name }}
                     </v-card-title>
                     <v-card-text class="overflow-auto">
@@ -316,7 +320,10 @@
                         >Price Range: {{ item.priceRange }}</strong
                       >
                       <br />
-                      <p>{{ item.description }}</p>
+
+                      <div class="text-md-subtitle-2">
+                        {{ item.description }}
+                      </div>
                     </v-card-text>
                     <v-card-actions>
                       <v-btn disabled>Edit</v-btn>

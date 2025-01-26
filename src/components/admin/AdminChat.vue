@@ -3,7 +3,7 @@
     <v-row class="ma-0" justify="space-around">
       <v-col cols="12" md="7">
         <v-card :color="color.accent" class="rounded-xl">
-          <div class="text-center text-md-h4 font-weight-bold my-2">
+          <div class="text-center text-md-h5 font-weight-bold my-2">
             Chat List
           </div>
           <v-divider
@@ -11,7 +11,7 @@
             class="border-opacity-100"
             :thickness="2"
           />
-          <v-list lines="two" class="overflow-auto" style="height: 78vh">
+          <v-list lines="two" class="overflow-auto" style="height: 75vh">
             <v-list-item
               v-for="chat in chatList"
               :key="chat?.id"
@@ -56,7 +56,7 @@
           </v-list>
         </v-card>
       </v-col>
-      <v-col cols="12" md="3">
+      <v-col cols="12" md="4">
         <v-card class="rounded-xl mb-5" style="height: 30vh">
           <div
             class="position-absolute top-0 w-100"
@@ -67,26 +67,26 @@
             :image="selectedChat?.avatar || 'https://i.imgur.com/zsEiYcN.png'"
             size="80"
             :style="{ border: `4px solid ${color.secondary}` }"
-            style="left: 5%; top: 18%"
+            style="left: 5%; top: 10%"
           />
-          <div class="position-absolute text-md-h6" style="left: 35%; top: 28%">
+          <div class="position-absolute text-md-h6" style="left: 35%; top: 20%">
             {{ selectedUser?.displayName }}
           </div>
           <div
-            class="position-absolute text-md-subtitle-1"
-            style="left: 6%; bottom: 28%"
+            class="position-absolute text-md-subtitle-2"
+            style="left: 6%; top: 58%"
           >
             {{ "Member since: " + formatTimestamp(selectedUser?.createdAt) }}
           </div>
           <div
-            class="position-absolute text-md-subtitle-1"
+            class="position-absolute text-md-subtitle-2"
             style="left: 6%; top: 72%"
           >
             {{ "Email: " + selectedUser?.email }}
           </div>
         </v-card>
 
-        <v-card class="rounded-xl d-flex flex-column" style="height: 52vh">
+        <v-card class="rounded-xl d-flex flex-column" style="height: 50vh">
           <v-card-title
             class="text-center font-weight-bold"
             :style="{ borderBottom: `1px solid ${color.secondary}` }"

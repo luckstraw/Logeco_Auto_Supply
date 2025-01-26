@@ -7,7 +7,7 @@
         width: '100%',
         borderBottom: `2px solid ${color.secondary}`,
         position: `sticky`,
-        top: '10vh',
+        top: '7vh',
         zIndex: 1,
       }"
     >
@@ -200,8 +200,35 @@
 
             <v-col
               cols="12"
+              md="12"
+              class="pa-2"
+              :style="{
+                position: 'sticky',
+                top: $vuetify.display.xs ? '27vh' : '12vh',
+                zIndex: 2,
+              }"
+            >
+              <v-card
+                class="rounded-xl"
+                :style="{ border: `2px solid ${color.secondary}` }"
+              >
+                <v-text-field
+                  v-model="searchQuery"
+                  :color="color.secondary"
+                  density="comfortable"
+                  variant="solo"
+                  placeholder="Search Item"
+                  prepend-inner-icon="fa-solid fa-search"
+                  hide-details
+                  class="px-2"
+                />
+              </v-card>
+            </v-col>
+
+            <v-col
+              cols="12"
               md="6"
-              v-for="(item, index) in categoryItems"
+              v-for="(item, index) in filteredItems"
               :key="item.id"
             >
               <v-card
@@ -248,6 +275,16 @@ import { useStore } from "vuex";
 
 const store = useStore();
 const color = computed(() => store.getters["adminSettings/getColor"]);
+
+const searchQuery = ref("");
+
+const filteredItems = computed(() => {
+  if (!searchQuery.value) return categoryItems.value;
+
+  return categoryItems.value.filter((item) =>
+    item.name.toLowerCase().includes(searchQuery.value.toLowerCase())
+  );
+});
 
 const selectedCategory = ref(null);
 const categories = computed(() => store.getters["adminProducts/getCategories"]);

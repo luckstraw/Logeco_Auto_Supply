@@ -51,74 +51,79 @@
               </v-icon>
             </v-card-title>
 
-            <!-- Login Form -->
-            <v-row v-if="isLogin">
-              <v-col cols="12">
-                <v-text-field
-                  v-model="loginEmail"
-                  variant="outlined"
-                  label="Email Address"
-                  type="email"
-                  hide-details
-                  :density="smAndDown ? 'compact' : 'default'"
-                  :color="color.secondary"
-                />
-              </v-col>
-              <v-col cols="12">
-                <v-text-field
-                  v-model="loginPassword"
-                  variant="outlined"
-                  label="Password"
-                  :append-inner-icon="
-                    loginShowPassword
-                      ? 'fa-regular fa-eye'
-                      : 'fa-regular fa-eye-slash'
-                  "
-                  :type="loginShowPassword ? 'text' : 'password'"
-                  hide-details
-                  :density="smAndDown ? 'compact' : 'default'"
-                  :color="color.secondary"
-                  @click:append-inner="loginShowPassword = !loginShowPassword"
-                />
-              </v-col>
-              <v-col cols="12">
-                <a
-                  class="text-decoration-underline"
-                  :style="{ cursor: 'pointer', color: color.secondary }"
-                  @click="handleForgotPassword"
-                >
-                  Forgot Password?
-                </a>
-              </v-col>
-              <v-col cols="12">
-                <v-btn
-                  block
-                  :style="{ height: '40px' }"
-                  :color="color.secondary"
-                  @click="handleLogin"
-                >
-                  Login
-                </v-btn>
-              </v-col>
-              <v-col cols="12" class="py-0">
-                <v-divider>or</v-divider>
-              </v-col>
-              <v-col cols="12" class="py-0 text-center">
-                <v-btn :color="color.secondary" @click="handleLoginWithGoogle">
-                  <v-icon>fab fa-google</v-icon>
-                </v-btn>
-              </v-col>
-              <v-col cols="12" class="text-center mt-3">
-                Don’t have an account?
-                <a
-                  class="text-decoration-underline"
-                  :style="{ cursor: 'pointer', color: color.secondary }"
-                  @click="isLogin = false"
-                >
-                  Signup
-                </a>
-              </v-col>
-            </v-row>
+            <v-form v-if="isLogin" @keyup.enter="handleLogin">
+              <!-- Login Form -->
+              <v-row>
+                <v-col cols="12">
+                  <v-text-field
+                    v-model="loginEmail"
+                    variant="outlined"
+                    label="Email Address"
+                    type="email"
+                    hide-details
+                    :density="smAndDown ? 'compact' : 'default'"
+                    :color="color.secondary"
+                  />
+                </v-col>
+                <v-col cols="12">
+                  <v-text-field
+                    v-model="loginPassword"
+                    variant="outlined"
+                    label="Password"
+                    :append-inner-icon="
+                      loginShowPassword
+                        ? 'fa-regular fa-eye'
+                        : 'fa-regular fa-eye-slash'
+                    "
+                    :type="loginShowPassword ? 'text' : 'password'"
+                    hide-details
+                    :density="smAndDown ? 'compact' : 'default'"
+                    :color="color.secondary"
+                    @click:append-inner="loginShowPassword = !loginShowPassword"
+                  />
+                </v-col>
+                <v-col cols="12">
+                  <a
+                    class="text-decoration-underline"
+                    :style="{ cursor: 'pointer', color: color.secondary }"
+                    @click="handleForgotPassword"
+                  >
+                    Forgot Password?
+                  </a>
+                </v-col>
+                <v-col cols="12">
+                  <v-btn
+                    block
+                    :style="{ height: '40px' }"
+                    :color="color.secondary"
+                    @click="handleLogin"
+                  >
+                    Login
+                  </v-btn>
+                </v-col>
+                <v-col cols="12" class="py-0">
+                  <v-divider>or</v-divider>
+                </v-col>
+                <v-col cols="12" class="py-0 text-center">
+                  <v-btn
+                    :color="color.secondary"
+                    @click="handleLoginWithGoogle"
+                  >
+                    <v-icon>fab fa-google</v-icon>
+                  </v-btn>
+                </v-col>
+                <v-col cols="12" class="text-center mt-3">
+                  Don’t have an account?
+                  <a
+                    class="text-decoration-underline"
+                    :style="{ cursor: 'pointer', color: color.secondary }"
+                    @click="isLogin = false"
+                  >
+                    Signup
+                  </a>
+                </v-col>
+              </v-row>
+            </v-form>
 
             <!-- Signup Form -->
             <v-form v-else ref="form" v-model="isFormValid">

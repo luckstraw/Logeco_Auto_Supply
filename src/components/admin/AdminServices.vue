@@ -11,8 +11,8 @@
     <v-row class="d-flex justify-center align-center ma-0">
       <v-col v-for="service in services" :key="service.id" md="3">
         <v-card class="rounded-xl d-flex flex-column" height="40vh">
-          <v-img :src="service.image || service.altURL" cover height="20vh" />
-          <v-card-title class="text-center">
+          <v-img :src="service.image || service.altURL" cover height="48%" />
+          <v-card-title class="text-center text-md-subtitle-1 font-weight-bold">
             {{ service.name }}
           </v-card-title>
           <v-card-text class="overflow-auto">
@@ -20,7 +20,7 @@
               Price Range: {{ service.priceRange }}
             </strong>
             <br />
-            <p>{{ service.description }}</p>
+            <div class="text-md-subtitle-2">{{ service.description }}</div>
           </v-card-text>
 
           <v-card-actions>

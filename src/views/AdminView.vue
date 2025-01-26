@@ -8,11 +8,11 @@
           :style="{ border: `2px solid ${color.secondary}`, height: '30vh' }"
         >
           <v-avatar
-            size="100"
+            size="80"
             image="https://i.imgur.com/Uibhtmc.png"
             :style="{ border: `2px solid ${color.secondary}` }"
           />
-          <div class="text-md-h5 my-3">Logeco Admin</div>
+          <div class="text-md-h6 my-2">Logeco Admin</div>
 
           <v-btn
             size="small"

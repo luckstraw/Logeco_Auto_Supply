@@ -4,7 +4,7 @@
       <v-row class="ma-0" justify="center">
         <v-col cols="12" md="3">
           <div
-            class="text-h5 font-weight-bold"
+            class="text-h6 font-weight-bold"
             :style="{ color: color.secondary }"
           >
             Operating Hours
@@ -15,7 +15,7 @@
         </v-col>
         <v-col cols="12" md="2">
           <div
-            class="text-h5 font-weight-bold"
+            class="text-h6 font-weight-bold"
             :style="{ color: color.secondary }"
           >
             Follow Us
@@ -34,7 +34,7 @@
         </v-col>
         <v-col cols="12" md="2">
           <div
-            class="text-h5 font-weight-bold"
+            class="text-h6 font-weight-bold"
             :style="{ color: color.secondary }"
           >
             Our Location
@@ -45,7 +45,7 @@
 
         <v-col cols="12" md="3">
           <h3
-            class="text-h5 font-weight-bold"
+            class="text-h6 font-weight-bold"
             :style="{ color: color.secondary }"
           >
             Contact Us
@@ -62,7 +62,7 @@
 
         <v-col cols="12" md="2">
           <div
-            class="text-h5 font-weight-bold"
+            class="text-h6 font-weight-bold"
             :style="{ color: color.secondary }"
           >
             Credits

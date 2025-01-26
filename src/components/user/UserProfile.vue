@@ -10,11 +10,11 @@
 
     <v-avatar
       :image="user?.photoURL"
-      :size="$vuetify.display.xs ? '100' : '130'"
+      :size="$vuetify.display.xs ? '100' : '120'"
       :style="{ border: `5px solid ${color.secondary}` }"
     />
 
-    <div class="text-center text-md-h5 text-subtitle-1 font-weight-bold mt-4">
+    <div class="text-center text-md-h5 text-subtitle-1 font-weight-bold mt-3">
       {{ user?.displayName }}
     </div>
 

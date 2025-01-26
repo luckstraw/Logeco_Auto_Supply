@@ -193,6 +193,13 @@ todo:
 
   [*]About Dev and credits??
 
+  [*]Fix error
+      enter on log in 
+      search
+      admin cols && avatar
+      user's avatar 
+      products cat
+
   [ ]Overall Testing??
 
   [ ]Documentation??
