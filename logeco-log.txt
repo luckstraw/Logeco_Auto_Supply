@@ -183,7 +183,7 @@ todo:
   [*]onAdminSettings:
       confirmation message for saving
       
-	[ ]Design
+	[*]Design
 			Admin chat should be bigger
 			User Schedule text
 
@@ -199,6 +199,8 @@ todo:
 
   [ ]Prepare For Presentation??
 
+1/26/2025
+  Next time nalang pag may bayad na
   [ ]Codebase Refactoring??
 
   [ ]Tentative Features:
