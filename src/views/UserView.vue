@@ -1,20 +1,19 @@
 <template>
   <!-- eslint-disable -->
-  <v-container fluid class="pa-2 ma-0">
-    <v-row class="ma-0 justify-center" style="height: 90vh">
-      <!-- Profile and Chat -->
-      <v-col cols="12" md="3" class="d-flex flex-column" style="gap: 24px">
+  <v-container fluid class="pa-2 ma-0 d-bug">
+    <v-row class="ma-0 justify-center" style="height: 85vh">
+      <!-- user profil -->
+      <v-col cols="12" md="3" class="d-flex flex-column order-sm-1 order-md-2 d-bug" style="gap: 24px">
         <UserProfile />
         <!-- Show User Chat only on desktop -->
         <div class="d-none d-md-flex">
           <UserChat />
         </div>
       </v-col>
-
       <!-- Schedule -->
-      <v-col cols="12" md="9" class="d-flex">
+      <v-col cols="12" md="9" class="d-flex order-sm-2 order-md-1 d-bug">
         <UserSchedule />
-      </v-col>
+      </v-col>  
     </v-row>
 
     <!-- Mobile Menu for User Chat -->
@@ -24,21 +23,21 @@
           <template v-slot:activator="{ props }">
             <v-btn :color="color.secondary" v-bind="props" icon>
               <v-icon>fa-solid fa-message</v-icon>
-            </v-btn>
+              </v-btn>
           </template>
 
-          <v-card min-width="350" min-height="3c00">
+          <div>
             <v-card-item>
               <UserChat />
             </v-card-item>
 
             <v-divider></v-divider>
 
-            <v-card-actions>
+            <!-- <v-card-actions>
               <v-spacer></v-spacer>
               <v-btn variant="text" @click="menu = false">Close</v-btn>
-            </v-card-actions>
-          </v-card>
+            </v-card-actions> -->
+          </div>
         </v-menu>
       </div>
     </v-responsive>
@@ -46,6 +45,7 @@
 </template>
 
 <script setup>
+/* eslint-disable */
 import { useStore } from "vuex";
 import { computed } from "vue";
 import UserChat from "@/components/user/UserChat.vue";
@@ -60,6 +60,11 @@ const menu = ref(false);
 </script>
 
 <style scoped>
+/* eslint-disable */
+.d-bug{
+  border: 2px solid cyan; 
+}
+
 .message-button {
   position: fixed;
   bottom: 20px;

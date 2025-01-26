@@ -50,11 +50,12 @@
       </v-card>
     </v-col>
     <v-col cols="3" class="d-flex flex-column pa-0">
+      <!-- user card -->
       <v-card
         class="align-center justify-center rounded-xl mb-3 pa-0"
         style="flex: 4; position: relative"
       >
-      <div
+      <div class="d-flex align-center justify-center"
               style="
                 position: absolute;
                 top: 0;
@@ -62,7 +63,7 @@
                 height: 28%;
                 background-color: #B71C1C; 
               "
-            ></div>
+            ><h4>{{ selectedUser.displayName }}</h4></div>
         <v-row class="ma-0 pa-0">
           <v-col cols="4" class="ma-0">
             <v-avatar
@@ -71,8 +72,9 @@
               :style="{ border: `5px solid ${color.secondary}` }"
             ></v-avatar>
           </v-col>
+          <!-- user card details -->
           <v-col cols="8" class="d-flex align-center justify-left" style="position: relative">
-            <h3>{{ selectedUser.displayName }}</h3>
+            
           </v-col>
           <!-- testing sa texbody2 -->
           <v-col cols="12" class="overflow-auto text-body-2">
@@ -85,6 +87,8 @@
           </v-col>
         </v-row>
       </v-card>
+      <!-- end of user card ^^ -->
+       
       <v-card class="rounded-xl d-flex flex-column pa-2" style="flex: 7">
         <v-card-title
           class="text-center font-weight-bold"

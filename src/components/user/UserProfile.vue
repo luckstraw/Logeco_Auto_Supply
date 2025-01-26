@@ -16,7 +16,7 @@
   <v-avatar
     z-index="1"
     :image="user.photoURL"
-    size="16vh"
+    size="100"
     :style="{ border: `5px solid ${color.secondary}` }"
     class="mb-1 mt-2"
     style="z-index: 2; position: relative;"

@@ -2,7 +2,6 @@
   <!-- eslint-disable -->
   <v-card
     class="flex-grow-1 d-flex flex-column justify-center align-center rounded-xl"
-    style="overflow-x: auto; white-space: nowrap; width: 100%;"
   >
   <v-card-title
       :class="xs ? 'text-body-5' : 'text-h3'"
