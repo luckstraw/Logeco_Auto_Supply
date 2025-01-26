@@ -1,10 +1,10 @@
 <template>
-  <v-card class="rounded-xl d-flex flex-column pa-2" style="flex: 7">
+  <v-card class="rounded-xl d-flex flex-column pa-2" style="height: 54vh">
     <v-card-title
       class="text-center font-weight-bold"
       :style="{ borderBottom: `1px solid ${color.secondary}` }"
     >
-      Chat with Admin
+      Chat with Us
     </v-card-title>
     <v-card-text class="chat-box" @scroll="handleScroll" ref="chatBox">
       <div
@@ -92,7 +92,7 @@ const handleEnter = (event) => {
 };
 
 const handleScroll = async () => {
-  if (chatBox.value.$el.scrollTop === 0) {
+  if (chatBox.value?.$el.scrollTop === 0) {
     const previousScrollHeight = chatBox.value.$el.scrollHeight;
     isLoadingMore.value = true;
     await store.dispatch("userChat/loadMoreMessages", user.value.uid);

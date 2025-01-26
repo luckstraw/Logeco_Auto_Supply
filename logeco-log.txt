@@ -167,10 +167,10 @@ todo:
   [*]onServiceView:
       functional button login will popup if it no user otherwise will go to dashboard
 
-  [ ]onProductView:
+  [*]onProductView:
       whole layout
 
-  [ ]on User's View:
+  [*]on User's View:
       whole layout
 
   [*]onNavbar:
@@ -191,7 +191,7 @@ todo:
 
   [*]Suggestion ni Kiel??
 
-  [ ]About Dev and credits??
+  [*]About Dev and credits??
 
   [ ]Overall Testing??
 

@@ -26,7 +26,9 @@
             style="cursor: pointer"
             @click="openFacebook"
           >
-            <v-icon start>fa-brands fa-facebook-f </v-icon>
+            <v-icon start class="d-flex align-center"
+              >fa-brands fa-facebook-f fa-sm</v-icon
+            >
             Facebook
           </div>
         </v-col>
@@ -55,6 +57,26 @@
           <div class="text-subtitle-2">
             <v-icon start>fa-regular fa-envelope fa-sm</v-icon>
             {{ footerInfo.email }}
+          </div>
+        </v-col>
+
+        <v-col cols="12" md="2">
+          <div
+            class="text-h5 font-weight-bold"
+            :style="{ color: color.secondary }"
+          >
+            Credits
+          </div>
+
+          <div
+            class="text-subtitle-2 d-flex align-center"
+            style="cursor: pointer"
+            @click="openDev"
+          >
+            <v-icon start class="d-flex align-center"
+              >fa-solid fa-code fa-sm
+            </v-icon>
+            Developers
           </div>
         </v-col>
 
@@ -92,6 +114,10 @@ const openFacebook = () => {
   if (footerInfo.value?.facebook) {
     window.open(footerInfo.value.facebook, "_blank");
   }
+};
+
+const openDev = () => {
+  window.open("https://logeco-developers.my.canva.site/", "_blank");
 };
 </script>
 
