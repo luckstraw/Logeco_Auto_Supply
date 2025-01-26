@@ -9,7 +9,7 @@
           <h2>Logeco Admin</h2>
           <v-avatar
             size="130"
-            image="https://cdn.vuetifyjs.com/images/john.jpg"
+            image="https://i.imgur.com/Uibhtmc.png"
             :style="{ border: `2px solid ${color.secondary}` }"
           >
           </v-avatar>

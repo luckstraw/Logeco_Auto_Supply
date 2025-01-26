@@ -1,6 +1,9 @@
 <template>
   <!--First Section-->
-  <v-parallax :height="parallaxHeight" :src="homeSettings.mainPhoto">
+  <v-parallax
+    :height="$vuetify.display.xs ? '80vh' : '90vh'"
+    :src="homeSettings.mainPhoto"
+  >
     <!--Parallelogram-->
     <div
       data-aos="fade-down-left"
@@ -312,11 +315,7 @@
 
 <script setup>
 import { computed, ref, onMounted } from "vue";
-import { useDisplay } from "vuetify";
 import { useStore } from "vuex";
-
-const { xs } = useDisplay();
-const parallaxHeight = computed(() => (xs.value ? "80vh" : "90vh"));
 
 const store = useStore();
 const color = computed(() => store.getters["adminSettings/getColor"]);

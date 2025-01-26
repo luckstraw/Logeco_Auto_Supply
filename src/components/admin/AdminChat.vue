@@ -16,7 +16,9 @@
             class="my-2"
           >
             <template v-slot:prepend>
-              <v-avatar :image="chat.avatar" />
+              <v-avatar
+                :image="chat.avatar || 'https://i.imgur.com/zsEiYcN.png'"
+              />
             </template>
             <template v-slot:subtitle>
               <div class="subtitle-container">
@@ -56,7 +58,7 @@
         <v-row class="ma-0 pa-2">
           <v-col cols="4" class="ma-0">
             <v-avatar
-              :image="selectedChat.avatar"
+              :image="selectedChat.avatar || 'https://i.imgur.com/zsEiYcN.png'"
               size="80"
               :style="{ border: `2px solid ${color.secondary}` }"
             ></v-avatar>

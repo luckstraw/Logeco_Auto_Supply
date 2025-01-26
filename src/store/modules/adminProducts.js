@@ -16,10 +16,22 @@ const state = {
 };
 
 const getters = {
-  getCategories: (state) => Object.values(state.categories),
+  getCategories: (state) =>
+    Object.values(state.categories).sort((a, b) =>
+      a.name.localeCompare(b.name)
+    ),
+
   getCategoryById: (state) => (id) => state.categories[id],
-  getItemsByCategory: (state) => (categoryId) => state.items[categoryId] || [],
-  getAllItems: (state) => Object.values(state.items).flat(),
+
+  getItemsByCategory: (state) => (categoryId) =>
+    (state.items[categoryId] || []).sort((a, b) =>
+      a.name.localeCompare(b.name)
+    ),
+
+  getAllItems: (state) =>
+    Object.values(state.items)
+      .flat()
+      .sort((a, b) => a.name.localeCompare(b.name)),
 };
 
 const mutations = {

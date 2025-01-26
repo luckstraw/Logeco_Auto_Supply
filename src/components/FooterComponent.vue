@@ -4,25 +4,17 @@
       <v-row class="ma-0" justify="center">
         <v-col cols="12" md="3">
           <div
-            data-aos="fade-right"
             class="text-h5 font-weight-bold"
             :style="{ color: color.secondary }"
           >
             Operating Hours
           </div>
-          <div data-aos="fade-left" class="text-subtitle-2">
-            Mon - Fri: 8:00 AM - 6:00 PM
-          </div>
-          <div data-aos="fade-left" class="text-subtitle-2">
-            Sat: 9:00 AM - 5:00 PM
-          </div>
-          <div data-aos="fade-left" class="text-subtitle-2">
-            Closed on Sundays
-          </div>
+          <div class="text-subtitle-2">Mon - Fri: 8:00 AM - 6:00 PM</div>
+          <div class="text-subtitle-2">Sat: 9:00 AM - 5:00 PM</div>
+          <div class="text-subtitle-2">Closed on Sundays</div>
         </v-col>
         <v-col cols="12" md="2">
           <div
-            data-aos="fade-right"
             class="text-h5 font-weight-bold"
             :style="{ color: color.secondary }"
           >
@@ -30,7 +22,6 @@
           </div>
 
           <div
-            data-aos="fade-left"
             class="text-subtitle-2 d-flex align-center"
             style="cursor: pointer"
             @click="openFacebook"
@@ -41,33 +32,27 @@
         </v-col>
         <v-col cols="12" md="2">
           <div
-            data-aos="fade-right"
             class="text-h5 font-weight-bold"
             :style="{ color: color.secondary }"
           >
             Our Location
           </div>
-          <div data-aos="fade-left" class="text-subtitle-2">
-            Blk 2 Lot 10, Poblacion 4
-          </div>
-          <div data-aos="fade-left" class="text-subtitle-2">
-            GMA, Cavite 4117
-          </div>
+          <div class="text-subtitle-2">Blk 2 Lot 10, Poblacion 4</div>
+          <div class="text-subtitle-2">GMA, Cavite 4117</div>
         </v-col>
 
         <v-col cols="12" md="3">
           <h3
-            data-aos="fade-right"
             class="text-h5 font-weight-bold"
             :style="{ color: color.secondary }"
           >
             Contact Us
           </h3>
-          <div data-aos="fade-left" class="text-subtitle-2">
+          <div class="text-subtitle-2">
             <v-icon start>fa-solid fa-phone fa-sm</v-icon>
             {{ footerInfo.phone }}
           </div>
-          <div data-aos="fade-left" class="text-subtitle-2">
+          <div class="text-subtitle-2">
             <v-icon start>fa-regular fa-envelope fa-sm</v-icon>
             {{ footerInfo.email }}
           </div>
