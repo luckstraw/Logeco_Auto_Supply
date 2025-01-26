@@ -201,6 +201,7 @@ const actions = {
       await updateDoc(doc(db, "Chats", chatId), {
         lastMessage: message,
       });
+      dispatch("updateChatResolved", chatId);
     } catch (error) {
       dispatch("handleError", error);
     }

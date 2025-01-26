@@ -113,7 +113,11 @@
               @click="selectedCategory = category"
             >
               <v-img
-                :src="category.image || category.altURL"
+                :src="
+                  category.image ||
+                  category.altURL ||
+                  'https://placehold.co/600x400?text=No+Image'
+                "
                 cover
                 height="25vh"
               />
@@ -169,7 +173,11 @@
               }"
             >
               <v-img
-                :src="selectedCategory?.image || selectedCategory?.altURL"
+                :src="
+                  selectedCategory?.image ||
+                  selectedCategory?.altURL ||
+                  'https://placehold.co/600x400?text=No+Image'
+                "
                 cover
                 height="60vh"
               />
@@ -306,7 +314,11 @@
                 <v-col v-for="item in categoryItems" :key="item.id" md="4">
                   <v-card class="d-flex flex-column rounded-xl" height="40vh">
                     <v-img
-                      :src="item.image || item.altURL"
+                      :src="
+                        item.image ||
+                        item.altURL ||
+                        'https://placehold.co/600x400?text=No+Image'
+                      "
                       cover
                       height="48%"
                     />

@@ -28,7 +28,11 @@
         </div>
       </div>
       <v-img
-        :src="selectedCategory?.image || selectedCategory?.altURL"
+        :src="
+          selectedCategory?.image ||
+          selectedCategory?.altURL ||
+          'https://placehold.co/600x400?text=No+Image'
+        "
         cover
         height="100%"
       />
@@ -65,7 +69,11 @@
               </div>
             </div>
             <v-img
-              :src="mitsubishiCategory?.image || mitsubishiCategory?.altURL"
+              :src="
+                mitsubishiCategory?.image ||
+                mitsubishiCategory?.altURL ||
+                'https://placehold.co/600x400?text=No+Image'
+              "
               cover
               height="100%"
             />
@@ -100,7 +108,11 @@
                   </div>
                 </div>
                 <v-img
-                  :src="category?.image || category?.altURL"
+                  :src="
+                    category?.image ||
+                    category?.altURL ||
+                    'https://placehold.co/600x400?text=No+Image'
+                  "
                   cover
                   height="100%"
                 />
@@ -124,7 +136,6 @@
                 ? 'fade-up-left'
                 : 'fade-up'
             "
-            data-aos-anchor-placement="bottom-bottom"
             class="rounded-xl position-relative"
             :style="{ border: `2px solid ${color.secondary}`, height: '30vh' }"
             @click="
@@ -140,7 +151,11 @@
               </div>
             </div>
             <v-img
-              :src="category?.image || category?.altURL"
+              :src="
+                category?.image ||
+                category?.altURL ||
+                'https://placehold.co/600x400?text=No+Image'
+              "
               cover
               height="100%"
             />
@@ -161,7 +176,11 @@
             }"
           >
             <v-img
-              :src="selectedCategory?.image || selectedCategory?.altURL"
+              :src="
+                selectedCategory?.image ||
+                selectedCategory?.altURL ||
+                'https://placehold.co/600x400?text=No+Image'
+              "
               cover
               height="70%"
             />
@@ -259,7 +278,15 @@
                     {{ item.description }}
                   </div>
                 </div>
-                <v-img :src="item.image || item.altURL" cover height="100%" />
+                <v-img
+                  :src="
+                    item.image ||
+                    item.altURL ||
+                    'https://placehold.co/600x400?text=No+Image'
+                  "
+                  cover
+                  height="100%"
+                />
               </v-card>
             </v-col>
           </v-row>

@@ -11,7 +11,15 @@
     <v-row class="d-flex justify-center align-center ma-0">
       <v-col v-for="service in services" :key="service.id" md="3">
         <v-card class="rounded-xl d-flex flex-column" height="40vh">
-          <v-img :src="service.image || service.altURL" cover height="48%" />
+          <v-img
+            :src="
+              service.image ||
+              service.altURL ||
+              'https://placehold.co/600x400?text=No+Image'
+            "
+            cover
+            height="48%"
+          />
           <v-card-title class="text-center text-md-subtitle-1 font-weight-bold">
             {{ service.name }}
           </v-card-title>
