@@ -221,4 +221,48 @@ todo:
       edit on name or profile picture of user
       edit on logeco's profile picture
       logeco's photo on userchat message and seen and delivered function
-      
+
+1/27/2025
+>Feedback from sir daniel
+  
+  Schedule on user side is useless should be replace history of the service from the shop 
+    and the time of his Schedule rather than whole shop schedule
+
+    reson: kasi wala daw paki yung user sa schedule ng iba
+    counter: para malaman agad ng user kung may naka sched na don 
+    reply: pede namn i chat don sa chat app
+
+    reason2: what if may nag pa book tapos d pumunta edi sayang yung ibang mag papabook sayang
+              also what if may pumunta walkin tas may naka book don?
+    counter: downpayment before booking
+    reply: hindi effective yan (IDK, hindi kona tinanong kun bakit lol)
+
+  Products should be ordered like this:
+
+    Products
+    |--Brand of Car: 
+    |      |----Model of Car:
+    |      |        |-----Specific Parts of Car:
+    |      |        |          |----Sizes and type of that parts: 
+    |      |        |          |        
+    |--Brand of Car: 
+    |      |----Model of Car:
+    |      |        |-----Specific Parts of Car:
+    |      |        |          |----Sizes and type of that parts: 
+    |      |        |          |        
+    |--Brand of Car: 
+    |      |----Model of Car:
+    |      |        |-----Specific Parts of Car:
+    |      |        |          |----Sizes and type of that parts: 
+    |      |        |          |        
+
+    wala daw dapat mga battery at belt sa category
+  
+  Masyado daw masakit sa mata yung kulay napula at black kelangan may contrast daw
+
+
+  GoodFeedback --> Maganda daw yung transition natin
+
+Fix
+  [*] back on products
+  [*] phone view improvement

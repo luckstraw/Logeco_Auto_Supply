@@ -75,7 +75,8 @@
     <div class="text-center mt-10 mx-5 mb-8">
       <div
         data-aos="fade-up"
-        class="text-h4 text-md-h3 font-weight-bold text-red-darken-4"
+        class="text-h4 text-md-h3 font-weight-bold"
+        :style="{ color: `${color.secondary}` }"
       >
         More Services
       </div>

@@ -50,12 +50,7 @@
               border: `2px solid ${color.secondary}`,
               height: $vuetify.display.xs ? '30vh' : '63vh',
             }"
-            @click="
-              () => {
-                selectedCategory = mitsubishiCategory;
-                scrollToTop();
-              }
-            "
+            @click="selectCategory(mitsubishiCategory)"
           >
             <div
               class="title-overlay"
@@ -95,12 +90,7 @@
                   border: `2px solid ${color.secondary}`,
                   height: '30vh',
                 }"
-                @click="
-                  () => {
-                    selectedCategory = category;
-                    scrollToTop();
-                  }
-                "
+                @click="selectCategory(category)"
               >
                 <div class="title-overlay" style="height: 23%">
                   <div class="text-h5 font-weight-bold">
@@ -138,12 +128,7 @@
             "
             class="rounded-xl position-relative"
             :style="{ border: `2px solid ${color.secondary}`, height: '30vh' }"
-            @click="
-              () => {
-                selectedCategory = category;
-                scrollToTop();
-              }
-            "
+            @click="selectCategory(category)"
           >
             <div class="title-overlay" style="height: 23%">
               <div class="text-h5 font-weight-bold">
@@ -297,7 +282,7 @@
 </template>
 
 <script setup>
-import { computed, ref, onMounted } from "vue";
+import { computed, ref, onMounted, onBeforeUnmount } from "vue";
 import { useStore } from "vuex";
 
 const store = useStore();
@@ -343,8 +328,26 @@ const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 };
 
+const selectCategory = (category) => {
+  selectedCategory.value = category;
+  scrollToTop();
+  history.pushState({ category: category.id }, "");
+};
+
+const handleBackButton = () => {
+  if (selectedCategory.value) {
+    selectedCategory.value = null;
+    scrollToTop();
+  }
+};
+
 onMounted(() => {
   window.scrollTo(0, 0);
+  window.addEventListener("popstate", handleBackButton);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener("popstate", handleBackButton);
 });
 </script>
 
