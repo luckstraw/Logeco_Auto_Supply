@@ -52,6 +52,7 @@
                       :placeholder="color"
                       density="compact"
                       variant="outlined"
+                      :disabled="key === 'accent' || key === 'primary'"
                       hide-details
                       @click="selectField(key)"
                     >

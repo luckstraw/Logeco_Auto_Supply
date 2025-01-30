@@ -101,6 +101,7 @@
               data-aos="fade-up"
               data-aos-duration="1000"
               class="text-lg-h5 text-h7 font-weight-bold text-md-left text-sm-left text-center black-outline"
+              :class="[$vuetify.display.xs ? 'black-outline' : '']"
               :style="{ color: `${color.secondary}` }"
             >
               Your Trusted Source for Mitsubishi Genuine Parts And Reliable
